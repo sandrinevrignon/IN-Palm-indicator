@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#essai tkinter: tkinter._test()
+#essai tkinter: tkinter._test() 22
 
 #Importation des bibliothèques
 #tkinter
