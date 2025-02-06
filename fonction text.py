@@ -45,7 +45,7 @@ def weatherdata():
                             error = True
                             exit()
                     else:
-                        #Contrôle que les années se suivent
+                        #Contrôle des années cumulatives
                         if intyear == prevyear or intyear == prevyear+1 or prevyear==99999 :
                             #Calcule pour chaque mois et chaque année du nombre de pluie et somme cumul pluie
 
