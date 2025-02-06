@@ -10,6 +10,8 @@ from tkinter import ttk
 from tkinter import filedialog
 #Système
 import os
+#Lecture csv
+import csv
 
 
 #Fonction lecture fichier
