@@ -21,7 +21,7 @@ def openexample():
     os.startfile(file)
 
 def savecsv(table,town,country):
-    # Ouvrir une boîte de dialogue pour choisir le dossier
+    # Ouverture d'une boîte de dialogue pour choisir le dossier
     folder_path = filedialog.askdirectory(title="Please choose your directory save")
 
     #Dossier choisi
