@@ -2,6 +2,19 @@
 
 import csv
 
+def infodico(dictionnary, town, country) :
+    print(f"Monthly cumulative rainy statement\n"
+          f"\tCountry:{country}\n"
+          f"\tTown:{town}")
+    print(dictionnary)
+    for (years, months) in dictionnary.items():
+        print(f"Year:{years}")
+        for monthdata, data in months.items():
+            print(f"{monthdata},rainfall: {data['Rainfall']}, rain frequency: {data['Rain frequency']}")
+    # Sauvegarde des données dans un csv
+    # Faire clic
+
+
 def weatherdata():
     file="C:\\Users\\svrignon\\Desktop\\programme\\example.csv"
 
@@ -455,11 +468,10 @@ def weatherdata():
         # Destruction dictionnaire Decdict
         del Decdict
 
-    print (dictionnary)
-    print(country)
-    print(town)
+        infodico(dictionnary,town, country)
 
 #Sauvegarde des données dans un csv
 #Faire clic
 weatherdata()
+
 

@@ -20,6 +20,68 @@ def openexample():
     file=".\\example.csv"
     os.startfile(file)
 
+def savecsv(town,country):
+    #Demande utilisateur dossier d'enregistrement
+    dialog=filedialog.askdirectory("Please choose your directory save")
+    #Vérification qu'on est bien dans un dossier
+    if folder_path:
+        file = os.path.join(dialog, f"{town}_{country}cumulmonthly_rainfall.csv")
+
+
+#Fonction données les infos csv
+def infodicosave(dictionnary, town, country) :
+    #Création fenêtre de résumé:
+    infodico=Tk()
+
+    #Nom de la fenêtre
+    infodico.title("Summary information and calculate information")
+
+    infodico.geometry("1000x800")
+
+    #Information localisation
+    label=(tkinter.Label(infodico,text=f"Monthly cumulative rainy statement\n"
+                                       f"Country:{country}\n"
+                                       f"Town:{town}",
+                         font=("Ariel",15)))
+    label.pack(pady=20)
+
+    #Création du tableau résumé
+    table=ttk.Treeview(infodico,columns=("Year","Month","Rainfall","Frequency"),show="headings")
+    #Insertion des entêtes
+    table.heading("Year",text="Year")
+    table.heading("Month",text="Month")
+    table.heading("Rainfall",text="Rainfall(in mm)")
+    table.heading("Frequency",text="Rain frequency (number of rainy days)")
+    #Insertion des valeurs
+    for (years, months) in dictionnary.items():
+        for monthdata, data in months.items():
+            table.insert("","end",values=(years,monthdata,data['Rainfall'], data['Rain frequency']))
+
+
+    #Barre de défilement
+    scrollbar=tkinter.Scrollbar(infodico,orient="vertical",command=table.yview)
+    #Liaison de la barre à la table
+    table.configure(yscrollcommand=scrollbar.set)
+
+    scrollbar.pack(fill='y', side="right")
+    table.pack(fill="both", expand=True)
+
+    #Bouton save
+    savebutton=tkinter.Button(infodico,text="Save data on csv file",
+                              bg="blue",fg="white", font=("Ariel",12,"bold"),
+                              width=15, height=2,command=savecsv(town,country))
+    savebutton.place(relx=0.8,rely=0.04)
+
+    #Bouton continuer l'analyse
+    analysecontinue=tkinter.Button(infodico,text="Continue analyse",
+                                   bg="blue",fg="white",font=("Ariel",12,"bold"),
+                                   width=15,height=2)#Rajouter une command d'appel au parent weatherdata()
+    analysecontinue.place(relx=0.1,rely=0.04)
+
+
+
+
+
 #Fonction lecture données sur csv données météo
 def weatherdata():
     file=filedialog.askopenfilename(title="Please select your file")
@@ -28,7 +90,7 @@ def weatherdata():
     csvfile=file.split(".")
     if csvfile[-1]!="csv":
         # Création de la fenêtre
-        csverror = Tk()
+        csverror = Toplevel()
         # Nom de l'onglet de fenêtre
         csverror.title("Error message")
         # Définition de la taille de la fenêtre
@@ -38,8 +100,12 @@ def weatherdata():
                              text="please give an csv file",
                              justify="center",
                              font=("Aptos",15,"bold"),fg='red'))  # parfaire le message
-        message.pack(pady=5, anchor="center")
-        #Rajouter un bouton retour A faire lundi
+        message.place(relx=0.5,rely=0.2, anchor="center")
+        #Bouton retour
+        return_button = tkinter.Button(csverror, text="Return",
+                                       bg="lightblue",command=weatherdata)
+        return_button.place(relx=0.5,rely=0.7,anchor="center")
+
     else:
 
         # Lecture du fichier CSV
@@ -47,10 +113,29 @@ def weatherdata():
             reader=csv.reader(file)
             # Lecture de la première ligne du fichier
             firstrow = next(reader)
+
             #Contrôle que les noms de colonnes soient bien identique à l'exemple
             firstrowsep=firstrow[0].split(";")
             if (firstrowsep[0] not in ("date","Date")) or (firstrowsep[1] not in("Rain (mm)","rain (mm)","Rain(mm)","rain(mm)")) or (firstrowsep[2] not in ("Country","country")) or (firstrowsep[3] not in ("Town","town")):
-                print ("Please use the same format as example")
+                # Création bouton erreur fichier
+                # Création de la fenêtre
+                errorfileheader = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorfileheader.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorfileheader.geometry("400x150")
+                # Nom de la fenêtre
+                messagefileheader = (tkinter.Label(errorfileheader,
+                                             text="Please use the same format as example\n"
+                                                  "Please modify your file and reselect it",
+                                             justify="center",
+                                             font=("Aptos", 15, "bold"), fg='red'))
+                messagefileheader.place(relx=0.5, rely=0.2, anchor="center")
+                # Bouton retour
+                return_button = tkinter.Button(errorfileheader, text="Return",
+                                               bg="lightblue", command=weatherdata)
+                return_button.place(relx=0.5, rely=0.7, anchor="center")
+
             else:
 
                 #Initialisation de l'année précédente
@@ -81,8 +166,25 @@ def weatherdata():
 
                     #Contrôle que les chiffre rain soient bien au bon format 0.13 et non 0,13
                     if len(element)<3:
-                        print("please control your rain format: numbers must be separated by points (0.13) and not commas (0,13)")
-                        exit()
+                        # Création bouton erreur fichier virgule
+                        # Création de la fenêtre
+                        errorfilecomma = Toplevel()
+                        # Nom de l'onglet de fenêtre
+                        errorfilecomma.title("Error message")
+                        # Définition de la taille de la fenêtre
+                        errorfilecomma.geometry("500x150")
+                        # Nom de la fenêtre
+                        messagefilecomma = (tkinter.Label(errorfilecomma,
+                                                          text="Please control your rain format: \n"
+                                                          "numbers must be separated by points (0.13) \nand not commas (0,13)\n"
+                                                          "Please modify your file and reselect it",
+                                                          justify="center",
+                                                          font=("Aptos", 12, "bold"), fg='red'))
+                        messagefilecomma.place(relx=0.5, rely=0.3, anchor="center")
+                        # Bouton retour
+                        return_button = tkinter.Button(errorfilecomma, text="Return",
+                                                       bg="lightblue", command=weatherdata)
+                        return_button.place(relx=0.5, rely=0.7, anchor="center")
 
                     #Défintion des éléments de la date
                     date=element[0].split("/")
@@ -107,9 +209,29 @@ def weatherdata():
                     #Contrôle qu'il y ait bien 12 mois
                     if intmonth>12:
                         if not error:
-                            print("Month must be between 1 and 12.\nPlease convert your date in month/date/year")
+                            # Création bouton erreur mois incorrect
+                            # Création de la fenêtre
+                            errormonth = Toplevel()
+                            # Nom de l'onglet de fenêtre
+                            errormonth.title("Error message")
+                            # Définition de la taille de la fenêtre
+                            errormonth.geometry("400x100")
+                            # Nom de la fenêtre
+                            messagemonth = (tkinter.Label(errormonth,
+                                                              text="Month must be between 1 and 12.\n"
+                                                                   "Please convert your date in month/date/year\n"
+                                                                   "Please modify your file and reselect it",
+                                                              justify="center",
+                                                              font=("Aptos", 12, "bold"), fg='red'))
+                            messagemonth.place(relx=0.5, rely=0.3, anchor="center")
+                            # Bouton retour
+                            return_button = tkinter.Button(errormonth, text="Return",
+                                                           bg="lightblue", command=weatherdata)
+                            return_button.place(relx=0.5, rely=0.8, anchor="center")
+
                             error = True
-                            exit()
+
+
                     else:
 
                         #Contrôle des années cumulatives
@@ -272,12 +394,28 @@ def weatherdata():
                                     Decdict[year] = [floatrain]
                         #Code erreur si pas années pas cumulative
                         else:
-                                print("Your years must be cumulative ")
-                                error = True
-                                exit()
+                            #Création bouton
+                            #Création fenêtre
+                            errorfileyear=Toplevel()
+                            #Nom de la fenêtre
+                            errorfileyear.title("Error message")
+                            #Taille de la fenêtre
+                            errorfileyear.geometry("400x150")
+                            #Message fenêtre
+                            messagefileyear=(tkinter.Label(errorfileyear,
+                                                           text="Your years must be cumulative\n"
+                                                                "Please modify your file and reselect if",
+                                                           justify='center',font=('Ariel',12,"bold"),fg="red"))
+                            messagefileyear.place(relx=0.5, rely=0.3, anchor="center")
+
+
+                            # Bouton retour
+                            return_button = tkinter.Button(errorfileyear, text="Return",
+                                                           bg="lightblue", command=weatherdata)
+                            return_button.place(relx=0.5, rely=0.7, anchor="center")
+
+                            error = True
                     prevyear = intyear
-
-
 
 
         #Stockage des données d'intérêt dans un dictionnaire années
@@ -486,12 +624,10 @@ def weatherdata():
         # Destruction dictionnaire Decdict
         del Decdict
 
-    print (dictionnary)
-    print(country)
-    print(town)
+        infodicosave(dictionnary,town,country)
 
-#Sauvegarde des données dans un csv
-#Faire clic
+
+
 
 
 
@@ -502,7 +638,7 @@ def weatherdata():
 
 
 #Fonction fenêtre pour rentrer les données climatiques pluie cumulées
-def cumuldata(weatherroot):
+def cumuldataroot(weatherroot):
     #Fermeture fenêtre précédente
     weatherroot.destroy()
     #Création de la fenêtre
@@ -549,7 +685,7 @@ def weatherlower10 (root):
     buttoncumuldata = tkinter.Button(weatherroot, text="Click here",
                                  font=("Ariel",12,"bold"), anchor="center",
                                  bg="blue",fg="white",activebackground = "lightgreen",
-                                 command=lambda: cumuldata(weatherroot))
+                                 command=lambda: cumuldataroot(weatherroot))
     buttoncumuldata.place(relx=0.2, rely=0.3, anchor="center")
 
     #Bouton exemple
