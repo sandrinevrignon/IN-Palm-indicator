@@ -20,15 +20,31 @@ def openexample():
     file=".\\example.csv"
     os.startfile(file)
 
-def savecsv(town,country):
-    #Demande utilisateur dossier d'enregistrement
-    dialog=filedialog.askdirectory("Please choose your directory save")
-    #Vérification qu'on est bien dans un dossier
+def savecsv(table,town,country):
+    # Ouvrir une boîte de dialogue pour choisir le dossier
+    folder_path = filedialog.askdirectory(title="Please choose your directory save")
+
+    #Dossier choisi
     if folder_path:
-        file = os.path.join(dialog, f"{town}_{country}cumulmonthly_rainfall.csv")
+        # Définir le chemin complet du fichier CSV (nom de fichier prédéfini)
+        file_path = os.path.join(folder_path, f"{town}_{country}_cumulmonthly_rainfall.csv")
+
+        # Ouverture du fichier CSV en mode écriture
+        with open(file_path, mode="w", newline="") as file:
+            writer = csv.writer(file)
+
+            # Création de l'en-tête du fichier CSV
+            writer.writerow(["Year", "Month", "Rainfall(mm)","Rain frequency"])
+
+            # Report de chaque ligne dans le csv
+            for row in table.get_children():
+                values = table.item(row)["values"]
+                writer.writerow(values)
+        #Donner les infos à retravailler
+        print(f"Data save on {file_path}")
 
 
-#Fonction données les infos csv
+#Fonction données les infos csv et réécriture d'un fichier excel
 def infodicosave(dictionnary, town, country) :
     #Création fenêtre de résumé:
     infodico=Tk()
@@ -67,9 +83,12 @@ def infodicosave(dictionnary, town, country) :
     table.pack(fill="both", expand=True)
 
     #Bouton save
+    def savebutton():
+        #Appel de la fonction
+        savecsv(table,town,country)
     savebutton=tkinter.Button(infodico,text="Save data on csv file",
                               bg="blue",fg="white", font=("Ariel",12,"bold"),
-                              width=15, height=2,command=savecsv(town,country))
+                              width=15, height=2,command=savebutton)
     savebutton.place(relx=0.8,rely=0.04)
 
     #Bouton continuer l'analyse
