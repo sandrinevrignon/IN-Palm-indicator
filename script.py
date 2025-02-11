@@ -184,8 +184,6 @@ def weatherdata():
                 #Initialisation de l'année précédente
                 prevyear=99999
 
-                #Intégration d'un booléen pour le contrôle du format de date et année
-                error = False
 
                 #Création d'un dictionnaire mensuel pour stockage données années
                 Jandict= {}
@@ -708,6 +706,9 @@ def cumuldataroot(weatherroot):
     #Définition de la taille de la fenêtre
     cumuldata.geometry("800x600")
 
+#Fonction fermeture de la fenêtre weatherroot
+def closeweatherroot(weatherroot):
+    weatherroot.destroy()
 
 #Fonction pour plantation inférieur ou égale à 10 ans
 def weatherlower10 (root):
@@ -719,7 +720,7 @@ def weatherlower10 (root):
     #Nom de l'onglet de fenêtre
     weatherroot.title("IN-Palm indicator: planting \u2264 10 years Input data")
     #Définition de la taille de la fenêtre
-    weatherroot.geometry("800x600")
+    weatherroot.geometry("800x200")
 
     #Nom de la fenêtre
     introduction = (ttk.Label(weatherroot,
@@ -732,12 +733,12 @@ def weatherlower10 (root):
     cumulativedata=(ttk.Label(weatherroot,text="You have cumulative monthly climate data \n(quantity (mm) and number of rainy days)",
                            justify="center",
                            font=("Ariel", 12)))#parfaire le message
-    cumulativedata.place(relx=0.2, rely=0.2, anchor="center")
+    cumulativedata.place(relx=0.2, rely=0.4, anchor="center")
 
     dailydata=(ttk.Label(weatherroot,text="You have daily data in csv format like ",
                          justify="center",
                          font=("Ariel", 12)))#parfaire le message
-    dailydata.place(relx=0.7, rely=0.2, anchor="center")
+    dailydata.place(relx=0.7, rely=0.4, anchor="center")
 
     #Création des boutons
     #Bouton pour données climatiques cumulées
@@ -745,22 +746,22 @@ def weatherlower10 (root):
                                  font=("Ariel",12,"bold"), anchor="center",
                                  bg="blue",fg="white",activebackground = "lightgreen",
                                  command=lambda: cumuldataroot(weatherroot))
-    buttoncumuldata.place(relx=0.2, rely=0.3, anchor="center")
+    buttoncumuldata.place(relx=0.2, rely=0.7, anchor="center")
 
     #Bouton exemple
     example=tkinter.Button(weatherroot, text="Example",
                            font=("Ariel",12,"bold"), anchor="center",
                            bg="blue",fg="white",activebackground = "lightgreen",
                            command=openexample)
-    example.place(relx=0.92, rely=0.2, anchor="center")
+    example.place(relx=0.92, rely=0.4, anchor="center")
 
 
     # Bouton pour données climatiques journalière
     dailydata = tkinter.Button(weatherroot, text="Click here",
                              font=("Ariel", 12, "bold"), anchor="center",
                              bg="blue", fg="white", activebackground="lightgreen",
-                             command=weatherdata)
-    dailydata.place(relx=0.7, rely=0.3, anchor="center")
+                             command=lambda :[weatherdata(),closeweatherroot(weatherroot)])
+    dailydata.place(relx=0.7, rely=0.7, anchor="center")
 
     weatherroot.mainloop()
 
@@ -798,7 +799,6 @@ def ageplantation():
 
 
 ageplantation()
-
 
 
 
