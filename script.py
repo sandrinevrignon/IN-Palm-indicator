@@ -105,6 +105,10 @@ def infodicosave(dictionnary, town, country) :
 def weatherdata():
     file=filedialog.askopenfilename(title="Please select your file")
 
+    #Cas ou il n'y a aucune sélection
+    if not file:
+        return
+
     #Contrôle que le fichier donné soit un fichier csv
     csvfile=file.split(".")
     if csvfile[-1]!="csv":
@@ -120,11 +124,21 @@ def weatherdata():
                              justify="center",
                              font=("Aptos",15,"bold"),fg='red'))  # parfaire le message
         message.place(relx=0.5,rely=0.2, anchor="center")
+
+        #Réouverture du dialogue
+        def reopen_filedialog():
+            csverror.destroy()
+            weatherdata()
+            #Evite erreur coupure programme
+            return
         #Bouton retour
         return_button = tkinter.Button(csverror, text="Return",
-                                       bg="lightblue",command=weatherdata)
+                                       bg="lightblue",command=reopen_filedialog)
         return_button.place(relx=0.5,rely=0.7,anchor="center")
-
+        #Permet de garder la fenêtre d'erreur ouverte
+        csverror.mainloop()
+        #Arret fonction évitant de continuer le programme
+        return
     else:
 
         # Lecture du fichier CSV
@@ -150,10 +164,20 @@ def weatherdata():
                                              justify="center",
                                              font=("Aptos", 15, "bold"), fg='red'))
                 messagefileheader.place(relx=0.5, rely=0.2, anchor="center")
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorfileheader.destroy()
+                    weatherdata()
+                    #Evite erreur coupure programme
+                    return
                 # Bouton retour
                 return_button = tkinter.Button(errorfileheader, text="Return",
-                                               bg="lightblue", command=weatherdata)
+                                               bg="lightblue", command=reopen_filedialog)
                 return_button.place(relx=0.5, rely=0.7, anchor="center")
+                # Permet de garder la fenêtre d'erreur ouverte
+                errorfileheader.mainloop()
+                #Arrêt fonction évitant de continuer le programme
+                return
 
             else:
 
@@ -164,10 +188,10 @@ def weatherdata():
                 error = False
 
                 #Création d'un dictionnaire mensuel pour stockage données années
-                Jandict={}
-                Febdict={}
-                Mardict={}
-                Aprdict={}
+                Jandict= {}
+                Febdict= {}
+                Mardict= {}
+                Aprdict= {}
                 Maydict = {}
                 Jundict = {}
                 Juldict = {}
@@ -200,10 +224,18 @@ def weatherdata():
                                                           justify="center",
                                                           font=("Aptos", 12, "bold"), fg='red'))
                         messagefilecomma.place(relx=0.5, rely=0.3, anchor="center")
+                        # Réouverture du dialogue
+                        def reopen_filedialog():
+                            errorfilecomma.destroy()
+                            weatherdata()
+                            #Evite erreurs lors coupure programme
+                            return
                         # Bouton retour
                         return_button = tkinter.Button(errorfilecomma, text="Return",
-                                                       bg="lightblue", command=weatherdata)
+                                                       bg="lightblue", command=reopen_filedialog)
                         return_button.place(relx=0.5, rely=0.7, anchor="center")
+                        errorfilecomma.mainloop()
+                        return
 
                     #Défintion des éléments de la date
                     date=element[0].split("/")
@@ -217,7 +249,6 @@ def weatherdata():
                     country=element[2]
                     town=element[3]
 
-
                     #Conversion en integer
                     intyear=int(year)
                     intmonth=int(month)
@@ -227,29 +258,33 @@ def weatherdata():
 
                     #Contrôle qu'il y ait bien 12 mois
                     if intmonth>12:
-                        if not error:
-                            # Création bouton erreur mois incorrect
-                            # Création de la fenêtre
-                            errormonth = Toplevel()
-                            # Nom de l'onglet de fenêtre
-                            errormonth.title("Error message")
-                            # Définition de la taille de la fenêtre
-                            errormonth.geometry("400x100")
-                            # Nom de la fenêtre
-                            messagemonth = (tkinter.Label(errormonth,
-                                                              text="Month must be between 1 and 12.\n"
-                                                                   "Please convert your date in month/date/year\n"
-                                                                   "Please modify your file and reselect it",
-                                                              justify="center",
-                                                              font=("Aptos", 12, "bold"), fg='red'))
-                            messagemonth.place(relx=0.5, rely=0.3, anchor="center")
-                            # Bouton retour
-                            return_button = tkinter.Button(errormonth, text="Return",
-                                                           bg="lightblue", command=weatherdata)
-                            return_button.place(relx=0.5, rely=0.8, anchor="center")
-
-                            error = True
-
+                        # Création bouton erreur mois incorrect
+                        # Création de la fenêtre
+                        errormonth = Toplevel()
+                        # Nom de l'onglet de fenêtre
+                        errormonth.title("Error message")
+                        # Définition de la taille de la fenêtre
+                        errormonth.geometry("400x100")
+                        # Nom de la fenêtre
+                        messagemonth = (tkinter.Label(errormonth,
+                                                      text="Month must be between 1 and 12.\n"
+                                                           "Please convert your date in month/date/year\n"
+                                                           "Please modify your file and reselect it",
+                                                      justify="center",
+                                                      font=("Aptos", 12, "bold"), fg='red'))
+                        messagemonth.place(relx=0.5, rely=0.3, anchor="center")
+                        # Réouverture du dialogue
+                        def reopen_filedialog():
+                            errormonth.destroy()
+                            weatherdata()
+                            # Evite erreurs lors coupure programme
+                            return
+                        # Bouton retour
+                        return_button = tkinter.Button(errormonth, text="Return",
+                                                       bg="lightblue", command=reopen_filedialog)
+                        return_button.place(relx=0.5, rely=0.8, anchor="center")
+                        errormonth.mainloop()
+                        return
 
                     else:
 
@@ -426,14 +461,19 @@ def weatherdata():
                                                                 "Please modify your file and reselect if",
                                                            justify='center',font=('Ariel',12,"bold"),fg="red"))
                             messagefileyear.place(relx=0.5, rely=0.3, anchor="center")
-
-
+                            # Réouverture du dialogue
+                            def reopen_filedialog():
+                                errorfileyear.destroy()
+                                weatherdata()
+                                # Evite erreurs lors coupure programme
+                                return
                             # Bouton retour
                             return_button = tkinter.Button(errorfileyear, text="Return",
-                                                           bg="lightblue", command=weatherdata)
+                                                           bg="lightblue", command=reopen_filedialog)
                             return_button.place(relx=0.5, rely=0.7, anchor="center")
+                            errorfileyear.mainloop()
+                            return
 
-                            error = True
                     prevyear = intyear
 
 
