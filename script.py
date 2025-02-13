@@ -20,6 +20,90 @@ def openexample():
     file=".\\example.csv"
     os.startfile(file)
 
+# Fonction qui sera appelée chaque fois qu'une sélection change
+def update(*args):
+    # Récupère l'élément sélectionné
+    selectedtypeNfertivar= typeNfertivar.get()
+    print(selectedtypeNfertivar)
+
+
+def Managementpracticesinterface(functioncount,file_path):
+    global typeNfertivar
+    global Nfertiplacement
+    infopracticeroot=Tk()
+    #Nom de la fenêtre
+    infopracticeroot.title("Management practice input")
+    #Définition de la taille de la fenêtre
+    widthscreen = infopracticeroot.winfo_screenwidth()
+    heightscreen = infopracticeroot.winfo_screenheight()
+    infopracticeroot.geometry(f"{widthscreen}x{heightscreen}")
+
+    #Message titre
+    label=(tkinter.Label(infopracticeroot,
+                         text="Management practice",font=("Ariel",30,'bold')))
+    label.pack()
+    #Intégration message de confirmation sauvegarde données
+    if functioncount==1:
+        saveok=(tkinter.Label(infopracticeroot,
+                              text=f"Data was been save on{file_path}",font=("Ariel",12,'italic'),
+                              fg="blue"))
+        saveok.place(relx=0.3,rely=0.07)
+
+    #Intégration années
+    year1=(tkinter.Label(infopracticeroot,
+                         text="First year", font=("Ariel",20,'underline')))
+    year1.place(relx=0.025, rely=0.1)
+
+    #Listes de sélection
+
+    Nfertiplacement=["*Choice*","In the circle","Evenly distributed"]
+    Nfertiplacementinthecircle=["buried","not buried","windrow"]
+    Orgafertitype=["EFB","Compost"]
+    Orgafertiplacement=["In the circle","In the harvesting path","Spread (anti erosion)"]
+    understoreybiomass=["Very high","High","Medium","Low","No"]
+    understoreylegumefraction=["Very high","High","Medium","Low","No"]
+    Prunedfronds=["Exported","In heaps","In windows","Spread (anti erosion"]
+
+    #Intégration data mineral Nfertilizer
+
+
+    #Nommage encadré
+    frame = tkinter.Frame(infopracticeroot, bd=2, relief="solid", padx=10, pady=10)
+    frame.place(relx=0.05, rely=0.15, relwidth=0.9, relheight=0.7)
+    MineralNfertilizer=(tkinter.Label(frame,
+                                      text="Mineral Nitrogen fertilizer",justify="center",
+                                      font=("Ariel",13,"bold","underline")))
+    MineralNfertilizer.place(rely=0.15,relx=0.15)
+    #Intégration des mois
+    January=(tkinter.Label(frame,
+                           text="January",
+                           font=("Ariel",9),fg="blue"))
+    January.place(relx=0.04,rely=0.18)
+    #Création du type
+    type=(tkinter.Label(frame,
+                        text="Type",
+                        fg="blue",font=("Ariel",12,"bold")))
+    type.place(relx=0.005,rely=0.205)
+
+    #Liste déroulante
+    typeNferti = ["*Choice*", "Ammonium Sulfate", "Urea", "Ammonicum Chloride", "Ammonium Nitrate", "Sodium Nitrate"]
+    # Créer une variable Tkinter pour stocker l'élément sélectionné
+    typeNfertivar = tkinter.StringVar()
+    typeNfertivar.set(typeNferti[0])  # Sélection initiale (par défaut "Choice")
+
+    # Lier la variable StringVar avec la fonction `update` à chaque changement
+    typeNfertivar.trace("w", update)
+
+    # Créer le widget OptionMenu
+    option_menu = tkinter.OptionMenu(frame, typeNfertivar, *typeNferti)
+    option_menu.place(relx=0.03, rely=0.20)
+
+    # Création d'un encadré
+
+    infopracticeroot.mainloop()
+
+
+
 def savecsv(table,town,country):
     # Ouverture d'une boîte de dialogue pour choisir le dossier
     folder_path = filedialog.askdirectory(title="Please choose your directory save")
@@ -40,9 +124,10 @@ def savecsv(table,town,country):
             for row in table.get_children():
                 values = table.item(row)["values"]
                 writer.writerow(values)
-        #Donner les infos à retravailler
-        print(f"Data save on {file_path}")
+            Managementpracticesinterface(1,file_path)
 
+def closeinfodicosave(infodico):
+    infodico.destroy()
 
 #Fonction données les infos csv et réécriture d'un fichier excel
 def infodicosave(dictionnary, town, country) :
@@ -82,13 +167,11 @@ def infodicosave(dictionnary, town, country) :
     scrollbar.pack(fill='y', side="right")
     table.pack(fill="both", expand=True)
 
-    #Bouton save
-    def savebutton():
-        #Appel de la fonction
-        savecsv(table,town,country)
+
+
     savebutton=tkinter.Button(infodico,text="Save data on csv file",
                               bg="blue",fg="white", font=("Ariel",12,"bold"),
-                              width=15, height=2,command=savebutton)
+                              width=15, height=2,command=lambda :savecsv(table, town, country))
     savebutton.place(relx=0.8,rely=0.04)
 
     #Bouton continuer l'analyse
@@ -682,6 +765,7 @@ def weatherdata():
         del Decdict
 
         infodicosave(dictionnary,town,country)
+
 
 
 
