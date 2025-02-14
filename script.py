@@ -27,6 +27,33 @@ def update(*args):
     print(selectedtypeNfertivar)
 
 
+# Fonctions qui sera appelée chaque fois qu'une sélection change pour chacun des mois
+def y1_Jan(*y1Jan):
+    return y1Jan[0].get()
+def y1_Feb(*y1Feb):
+    return y1Feb[0].get()
+def y1_Mar(*y1Mar):
+    return y1Mar[0].get()
+def y1_Apr(*y1Apr):
+    return y1Apr[0].get()
+def y1_Maymonth(*y1Maymonth):
+    return y1Maymonth[0].get()
+def y1_Jun(*y1Jun):
+    return y1Jun[0].get()
+def y1_Jul(*y1Jul):
+    return y1Jul[0].get()
+def y1_Aug(*y1Aug):
+    return y1Aug[0].get()
+def y1_Sep(*y1Sep):
+    return y1Sep[0].get()
+def y1_Oct(*y1Oct):
+    return y1Oct[0].get()
+def y1_Nov(*y1Nov):
+    return y1Nov[0].get()
+def y1_Dec(*y1Dec):
+    return y1Dec[0].get()
+
+
 def Managementpracticesinterface(functioncount,file_path):
     global typeNfertivar
     global Nfertiplacement
@@ -36,69 +63,190 @@ def Managementpracticesinterface(functioncount,file_path):
     #Définition de la taille de la fenêtre
     widthscreen = infopracticeroot.winfo_screenwidth()
     heightscreen = infopracticeroot.winfo_screenheight()
-    infopracticeroot.geometry(f"{widthscreen}x{heightscreen}")
+    infopracticeroot.geometry("1500x800")
 
-    #Message titre
-    label=(tkinter.Label(infopracticeroot,
-                         text="Management practice",font=("Ariel",30,'bold')))
-    label.pack()
+    # Création scrollbar
+    # Créer un Canvas pour le contenu défilant
+    canvas = tkinter.Canvas(infopracticeroot)
+    canvas.pack(side="left", fill="both", expand=True)
+    # Créer la barre de défilement verticale
+    scrollbar_vertical = tkinter.Scrollbar(infopracticeroot, orient="vertical", command=canvas.yview)
+    scrollbar_vertical.pack(side="right", fill="y")
+    # Configurer le Canvas pour scrollbar
+    canvas.config(yscrollcommand=scrollbar_vertical.set)
+    # Créer un Frame à l'intérieur du Canvas pour contenir tous les widgets
+    main_frame = tkinter.Frame(canvas)
+    # Ajouter le Frame au Canvas avec la méthode create_window
+    canvas.create_window((0, 0), window=main_frame, anchor="nw")
+    # Mettre à jour la taille du canvas pour qu'il s'ajuste à la taille du contenu
+    def on_frame_configure(event):
+        canvas.config(scrollregion=canvas.bbox("all"))
+    # Lier l'événement de redimensionnement du Frame pour mettre à jour la zone de défilement
+    main_frame.bind("<Configure>", on_frame_configure)
+
+    # Listes de sélection
+    typeNferti = ["Ammonium Sulfate", "Urea", "Ammonium Chloride", "Ammonium Nitrate", "Sodium Nitrate"]
+    Nfertiplacement = ["*Choice*", "In the circle", "Evenly distributed"]
+    Nfertiplacementinthecircle = ["buried", "not buried", "windrow"]
+    Orgafertitype = ["EFB", "Compost"]
+    Orgafertiplacement = ["In the circle", "In the harvesting path", "Spread (anti erosion)"]
+    understoreybiomass = ["Very high", "High", "Medium", "Low", "No"]
+    understoreylegumefraction = ["Very high", "High", "Medium", "Low", "No"]
+    Prunedfronds = ["Exported", "In heaps", "In windows", "Spread (anti erosion"]
+
+    #Message titre fenêtre
+    label=(tkinter.Label(main_frame,
+                         text="Management practice",font=("Ariel",25,'bold')))
+    label.pack(anchor="center")
+
     #Intégration message de confirmation sauvegarde données
     if functioncount==1:
-        saveok=(tkinter.Label(infopracticeroot,
+        saveok=(tkinter.Label(main_frame,
                               text=f"Data was been save on{file_path}",font=("Ariel",12,'italic'),
                               fg="blue"))
-        saveok.place(relx=0.3,rely=0.07)
+        saveok.pack(anchor="center")
 
-    #Intégration années
-    year1=(tkinter.Label(infopracticeroot,
-                         text="First year", font=("Ariel",20,'underline')))
-    year1.place(relx=0.025, rely=0.1)
+    #Intégration de chaque années dans la fenêtre
+    year1=(tkinter.Label(main_frame,
+                             text="First year", font=("Ariel",20,'underline')))
+    year1.pack(anchor="w",pady=5)
 
-    #Listes de sélection
-
-    Nfertiplacement=["*Choice*","In the circle","Evenly distributed"]
-    Nfertiplacementinthecircle=["buried","not buried","windrow"]
-    Orgafertitype=["EFB","Compost"]
-    Orgafertiplacement=["In the circle","In the harvesting path","Spread (anti erosion)"]
-    understoreybiomass=["Very high","High","Medium","Low","No"]
-    understoreylegumefraction=["Very high","High","Medium","Low","No"]
-    Prunedfronds=["Exported","In heaps","In windows","Spread (anti erosion"]
-
-    #Intégration data mineral Nfertilizer
-
-
-    #Nommage encadré
-    frame = tkinter.Frame(infopracticeroot, bd=2, relief="solid", padx=10, pady=10)
-    frame.place(relx=0.05, rely=0.15, relwidth=0.9, relheight=0.7)
-    MineralNfertilizer=(tkinter.Label(frame,
+    #Intégration du bloc data mineral Nfertilizer
+    #Création encadré
+    frame = tkinter.Frame(main_frame, bd=2, relief="solid", width=1450, height=400, padx=5, pady=2)
+    frame.pack(anchor="w",padx=15, pady=5,fill="none")
+    #Mise de titre Mineral N ferti
+    y1_MineralNfertilizer=(tkinter.Label(frame,
                                       text="Mineral Nitrogen fertilizer",justify="center",
                                       font=("Ariel",13,"bold","underline")))
-    MineralNfertilizer.place(rely=0.15,relx=0.15)
+    y1_MineralNfertilizer.place(relx=0.01)
+
     #Intégration des mois
-    January=(tkinter.Label(frame,
-                           text="January",
-                           font=("Ariel",9),fg="blue"))
-    January.place(relx=0.04,rely=0.18)
+    y1_January=(tkinter.Label(frame,text="January",font=("Ariel",9),fg="blue"))
+    y1_January.place(relx=0.06,rely=0.08)
+    y1_February = (tkinter.Label(frame, text="February", font=("Ariel", 9), fg="blue"))
+    y1_February.place(relx=0.14, rely=0.08)
+    y1_March = (tkinter.Label(frame, text="March", font=("Ariel", 9), fg="blue"))
+    y1_March.place(relx=0.22, rely=0.08)
+    y1_April = (tkinter.Label(frame, text="April", font=("Ariel", 9), fg="blue"))
+    y1_April.place(relx=0.295, rely=0.08)
+    y1_May = (tkinter.Label(frame, text="May", font=("Ariel", 9), fg="blue"))
+    y1_May.place(relx=0.377, rely=0.08)
+    y1_June = (tkinter.Label(frame, text="June", font=("Ariel", 9), fg="blue"))
+    y1_June.place(relx=0.46, rely=0.08)
+    y1_July = (tkinter.Label(frame, text="July", font=("Ariel", 9), fg="blue"))
+    y1_July.place(relx=0.54, rely=0.08)
+    y1_August = (tkinter.Label(frame, text="August", font=("Ariel", 9), fg="blue"))
+    y1_August.place(relx=0.62, rely=0.08)
+    y1_September = (tkinter.Label(frame, text="September", font=("Ariel", 9), fg="blue"))
+    y1_September.place(relx=0.69, rely=0.08)
+    y1_October = (tkinter.Label(frame, text="October", font=("Ariel", 9), fg="blue"))
+    y1_October.place(relx=0.78, rely=0.08)
+    y1_November = (tkinter.Label(frame, text="November", font=("Ariel", 9), fg="blue"))
+    y1_November.place(relx=0.85, rely=0.08)
+    y1_December = (tkinter.Label(frame, text="December", font=("Ariel", 9), fg="blue"))
+    y1_December.place(relx=0.93, rely=0.08)
+
     #Création du type
-    type=(tkinter.Label(frame,
-                        text="Type",
-                        fg="blue",font=("Ariel",12,"bold")))
-    type.place(relx=0.005,rely=0.205)
+    y1_type=(tkinter.Label(frame,text="Type",fg="blue",font=("Ariel",12,"bold")))
+    y1_type.place(relx=0.005,rely=0.14)
 
-    #Liste déroulante
-    typeNferti = ["*Choice*", "Ammonium Sulfate", "Urea", "Ammonicum Chloride", "Ammonium Nitrate", "Sodium Nitrate"]
+    # Création data rate
+    y1_rate = (tkinter.Label(frame, text="Rate \n(kg/ha)", fg="blue", font=("Ariel", 11, "bold")))
+    y1_rate.place(relx=0.002, rely=0.22)
+
+
+    # Fonction pour récupérer toutes les valeurs des mois pour Type N ferti
+    def get_all_month_values():
+        month_values = [
+            y1_Jan(y1_Jan_typeNfertivar),
+            y1_Feb(y1_Feb_typeNfertivar),
+            y1_Mar(y1_Mar_typeNfertivar),
+            y1_Apr(y1_Apr_typeNfertivar),
+            y1_Maymonth(y1_Maymonth_typeNfertivar),
+            y1_Jun(y1_Jun_typeNfertivar),
+            y1_Jul(y1_Jul_typeNfertivar),
+            y1_Aug(y1_Aug_typeNfertivar),
+            y1_Sep(y1_Sep_typeNfertivar),
+            y1_Oct(y1_Oct_typeNfertivar),
+            y1_Nov(y1_Nov_typeNfertivar),
+            y1_Dec(y1_Dec_typeNfertivar)
+        ]
+        return month_values
+
     # Créer une variable Tkinter pour stocker l'élément sélectionné
-    typeNfertivar = tkinter.StringVar()
-    typeNfertivar.set(typeNferti[0])  # Sélection initiale (par défaut "Choice")
+    #Création combobox
+    #Janvier
+    y1_Jan_typeNfertivar = ttk.Combobox(frame,values=typeNferti,
+                                        width=13)
+    y1_Jan_typeNfertivar.set("*None")
+    y1_Jan_typeNfertivar.place(relx=0.04, rely=0.14)
+    # Février
+    y1_Feb_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Feb_typeNfertivar.set("*None")
+    y1_Feb_typeNfertivar.place(relx=0.12, rely=0.14)
+    # Mars
+    y1_Mar_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Mar_typeNfertivar.set("*None")
+    y1_Mar_typeNfertivar.place(relx=0.2, rely=0.14)
+    # Avril
+    y1_Apr_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Apr_typeNfertivar.set("*None")
+    y1_Apr_typeNfertivar.place(relx=0.28, rely=0.14)
+    # May
+    y1_Maymonth_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Maymonth_typeNfertivar.set("*None")
+    y1_Maymonth_typeNfertivar.place(relx=0.36, rely=0.14)
+    # Juin
+    y1_Jun_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                             width=10)
+    y1_Jun_typeNfertivar.set("*None")
+    y1_Jun_typeNfertivar.place(relx=0.44, rely=0.14)
+    # July
+    y1_Jul_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Jul_typeNfertivar.set("*None")
+    y1_Jul_typeNfertivar.place(relx=0.52, rely=0.14)
+    # Aout
+    y1_Aug_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Aug_typeNfertivar.set("*None")
+    y1_Aug_typeNfertivar.place(relx=0.6, rely=0.14)
+    # Septembre
+    y1_Sep_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Sep_typeNfertivar.set("*None")
+    y1_Sep_typeNfertivar.place(relx=0.68, rely=0.14)
+    # Octobre
+    y1_Oct_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Oct_typeNfertivar.set("*None")
+    y1_Oct_typeNfertivar.place(relx=0.76, rely=0.14)
+    # Novembre
+    y1_Nov_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Nov_typeNfertivar.set("*None")
+    y1_Nov_typeNfertivar.place(relx=0.84, rely=0.14)
+    # Décembre
+    y1_Dec_typeNfertivar = ttk.Combobox(frame, values=typeNferti,
+                                        width=10)
+    y1_Dec_typeNfertivar.set("*None")
+    y1_Dec_typeNfertivar.place(relx=0.92, rely=0.14)
 
-    # Lier la variable StringVar avec la fonction `update` à chaque changement
-    typeNfertivar.trace("w", update)
+    #Fonction d'appel pour affichage liste Type Nferti
+    def printlist():
+        y1Nfertitype = get_all_month_values()
+        print(y1Nfertitype)
 
-    # Créer le widget OptionMenu
-    option_menu = tkinter.OptionMenu(frame, typeNfertivar, *typeNferti)
-    option_menu.place(relx=0.03, rely=0.20)
+    button = tkinter.Button(frame, text="confirmation", command=printlist)
+    button.place(relx=0.6,rely=0.9)
 
-    # Création d'un encadré
+
+
 
     infopracticeroot.mainloop()
 
