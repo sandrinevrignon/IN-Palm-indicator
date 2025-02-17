@@ -63,7 +63,7 @@ def Managementpracticesinterface(functioncount,file_path):
     #Définition de la taille de la fenêtre
     widthscreen = infopracticeroot.winfo_screenwidth()
     heightscreen = infopracticeroot.winfo_screenheight()
-    infopracticeroot.geometry("1500x800")
+    infopracticeroot.geometry(f"{widthscreen}x{heightscreen}")
 
     # Création scrollbar
     # Créer un Canvas pour le contenu défilant
@@ -85,8 +85,8 @@ def Managementpracticesinterface(functioncount,file_path):
     main_frame.bind("<Configure>", on_frame_configure)
 
     # Listes de sélection
-    typeNferti = ["Ammonium Sulfate", "Urea", "Ammonium Chloride", "Ammonium Nitrate", "Sodium Nitrate"]
-    Nfertiplacement = ["*Choice*", "In the circle", "Evenly distributed"]
+    typeNferti = ["Ammo Sulf", "Urea", "Ammo Chlo", "Ammo Nit", "Sod Nit"]
+    Nfertiplacement = ["In the circle", "Evenly distributed"]
     Nfertiplacementinthecircle = ["buried", "not buried", "windrow"]
     Orgafertitype = ["EFB", "Compost"]
     Orgafertiplacement = ["In the circle", "In the harvesting path", "Spread (anti erosion)"]
@@ -110,6 +110,27 @@ def Managementpracticesinterface(functioncount,file_path):
     year1=(tkinter.Label(main_frame,
                              text="First year", font=("Ariel",20,'underline')))
     year1.pack(anchor="w",pady=5)
+
+    #Intégration des instructions de remplissage
+    # Intégration des instruction
+    # Création encadré
+    instructionframe = tkinter.Frame(main_frame,
+                                     bd=2, relief="solid",
+                                     width=400, height=1000)
+    instructionframe.pack(side="right", anchor="n", fill="none")
+    #Titre
+    instructions=(tkinter.Label(instructionframe,
+                                text="Data filling instructions",
+                                font=("Ariel",15, "bold")))
+    instructions.place(relx=0.2)
+    #Définition et message
+    message=(tkinter.Label(instructionframe,
+                           text="*Sod Nit*: Sodium Nitrate\n"
+                                "*Ammo Nit*: Ammonium Nitrate\n"
+                                "*Ammo Chlo*: Ammonium Chloride\n"
+                                "*Ammo Sulf*: Ammonium Sulfate"))
+
+
 
     #Intégration du bloc data mineral Nfertilizer
     #Création encadré
@@ -149,16 +170,20 @@ def Managementpracticesinterface(functioncount,file_path):
 
     #Création du type
     y1_type=(tkinter.Label(frame,text="Type",fg="blue",font=("Ariel",12,"bold")))
-    y1_type.place(relx=0.005,rely=0.14)
+    y1_type.place(relx=0,rely=0.14)
 
     # Création data rate
     y1_rate = (tkinter.Label(frame, text="Rate \n(kg/ha)", fg="blue", font=("Ariel", 11, "bold")))
-    y1_rate.place(relx=0.002, rely=0.22)
+    y1_rate.place(relx=0, rely=0.21)
+
+    #Création placement
+    y1_placement=(tkinter.Label(frame, text="Placement", fg="blue", font=("Ariel", 11, "bold")))
+    y1_placement.place(relx=0, rely=0.47)
 
 
     # Fonction pour récupérer toutes les valeurs des mois pour Type N ferti
-    def get_all_month_values():
-        month_values = [
+    def get_all_month_valuestypeNfertiy1():
+        month_valuestypeNfertiy1 = [
             y1_Jan(y1_Jan_typeNfertivar),
             y1_Feb(y1_Feb_typeNfertivar),
             y1_Mar(y1_Mar_typeNfertivar),
@@ -172,13 +197,14 @@ def Managementpracticesinterface(functioncount,file_path):
             y1_Nov(y1_Nov_typeNfertivar),
             y1_Dec(y1_Dec_typeNfertivar)
         ]
-        return month_values
 
-    # Créer une variable Tkinter pour stocker l'élément sélectionné
+        return month_valuestypeNfertiy1
+
+    # Créer une variable Tkinter pour stocker l'élément sélectionné Nfertitype
     #Création combobox
     #Janvier
     y1_Jan_typeNfertivar = ttk.Combobox(frame,values=typeNferti,
-                                        width=13)
+                                        width=10)
     y1_Jan_typeNfertivar.set("*None")
     y1_Jan_typeNfertivar.place(relx=0.04, rely=0.14)
     # Février
@@ -237,16 +263,289 @@ def Managementpracticesinterface(functioncount,file_path):
     y1_Dec_typeNfertivar.set("*None")
     y1_Dec_typeNfertivar.place(relx=0.92, rely=0.14)
 
-    #Fonction d'appel pour affichage liste Type Nferti
+
+    # Fonction pour récupérer toutes les valeurs des mois pour rate N ferti
+    def get_all_month_valuesrateNfertiy1():
+        month_valuesrateNfertiy1 = [
+            y1_Jan(y1_Jan_rateNfertivar),
+            y1_Feb(y1_Feb_rateNfertivar),
+            y1_Mar(y1_Mar_rateNfertivar),
+            y1_Apr(y1_Apr_rateNfertivar),
+            y1_Maymonth(y1_Maymonth_rateNfertivar),
+            y1_Jun(y1_Jun_rateNfertivar),
+            y1_Jul(y1_Jul_rateNfertivar),
+            y1_Aug(y1_Aug_rateNfertivar),
+            y1_Sep(y1_Sep_rateNfertivar),
+            y1_Oct(y1_Oct_rateNfertivar),
+            y1_Nov(y1_Nov_rateNfertivar),
+            y1_Dec(y1_Dec_rateNfertivar)
+        ]
+        return month_valuesrateNfertiy1
+
+    # Créer une variable Tkinter pour stocker l'élément sélectionné NfertiRate
+    # Création combobox
+    # Janvier
+    y1_Jan_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Jan_rateNfertivar.insert(tkinter.END,"0")
+    y1_Jan_rateNfertivar.place(relx=0.04, rely=0.22)
+    # Février
+    y1_Feb_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Feb_rateNfertivar.insert(tkinter.END, "0")
+    y1_Feb_rateNfertivar.place(relx=0.12, rely=0.22)
+    # Mars
+    y1_Mar_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Mar_rateNfertivar.insert(tkinter.END, "0")
+    y1_Mar_rateNfertivar.place(relx=0.2, rely=0.22)
+    # Avril
+    y1_Apr_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Apr_rateNfertivar.insert(tkinter.END, "0")
+    y1_Apr_rateNfertivar.place(relx=0.28, rely=0.22)
+    # May
+    y1_Maymonth_rateNfertivar = tkinter.Entry(frame,
+                                              width=13,
+                                              justify="right")
+    y1_Maymonth_rateNfertivar.insert(tkinter.END, "0")
+    y1_Maymonth_rateNfertivar.place(relx=0.36, rely=0.22)
+    # Juin
+    y1_Jun_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Jun_rateNfertivar.insert(tkinter.END, "0")
+    y1_Jun_rateNfertivar.place(relx=0.44, rely=0.22)
+    # July
+    y1_Jul_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Jul_rateNfertivar.insert(tkinter.END, "0")
+    y1_Jul_rateNfertivar.place(relx=0.52, rely=0.22)
+    # Aout
+    y1_Aug_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Aug_rateNfertivar.insert(tkinter.END, "0")
+    y1_Aug_rateNfertivar.place(relx=0.6, rely=0.22)
+    # Septembre
+    y1_Sep_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Sep_rateNfertivar.insert(tkinter.END, "0")
+    y1_Sep_rateNfertivar.place(relx=0.68, rely=0.22)
+    # Octobre
+    y1_Oct_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Oct_rateNfertivar.insert(tkinter.END, "0")
+    y1_Oct_rateNfertivar.place(relx=0.76, rely=0.22)
+    # Novembre
+    y1_Nov_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Nov_rateNfertivar.insert(tkinter.END, "0")
+    y1_Nov_rateNfertivar.place(relx=0.84, rely=0.22)
+    # Décembre
+    y1_Dec_rateNfertivar = tkinter.Entry(frame,
+                                         width=13,
+                                         justify="right")
+    y1_Dec_rateNfertivar.insert(tkinter.END, "0")
+    y1_Dec_rateNfertivar.place(relx=0.92, rely=0.22)
+
+    #Calcule taux d'N en fonction du type d'engrais
+
+
+    # Fonction d'appel pour affichage liste Type Nferti
+
+
+    #Calcule du taux d'N en kg/ha en fonction de l'apport et du type ferti
+    def calculate_kgN():
+        #Mise des return list dans des listes spécifiques
+        listferti=printlist()
+        y1rateferti_str=listferti[1]
+        y1typeferti=listferti[0]
+        #Création d'une liste vide convertissant les rate str en float
+        y1rateferti_float=[]
+        #Création d'une liste pour les résultats des calcules
+        resultlist=[]
+        #Vérification que chaque élément de cette liste puisse être convertie + conversion
+
+        try:
+            for i in y1rateferti_str:
+                y1rateferti_float.append(float(i))
+        except ValueError:
+            errorlabel=tkinter.Label(frame,
+                                     text="Error! Please check you rate data. Some data are not float",
+                                     font=("Ariel",12,"bold"))
+            errorlabel.place(relx=0.36, rely=0.28)
+            return
+        #Calcule taux N en fonction type ferti
+        for i in range(12):  # Pour janvier (0) et février (1)
+            if y1typeferti[i] == "*None" and y1rateferti_float[i]==0:
+                resultlist.append(0)
+            elif y1typeferti[i] == "Ammo Chlo" and y1rateferti_float[i]>0:
+                resammochlo=round(0.25 * y1rateferti_float[i],1)
+                resultlist.append(resammochlo)
+            elif y1typeferti[i] == "Ammo Nit" and y1rateferti_float[i]>0:
+                resammonit=round(0.34 * y1rateferti_float[i],1)
+                resultlist.append(resammonit)
+            elif y1typeferti[i] == "Ammo Sulf" and y1rateferti_float[i]>0:
+                resammosulf=round(0.21 * y1rateferti_float[i],1)
+                resultlist.append(resammosulf)
+            elif y1typeferti[i] == "Sod Nit" and y1rateferti_float[i]>0:
+                ressodnit=round(0.16 * y1rateferti_float[i],1)
+                resultlist.append(ressodnit)
+            elif y1typeferti[i] == "Urea" and y1rateferti_float[i]>0:
+                resurea=round(0.46 * y1rateferti_float[i],1)
+                resultlist.append(resurea)
+            elif y1typeferti[i] == "*None" and y1rateferti_float[i]>0:
+                resultlist.append("Error!")
+            elif y1typeferti[i] != "*None" and y1typeferti[i] !="Ammo Chlo" and y1typeferti[i] !="Ammo Nit" and y1typeferti[i] !="Ammo Sulf" and y1typeferti[i] !="Sod Nit" and y1typeferti[i] !="Urea":
+                resultlist.append ("Error!")
+            else:
+                resultlist.append("Error!")
+
+        #Information résultats
+            #Janvier
+        equnitrogenjan=tkinter.Label(frame,
+                                     text=resultlist[0],font=("Ariel",9,"bold"),
+                                     bg="white",fg="blue",justify="right",
+                                     width=10,
+                                     relief="groove",borderwidth=5)
+        equnitrogenjan.place(relx=0.04, rely=0.28)
+        # Fevrier
+        equnitrogenfev = tkinter.Label(frame,
+                                       text=resultlist[1], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenfev.place(relx=0.12, rely=0.28)
+        # Mars
+        equnitrogenmar = tkinter.Label(frame,
+                                       text=resultlist[2], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenmar.place(relx=0.2, rely=0.28)
+        # Avril
+        equnitrogenapr = tkinter.Label(frame,
+                                       text=resultlist[3], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenapr.place(relx=0.28, rely=0.28)
+        # Mai
+        equnitrogenmay = tkinter.Label(frame,
+                                       text=resultlist[4], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenmay.place(relx=0.36, rely=0.28)
+        # Juin
+        equnitrogenjun = tkinter.Label(frame,
+                                       text=resultlist[5], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenjun.place(relx=0.44, rely=0.28)
+        # Juillet
+        equnitrogenjul = tkinter.Label(frame,
+                                       text=resultlist[6], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenjul.place(relx=0.52, rely=0.28)
+        # Aout
+        equnitrogenaug = tkinter.Label(frame,
+                                       text=resultlist[7], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenaug.place(relx=0.6, rely=0.28)
+        # September
+        equnitrogensep = tkinter.Label(frame,
+                                       text=resultlist[8], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogensep.place(relx=0.68, rely=0.28)
+        # Octobre
+        equnitrogenoct = tkinter.Label(frame,
+                                       text=resultlist[9], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogenoct.place(relx=0.76, rely=0.28)
+        # Novembre
+        equnitrogennov = tkinter.Label(frame,
+                                       text=resultlist[10], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogennov.place(relx=0.84, rely=0.28)
+        # Decembre
+        equnitrogendec = tkinter.Label(frame,
+                                       text=resultlist[11], font=("Ariel", 9, "bold"),
+                                       bg="white", fg="blue", justify="right",
+                                       width=10,
+                                       relief="groove", borderwidth=5)
+        equnitrogendec.place(relx=0.92, rely=0.28)
+
+        #Calcule total annuelle
+        yearcumul=0
+        resultlist_float=[]
+        try:
+            for i in resultlist:
+                resultlist_float.append(float(i))
+        except ValueError:
+            return
+        for i in resultlist_float:
+            if isinstance(i,float):
+                yearcumul=i+yearcumul
+        #label cacule annuel
+        Nfertianuel=tkinter.Label(frame,text=f"Cumulative nitrogen for year: {yearcumul}")
+        Nfertianuel.place(relx=0.04,rely=0.35)
+
+    #Création bouton calcul équivalent azote
+    button = tkinter.Button(frame, text="Nitrogen equivalent (in kg/ha)",
+                            width=100,
+                            font=("Ariel",10,"bold"),bg="lightblue",
+                            command=calculate_kgN)
+    button.place(relx=0.2, rely=0.4)
+
+    # Fonction pour récupérer toutes les infos placement
+    def get_placement1():
+        placementfertiy1 = [
+            y1_Jan(y1_placementferti)]
+        return placementfertiy1
+
+    #Création combobox placement
+    y1_placementferti = ttk.Combobox(frame, values=Nfertiplacement,
+                                     width=16)
+    y1_placementferti.set("*Choice*")
+    y1_placementferti.place(relx=0.06, rely=0.47)
+
+
+
+
     def printlist():
-        y1Nfertitype = get_all_month_values()
-        print(y1Nfertitype)
+        y1Nfertitype = get_all_month_valuestypeNfertiy1()
+        print (y1Nfertitype)
+        y1Nfertirate=get_all_month_valuesrateNfertiy1()
+        print(y1Nfertirate)
+        y1placement=get_placement1()
+        print(y1placement)
+        return y1Nfertitype,y1Nfertirate,y1_placement
+
+
 
     button = tkinter.Button(frame, text="confirmation", command=printlist)
-    button.place(relx=0.6,rely=0.9)
-
-
-
+    button.place(relx=0.6, rely=0.9)
 
     infopracticeroot.mainloop()
 
