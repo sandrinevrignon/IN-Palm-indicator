@@ -164,6 +164,11 @@ def Managementpracticesinterface(functioncount,file_path):
 
     message3 = (tkinter.Label(instructionframe,
                               text="Please complete all informations requested for \neach year.\n\n\n"
+                                   "For Previous palm in general field preparation:\n"
+                                   "\t*No* : zero residue\n"
+                                   "\t*Exported* : below-ground residue\n"
+                                   "\t*Shredded* : above- and below-ground\n"
+                                   "\tresidue\n"
                                    "For fertilizer type in Mineral Nitrogen fertilizer:\n"
                                    "\t*Ammo Sulf* : Ammonium Sulfate\n"
                                    "\t*Ammo chlo* : Ammonium Chloride\n"
