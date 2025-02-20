@@ -13,7 +13,13 @@ import os
 
 #Lecture csv
 import csv
+from traceback import print_list
 
+
+#Récupération de l'ensemble des informations dans dictionnary
+#Création countfonction=0 si pas besoin vérification des data et 1 si rentre dans def verifprintlist
+def dictionnary_complete(countfounction,printlist) :
+    print(printlist)
 
 #Fonction lecture fichier
 def openexample():
@@ -55,6 +61,7 @@ def y1_Dec(*y1Dec):
 
 #Fonction permettant de rentrer les données des pratiques agronomiques
 def Managementpracticesinterface(functioncount,file_path):
+    #Rendre les listes de variable utilisable dans l'ensemble des autres fonctions
     global typeNfertivar
     global Nfertiplacement
     global Orgafertitype
@@ -66,11 +73,11 @@ def Managementpracticesinterface(functioncount,file_path):
     global Landterraces
     global LandPrevpalm
 
-    # Création de la fenêtre
-    infopracticeroot = Tk()
-    # Nom de la fenêtre
+    #Création de la fenêtre
+    infopracticeroot=Tk()
+    #Nom de la fenêtre
     infopracticeroot.title("Management practice input")
-    # Définition de la taille de la fenêtre
+    #Définition de la taille de la fenêtre
     widthscreen = infopracticeroot.winfo_screenwidth()
     heightscreen = infopracticeroot.winfo_screenheight()
     infopracticeroot.geometry(f"{widthscreen}x{heightscreen}")
@@ -88,108 +95,100 @@ def Managementpracticesinterface(functioncount,file_path):
     main_frame = tkinter.Frame(canvas)
     # Ajouter le Frame au Canvas avec la méthode create_window
     canvas.create_window((0, 0), window=main_frame, anchor="nw")
-
     # Mettre à jour la taille du canvas pour qu'il s'ajuste à la taille du contenu
     def on_frame_configure(event):
         canvas.config(scrollregion=canvas.bbox("all"))
-
     # Lier l'événement de redimensionnement du Frame pour mettre à jour la zone de défilement
     main_frame.bind("<Configure>", on_frame_configure)
 
     # Listes de sélection
     typeNferti = ["Ammo Sulf", "Urea", "Ammo Chlo", "Ammo Nit", "Sod Nit"]
-    Nfertiplacement = ["In the circle, buried", "In the circle, not buried", "In the circle + windrow",
-                       "Evenly distributed"]
+    Nfertiplacement = ["In the circle, buried", "In the circle, not buried", "In the circle + windrow", "Evenly distributed"]
     Orgafertitype = ["EFB", "Compost"]
     Orgafertiplacement = ["In the circle", "In the harvesting path", "Spread (anti erosion)"]
     understoreybiomass = ["Very high", "High", "Medium", "Low", "No"]
     understoreylegumefraction = ["Very high", "High", "Medium", "Low", "No"]
     Prunedfronds = ["Exported", "In heaps", "In windows", "Spread (anti erosion)"]
-    Soiltexture = ["Clay", "Clay loam", "Loam", "Loamy sand", "Sand", "Sandy clay", "Sandy clay loam", "Sandy loam",
-                   "Silt", "Silt clay", "Silt clay loam", "Silt loam"]
-    Landterraces = ["No", "Yes"]
-    LandPrevpalm = ["Exported", "No (first cycle)", "Shredded left"]
+    Soiltexture=["Clay","Clay loam","Loam","Loamy sand","Sand","Sandy clay","Sandy clay loam","Sandy loam","Silt","Silt clay","Silt clay loam","Silt loam"]
+    Landterraces=["No","Yes"]
+    LandPrevpalm=["Exported","No (first cycle)","Shredded left on soil"]
 
-    # Message titre fenêtre
-    label = (tkinter.Label(main_frame,
-                           text="Management practice", font=("Ariel", 25, 'bold')))
+    #Message titre fenêtre
+    label=(tkinter.Label(main_frame,
+                         text="Management practice",font=("Ariel",25,'bold')))
     label.pack(anchor="center")
 
-    # Intégration message de confirmation sauvegarde données
-    if functioncount == 1:
-        saveok = (tkinter.Label(main_frame,
-                                text=f"Data was been save on{file_path}", font=("Ariel", 12, 'italic'),
-                                fg="blue"))
+    #Intégration message de confirmation sauvegarde données
+    if functioncount==1:
+        saveok=(tkinter.Label(main_frame,
+                              text=f"Data was been save on{file_path}",font=("Ariel",12,'italic'),
+                              fg="blue"))
         saveok.pack(anchor="center")
 
-    # Intégration des instructions de remplissage
+    #Intégration des instructions de remplissage
     # Intégration des instructions
     # Création encadré
     instructionframe = tkinter.Frame(main_frame,
                                      bd=2, relief="solid",
                                      width=400, height=800)
-    instructionframe.pack(side="right", anchor="n", fill="none", pady=55)
+    instructionframe.pack(side="right", anchor="n", fill="none",pady=55)
 
-    # Création instruction
-    instructions = (tkinter.Label(instructionframe,
-                                  text="Data filling instructions",
-                                  font=("Ariel", 15, "bold", "underline"),
-                                  fg="blue"))
+    #Création instruction
+    instructions=(tkinter.Label(instructionframe,
+                                text="Data filling instructions",
+                                font=("Ariel",15, "bold","underline"),
+                                fg="blue"))
     instructions.place(relx=0.2)
 
     # Définition et message
     message1 = (tkinter.Label(instructionframe,
-                              text="\n\n"
-                                   "You have this information in csv format like :\n",
-                              font=("Ariel", 11, "bold"), justify="left"))
+                             text="\n\n"
+                                  "You have this information in csv format like :\n",
+                             font=("Ariel", 11, "bold"), justify="left"))
     message1.place(rely=0.07)
 
-    Examplebutton = tkinter.Button(instructionframe,
-                                   text="Example",
-                                   fg="white", bg="blue",
-                                   font=("Ariel", 12, "bold"),
-                                   width=6)
-    Examplebutton.place(relx=0.81, rely=0.1)
+    Examplebutton=tkinter.Button(instructionframe,
+                                 text="Example",
+                                 fg="white",bg="blue",
+                                 font=("Ariel",12,"bold"),
+                                 width=6)
+    Examplebutton.place(relx=0.81,rely=0.1)
 
-    Databutton = tkinter.Button(instructionframe,
-                                text="Please click here",
-                                fg="white", bg="blue",
-                                font=("Ariel", 12, "bold"))
+    Databutton=tkinter.Button(instructionframe,
+                              text="Please click here",
+                              fg="white",bg="blue",
+                              font=("Ariel",12,"bold"))
     Databutton.place(relx=0.3, rely=0.15)
 
     message2 = (tkinter.Label(instructionframe,
                               text="You don't have this information on csv file.\n\n",
-                              font=("Ariel", 12, "bold"), justify="left"))
+                              font=("Ariel", 12,"bold"), justify="left"))
     message2.place(rely=0.22)
 
-    message3 = (tkinter.Label(instructionframe,
-                              text="Please complete all informations requested for \neach year.\n\n\n"
-                                   "For Previous palm in general field preparation:\n"
-                                   "\t*No* : zero residue\n"
-                                   "\t*Exported* : below-ground residue\n"
-                                   "\t*Shredded* : above- and below-ground\n"
-                                   "\tresidue\n"
-                                   "For fertilizer type in Mineral Nitrogen fertilizer:\n"
-                                   "\t*Ammo Sulf* : Ammonium Sulfate\n"
-                                   "\t*Ammo chlo* : Ammonium Chloride\n"
-                                   "\t*Ammo Nit* : Ammonium Nitrate\n"
-                                   "\t*Sod Nit* : Sodium Nitrate\n\n\n"
-                                   "Equivalent to bare-soil for:\n\n"
-                                   "\t Understorey biomass (of standing biomass):\n"
-                                   "\t\tNo : 0 tDM/ha\n"
-                                   "\t\tLow : 3 tDM/ha\n"
-                                   "\t\tMedium : 6 tDM/ha\n"
-                                   "\t\tHigh : 9 tDM/ha\n"
-                                   "\t\tVery high : 12tDM/ha\n\n"
-                                   "\tLegume fraction :\n"
-                                   "\t\tNo : 0%\n"
-                                   "\t\tLow : 25% \n"
-                                   "\t\tMedium : 50%\n"
-                                   "\t\tHigh : 75%\n"
-                                   "\t\tVery high : 100%\n\n"
-                                   "For atmospheric deposition the default value (18 \nkg/ha/year) can be modyfied",
-                              font=("Ariel", 12), justify="left"))
+    message3=(tkinter.Label(instructionframe,
+                            text="Please complete all informations requested for \neach year.\n\n\n"
+                                 "For fertilizer type in Mineral Nitrogen fertilizer:\n"
+                                 "\t*Ammo Sulf* : Ammonium Sulfate\n"
+                                 "\t*Ammo chlo* : Ammonium Chloride\n"
+                                 "\t*Ammo Nit* : Ammonium Nitrate\n"
+                                 "\t*Sod Nit* : Sodium Nitrate\n\n\n"
+                                 "Equivalent to bare-soil for:\n\n"
+                                 "\t Understorey biomass (of standing biomass):\n"
+                                 "\t\tNo : 0 tDM/ha\n"
+                                 "\t\tLow : 3 tDM/ha\n"
+                                 "\t\tMedium : 6 tDM/ha\n"
+                                 "\t\tHigh : 9 tDM/ha\n"
+                                 "\t\tVery high : 12tDM/ha\n\n"
+                                 "\tLegume fraction :\n"
+                                 "\t\tNo : 0%\n"
+                                 "\t\tLow : 25% \n"
+                                 "\t\tMedium : 50%\n"
+                                 "\t\tHigh : 75%\n"
+                                 "\t\tVery high : 100%\n\n"
+                                 "For atmospheric deposition the default value (18 \nkg/ha/year) can be modyfied",
+                            font=("Ariel", 12), justify="left"))
     message3.place(rely=0.25)
+
 
     # Création data general
     generaldata = (tkinter.Label(main_frame,
@@ -202,7 +201,7 @@ def Managementpracticesinterface(functioncount,file_path):
     genframe = tkinter.Frame(main_frame, bd=2, relief="solid", width=1450, height=400, padx=5, pady=2)
     genframe.pack(anchor="w", padx=15, pady=5, fill="none")
 
-    # Création soil caracteristic
+    #Création soil caracteristic
     soilcarac = (tkinter.Label(genframe,
                                text="Soil Caracteristic",
                                font=("Ariel", 13, "bold", "underline")))
@@ -210,8 +209,8 @@ def Managementpracticesinterface(functioncount,file_path):
 
     # Création Land preparation
     Landprep = (tkinter.Label(genframe,
-                              text="Land preparation",
-                              font=("Ariel", 13, "bold", "underline")))
+                               text="Land preparation",
+                               font=("Ariel", 13, "bold", "underline")))
     Landprep.place(relx=0.01, rely=0.5)
 
     # Création organic carbon
@@ -252,11 +251,10 @@ def Managementpracticesinterface(functioncount,file_path):
         Texturevar = [
             y1_Jan(Text)]
         return Texturevar
-
-    # Création combobox
+    #Création combobox
     # Texture
     Text = ttk.Combobox(genframe, values=Soiltexture,
-                        width=20)
+                                        width=20)
     Text.set("*Choice*")
     Text.place(relx=0.05, rely=0.2)
 
@@ -295,7 +293,7 @@ def Managementpracticesinterface(functioncount,file_path):
     # Création combobox
     # Previous palm
     Ppalm = ttk.Combobox(genframe, values=LandPrevpalm,
-                         width=20)
+                        width=20)
     Ppalm.set("*Choice*")
     Ppalm.place(relx=0.05, rely=0.7)
 
@@ -330,11 +328,6 @@ def Managementpracticesinterface(functioncount,file_path):
                                           font=("Ariel", 13, "bold", "underline")))
     y1_Understorey.place(relx=0.01, rely=0.7)
 
-    #Mise de titre Pruned fronds
-    y1_Prunedfronds = (tkinter.Label(frame,
-                                    text="Pruned fronds", justify="center",
-                                    font=("Ariel", 13, "bold", "underline")))
-    y1_Prunedfronds.place(relx=0.01, rely=0.85)
 
     #Mise titre atmospheric depositions
     y1_atmodepo = (tkinter.Label(frame,
@@ -401,9 +394,6 @@ def Managementpracticesinterface(functioncount,file_path):
     y1_legumefrac = (tkinter.Label(frame, text="Legume fraction", fg="blue", font=("Ariel", 11, "bold")))
     y1_legumefrac.place(relx=0.15, rely=0.78)
 
-    # Création pruned fronts placement
-    y1_prunedfr = (tkinter.Label(frame, text="Placement", fg="blue", font=("Ariel", 11, "bold")))
-    y1_prunedfr.place(relx=0, rely=0.92)
 
     # Création atmospheric depositions
     y1_quantityNatmo = (tkinter.Label(frame, text="Quantity of nitrogen\n (in kg/ha/yr)", fg="blue", font=("Ariel", 11, "bold")))
@@ -592,8 +582,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN1():
         #Mise des return list dans des listes spécifiques
         listferti=printlist()
-        y1rateferti_str=listferti[1]
-        y1typeferti=listferti[0]
+        y1rateferti_str=listferti[6]
+        y1typeferti=listferti[5]
         #Création d'une liste vide convertissant les rate str en float
         y1rateferti_float=[]
         #Création d'une liste pour les résultats des calcules
@@ -779,8 +769,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga1():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y1_typefertiorga = listferti[4]
-        y1_quantityfertiorga = listferti[3]
+        y1_typefertiorga = listferti[9]
+        y1_quantityfertiorga = listferti[8]
         # Création d'une liste vide permettant conversion liste en float
         y1_quantityfertiorga_float=[]
         #Création liste pour valeurs
@@ -856,17 +846,6 @@ def Managementpracticesinterface(functioncount,file_path):
     y1_legumefraction.set("*Choice*")
     y1_legumefraction.place(relx=0.24, rely=0.78)
 
-    # Fonction pour récupérer la valeur pruned fronds
-    def get_prunedy1():
-        prunedy1list = [
-            y1_Jan(y1_pruned)]
-        return prunedy1list
-    # Création combobox pruned fronds
-    y1_pruned = ttk.Combobox(frame, values=Prunedfronds,
-                                     width=20)
-    y1_pruned.set("*Choice*")
-    y1_pruned.place(relx=0.07, rely=0.92)
-
     # Fonction pour récupérer toute la valeur Natmo
     def get_Natmodepoy1():
         Natmoy1list = [
@@ -909,12 +888,6 @@ def Managementpracticesinterface(functioncount,file_path):
                                     text="Understorey", justify="center",
                                     font=("Ariel", 13, "bold", "underline")))
     y2_Understorey.place(relx=0.01, rely=0.7)
-
-    # Mise de titre Pruned fronds
-    y2_Prunedfronds = (tkinter.Label(frame2,
-                                     text="Pruned fronds", justify="center",
-                                     font=("Ariel", 13, "bold", "underline")))
-    y2_Prunedfronds.place(relx=0.01, rely=0.85)
 
     # Mise titre atmospheric depositions
     y2_atmodepo = (tkinter.Label(frame2,
@@ -979,10 +952,6 @@ def Managementpracticesinterface(functioncount,file_path):
     # Création legume fraction
     y2_legumefrac = (tkinter.Label(frame2, text="Legume fraction", fg="blue", font=("Ariel", 11, "bold")))
     y2_legumefrac.place(relx=0.15, rely=0.78)
-
-    # Création pruned fronts placement
-    y2_prunedfr = (tkinter.Label(frame2, text="Placement", fg="blue", font=("Ariel", 11, "bold")))
-    y2_prunedfr.place(relx=0, rely=0.92)
 
     # Création atmospheric depositions
     y2_quantityNatmo = (
@@ -1168,8 +1137,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN2():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y2rateferti_str = listferti[11]
-        y2typeferti = listferti[10]
+        y2rateferti_str = listferti[16]
+        y2typeferti = listferti[15]
         # Création d'une liste vide convertissant les rate str en float
         y2rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -1358,8 +1327,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga2():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y2_typefertiorga = listferti[14]
-        y2_quantityfertiorga = listferti[13]
+        y2_typefertiorga = listferti[19]
+        y2_quantityfertiorga = listferti[18]
         print(y2_typefertiorga)
         # Création d'une liste vide permettant conversion liste en float
         y2_quantityfertiorga_float = []
@@ -1437,18 +1406,6 @@ def Managementpracticesinterface(functioncount,file_path):
                                      width=10)
     y2_legumefraction.set("*Choice*")
     y2_legumefraction.place(relx=0.24, rely=0.78)
-
-    # Fonction pour récupérer la valeur pruned fronds
-    def get_prunedy2():
-        prunedy2list = [
-            y1_Jan(y2_pruned)]
-        return prunedy2list
-
-    # Création combobox pruned fronds
-    y2_pruned = ttk.Combobox(frame2, values=Prunedfronds,
-                             width=20)
-    y2_pruned.set("*Choice*")
-    y2_pruned.place(relx=0.07, rely=0.92)
 
     # Fonction pour récupérer toute la valeur Natmo
     def get_Natmodepoy2():
@@ -1753,8 +1710,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN3():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y3rateferti_str = listferti[21]
-        y3typeferti = listferti[20]
+        y3rateferti_str = listferti[26]
+        y3typeferti = listferti[25]
         # Création d'une liste vide convertissant les rate str en float
         y3rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -1943,8 +1900,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga3():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y3_typefertiorga = listferti[24]
-        y3_quantityfertiorga = listferti[23]
+        y3_typefertiorga = listferti[29]
+        y3_quantityfertiorga = listferti[28]
         print (y3_typefertiorga)
         print (y3_quantityfertiorga)
         # Création d'une liste vide permettant conversion liste en float
@@ -2339,8 +2296,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN4():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y4rateferti_str = listferti[31]
-        y4typeferti = listferti[30]
+        y4rateferti_str = listferti[36]
+        y4typeferti = listferti[35]
         # Création d'une liste vide convertissant les rate str en float
         y4rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -2529,8 +2486,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga4():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y4_typefertiorga = listferti[34]
-        y4_quantityfertiorga = listferti[33]
+        y4_typefertiorga = listferti[39]
+        y4_quantityfertiorga = listferti[38]
         # Création d'une liste vide permettant conversion liste en float
         y4_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -2922,8 +2879,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN5():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y5rateferti_str = listferti[41]
-        y5typeferti = listferti[40]
+        y5rateferti_str = listferti[46]
+        y5typeferti = listferti[45]
         # Création d'une liste vide convertissant les rate str en float
         y5rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -3112,8 +3069,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga5():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y5_typefertiorga = listferti[44]
-        y5_quantityfertiorga = listferti[43]
+        y5_typefertiorga = listferti[49]
+        y5_quantityfertiorga = listferti[48]
         # Création d'une liste vide permettant conversion liste en float
         y5_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -3505,8 +3462,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN6():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y6rateferti_str = listferti[51]
-        y6typeferti = listferti[50]
+        y6rateferti_str = listferti[56]
+        y6typeferti = listferti[55]
         # Création d'une liste vide convertissant les rate str en float
         y6rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -3695,8 +3652,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga6():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y6_typefertiorga = listferti[54]
-        y6_quantityfertiorga = listferti[53]
+        y6_typefertiorga = listferti[59]
+        y6_quantityfertiorga = listferti[58]
         # Création d'une liste vide permettant conversion liste en float
         y6_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -4087,8 +4044,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN7():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y7rateferti_str = listferti[61]
-        y7typeferti = listferti[60]
+        y7rateferti_str = listferti[66]
+        y7typeferti = listferti[65]
         # Création d'une liste vide convertissant les rate str en float
         y7rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -4277,8 +4234,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga7():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y7_typefertiorga = listferti[64]
-        y7_quantityfertiorga = listferti[63]
+        y7_typefertiorga = listferti[69]
+        y7_quantityfertiorga = listferti[68]
         # Création d'une liste vide permettant conversion liste en float
         y7_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -4671,8 +4628,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN8():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y8rateferti_str = listferti[71]
-        y8typeferti = listferti[70]
+        y8rateferti_str = listferti[76]
+        y8typeferti = listferti[75]
         # Création d'une liste vide convertissant les rate str en float
         y8rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -4861,8 +4818,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga8():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y8_typefertiorga = listferti[74]
-        y8_quantityfertiorga = listferti[73]
+        y8_typefertiorga = listferti[79]
+        y8_quantityfertiorga = listferti[78]
         # Création d'une liste vide permettant conversion liste en float
         y8_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -5254,8 +5211,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN9():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y9rateferti_str = listferti[81]
-        y9typeferti = listferti[80]
+        y9rateferti_str = listferti[86]
+        y9typeferti = listferti[85]
         # Création d'une liste vide convertissant les rate str en float
         y9rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -5444,8 +5401,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga9():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y9_typefertiorga = listferti[84]
-        y9_quantityfertiorga = listferti[83]
+        y9_typefertiorga = listferti[89]
+        y9_quantityfertiorga = listferti[88]
         # Création d'une liste vide permettant conversion liste en float
         y9_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -5838,8 +5795,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN10():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y10rateferti_str = listferti[91]
-        y10typeferti = listferti[90]
+        y10rateferti_str = listferti[96]
+        y10typeferti = listferti[95]
         # Création d'une liste vide convertissant les rate str en float
         y10rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -6028,8 +5985,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga10():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y10_typefertiorga = listferti[94]
-        y10_quantityfertiorga = listferti[93]
+        y10_typefertiorga = listferti[99]
+        y10_quantityfertiorga = listferti[98]
         # Création d'une liste vide permettant conversion liste en float
         y10_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -6147,7 +6104,6 @@ def Managementpracticesinterface(functioncount,file_path):
         y1_placementfertiorga = get_placementorgafertiy1()
         y1biomasseunderstorey=get_understoreybiomassy1()
         y1legumefractionunderstorey=get_legumefractiony1()
-        y1prunedfronds=get_prunedy1()
         y1atmodepo = get_Natmodepoy1()
         y2Nfertitype = get_all_month_valuestypeNfertiy2()
         y2Nfertirate = get_all_month_valuesrateNfertiy2()
@@ -6157,7 +6113,6 @@ def Managementpracticesinterface(functioncount,file_path):
         y2_placementfertiorga = get_placementorgafertiy2()
         y2biomasseunderstorey = get_understoreybiomassy2()
         y2legumefractionunderstorey = get_legumefractiony2()
-        y2prunedfronds = get_prunedy2()
         y2atmodepo = get_Natmodepoy2()
         y3Nfertitype = get_all_month_valuestypeNfertiy3()
         y3Nfertirate = get_all_month_valuesrateNfertiy3()
@@ -6242,8 +6197,8 @@ def Managementpracticesinterface(functioncount,file_path):
 
 
         return organic_carbon,texture_soil, slope_info,Land_Terraces, Previous_palm\
-            ,y1Nfertitype, y1Nfertirate, y1placement, y1_quantityfertiorga, y1_typefertiorga, y1_placementfertiorga, y1biomasseunderstorey, y1legumefractionunderstorey, y1prunedfronds, y1atmodepo\
-            , y2Nfertitype, y2Nfertirate, y2placement, y2_quantityfertiorga, y2_typefertiorga, y2_placementfertiorga, y2biomasseunderstorey, y2legumefractionunderstorey,y2prunedfronds, y2atmodepo\
+            ,y1Nfertitype, y1Nfertirate, y1placement, y1_quantityfertiorga, y1_typefertiorga, y1_placementfertiorga, y1biomasseunderstorey, y1legumefractionunderstorey, y1atmodepo\
+            , y2Nfertitype, y2Nfertirate, y2placement, y2_quantityfertiorga, y2_typefertiorga, y2_placementfertiorga, y2biomasseunderstorey, y2legumefractionunderstorey, y2atmodepo\
             , y3Nfertitype, y3Nfertirate, y3placement, y3_quantityfertiorga, y3_typefertiorga, y3_placementfertiorga, y3biomasseunderstorey, y3legumefractionunderstorey, y3prunedfronds,y3atmodepo \
             , y4Nfertitype, y4Nfertirate, y4placement, y4_quantityfertiorga, y4_typefertiorga, y4_placementfertiorga, y4biomasseunderstorey, y4legumefractionunderstorey, y4prunedfronds, y4atmodepo \
             , y5Nfertitype, y5Nfertirate, y5placement, y5_quantityfertiorga, y5_typefertiorga, y5_placementfertiorga, y5biomasseunderstorey, y5legumefractionunderstorey, y5prunedfronds, y5atmodepo \
@@ -6258,8 +6213,9 @@ def Managementpracticesinterface(functioncount,file_path):
                             width=20,height=3,
                             font=("Ariel",20,"bold"),
                             fg="white",bg="blue",
-                            command=printlist)
+                            command=lambda : dictionnary_complete(1,printlist()))
     button.pack(pady=10,padx=50)
+    return printlist()
 
 
     infopracticeroot.mainloop()
@@ -6340,7 +6296,7 @@ def infodicosave(dictionnary, town, country) :
     analysecontinue=tkinter.Button(infodico,text="Continue analyse",
                                    bg="blue",fg="white",font=("Ariel",12,"bold"),
                                    width=15,height=2,
-                                   command=lambda :Managementpracticesinterface(functioncount=0,file_path=""))#Rajouter une command d'appel au parent weatherdata()
+                                   command=lambda :Managementpracticesinterface(0,""))#Rajouter une command d'appel au parent weatherdata()
     analysecontinue.place(relx=0.1,rely=0.04)
 
 
@@ -6349,6 +6305,8 @@ def infodicosave(dictionnary, town, country) :
 
 #Fonction lecture données sur csv données météo
 def weatherdata():
+    #Rendre dictionnary utilisable dans les autres fonctions
+    global dictionnary
     file=filedialog.askopenfilename(title="Please select your file")
 
     #Cas ou il n'y a aucune sélection
