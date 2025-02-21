@@ -365,6 +365,7 @@ def dictionnary_complete(countfounction,printlist) :
     Year = {}
 
     # Ajout de l'ensemble des informations dans dictionnaire year
+    #idx car pas forcément 10 de données donc suppression de tout ce qui est supérieur
     for idx, (year, months) in enumerate(dictionnary.items()):
         # Ajouter les données générales pour chaque année
         Year[year] = {
