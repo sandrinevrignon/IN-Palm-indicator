@@ -19,7 +19,7 @@ from traceback import print_list
 #Récupération de l'ensemble des informations dans dictionnary
 #Création countfonction=0 si pas besoin vérification des data et 1 si rentre dans def verifprintlist
 def dictionnary_complete(countfounction,printlist) :
-    print(printlist)
+    print(printlist[0])
 
 #Fonction lecture fichier
 def openexample():
