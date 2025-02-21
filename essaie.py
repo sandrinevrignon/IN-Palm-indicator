@@ -359,16 +359,17 @@ def dictionnary_complete(countfounction,printlist) :
                                     'Slope':Slope},
                                'Land preparation':
                                    {'Terraces':Terraces,
-                                    'Previous':Previous}},'Year':{}}
+                                    'Previous':Previous}}}
 
     # Création du dictionnaire temporaire
-    Year = {}
+    essai = {}
 
     # Ajout de l'ensemble des informations dans dictionnaire year
     #idx car pas forcément 10 de données donc suppression de tout ce qui est supérieur
     for idx, (year, months) in enumerate(dictionnary.items()):
         # Ajouter les données générales pour chaque année
-        Year[year] = {
+
+        essai[year] = {
             'Month': months,  # Ajout des mois pour chaque année
             'General data': {
                 'Mineral nitrogen fertilizer': PlacementNferti[idx] if idx < len(PlacementNferti) else None,
@@ -381,15 +382,13 @@ def dictionnary_complete(countfounction,printlist) :
                     'Biomass': Biomassunderstorey[idx] if idx < len(Biomassunderstorey) else None,
                     'Legume fraction': Legumefunderstorey[idx] if idx < len(Legumefunderstorey) else None
                 },
-                'Atmospheric deposition': {
-                    'Quantity': atmosphdepostion[idx] if idx < len(atmosphdepostion) else None
-                }
+                'Atmospheric deposition': atmosphdepostion[idx] if idx < len(atmosphdepostion) else None
             }
         }
 
         # Ajout des informations mineral N ferti pour chacun des mois (rate et type)
         for idxidx, (month, data) in enumerate(months.items()):
-            Year[year]['Month'][month] = {
+            essai[year]['Month'][month] = {
                 'Weather': data,  # Ajout des données météo
                 'Mineral nitrogen fertilizer': {
                     'Type': TypeNfertilist[idxidx] if idxidx < len(TypeNfertilist) else None,
@@ -397,20 +396,43 @@ def dictionnary_complete(countfounction,printlist) :
                 }
             }
     #Rajout spécifique des données pruned frond à partir de la troisième année
-    for idx, (year, year_data) in enumerate(Year.items()):
+    for idx, (year, year_data) in enumerate(essai.items()):
         if idx > 1:  # Tu veux traiter les années à partir de l'indice 2
             # On ajoute des données supplémentaires sous 'General data'
-            year_data['General data']['Pruned frond'] = {'Placement':Pruned[idx] if idx < len(Pruned) else None}
+            year_data['General data']['Pruned frond'] = Pruned[idx] if idx < len(Pruned) else None
+
 
     #Création du complete_dictionnary par combinaison des deux dictionnaires Year et complete_dictionnary
     for general,type in complete_dictionnary.items():
-        complete_dictionnary[general]['Year']=Year
+        complete_dictionnary[general]['Year']=essai
 
 
     # Afficher le dictionnaire Year pour vérifier la structure
+    #print(complete_dictionnary['Year'])
+    #Exemple recherche de l'ensemble des données de Land préparation
+    #print(complete_dictionnary)
+    #for month, data in complete_dictionnary['2009'].items():
+    #    print(f"Rainfall for {month} 2009: {data['Rainfall']} mm")
     print(complete_dictionnary)
+    for year, month in complete_dictionnary.items():
+        print (f"1: {year}")
+        for i,j in month.items():
+            print(f"\t2: {i}")
+            for l,k in j.items():
+                print(f"\t\t3: {l}")
+                if l=='2010':
+                    for m,n in k.items():
+                        print(f"\t\t\t4: {m}")
+                        for o,p in n.items():
+                            print (f"\t\t\t\t5: {o}")
+                            if o!="Atmospheric deposition" and o!="Pruned frond" and o!="Mineral nitrogen fertilizer" and o!="February" and o!="March" and o!="April" and o!="May" and o!="June" and o!="July" and o!="August" and o!="September" and o!="October" and o!="November" and o!="December":
+                                for q,r in p.items():
+                                    print(f"\t\t\t\t\t6: {q}")
+                                    if o!="Organic fertilizer" and o!="Understorey":
+                                        for s,t in r.items():
+                                            print(f"\t\t\t\t\t\t7: {s}")
 
-
+    print(complete_dictionnary['Field information']['Year']['2008'])
 
 
 dictionnary_complete(1,printlist)
