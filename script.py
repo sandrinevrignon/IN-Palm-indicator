@@ -19,7 +19,571 @@ from traceback import print_list
 #Récupération de l'ensemble des informations dans dictionnary
 #Création countfonction=0 si pas besoin vérification des data et 1 si rentre dans def verifprintlist
 def dictionnary_complete(countfounction,printlist) :
-    print(printlist[0])
+
+    #Récupération des éléments
+    #Données générales parcelles
+
+        #Soil caracteristic
+    OrganicC=printlist[0][0]
+    Texture=printlist[1][0]
+    Slope=printlist[2][0]
+        #Land preparation
+    Terraces=printlist[3][0]
+    Previous=printlist[4][0]
+
+    #Données annuelles
+        #Mineral N ferti
+    TypeNfertilist=(printlist[5]+
+                    printlist[14]+
+                    printlist[23]+
+                    printlist[34]+
+                    printlist[45]+
+                    printlist[56]+
+                    printlist[67]+
+                    printlist[78]+
+                    printlist[89]+
+                    printlist[100])
+
+    RateNferti=(printlist[6]+
+                 printlist[15]+
+                 printlist[24]+
+                 printlist[35]+
+                 printlist[46]+
+                 printlist[57]+
+                 printlist[68]+
+                 printlist[79]+
+                 printlist[90]+
+                 printlist[101])
+
+
+    PlacementNferti=(printlist[7][0],
+                     printlist[16][0],
+                     printlist[25][0],
+                     printlist[36][0],
+                     printlist[47][0],
+                     printlist[58][0],
+                     printlist[69][0],
+                     printlist[80][0],
+                     printlist[91][0],
+                     printlist[102][0])
+
+    #Organic fertilizer
+    Quantityorgaferti=(printlist[8][0],
+                       printlist[17][0],
+                       printlist[26][0],
+                       printlist[37][0],
+                       printlist[48][0],
+                       printlist[59][0],
+                       printlist[70][0],
+                       printlist[81][0],
+                       printlist[92][0],
+                       printlist[103][0])
+
+    Typeorgaferti=(printlist[9][0],
+                   printlist[18][0],
+                   printlist[27][0],
+                   printlist[38][0],
+                   printlist[49][0],
+                   printlist[60][0],
+                   printlist[71][0],
+                   printlist[82][0],
+                   printlist[93][0],
+                   printlist[104][0])
+
+    Placementorgaferti = (printlist[10][0],
+                     printlist[19][0],
+                     printlist[28][0],
+                     printlist[39][0],
+                     printlist[50][0],
+                     printlist[61][0],
+                     printlist[72][0],
+                     printlist[83][0],
+                     printlist[94][0],
+                     printlist[105][0])
+
+    # Understorey
+    Biomassunderstorey = (printlist[11][0],
+                          printlist[20][0],
+                          printlist[29][0],
+                          printlist[40][0],
+                          printlist[51][0],
+                          printlist[62][0],
+                          printlist[73][0],
+                          printlist[84][0],
+                          printlist[95][0],
+                          printlist[106][0])
+
+    Legumefunderstorey = (printlist[12][0],
+                          printlist[21][0],
+                          printlist[30][0],
+                          printlist[41][0],
+                          printlist[52][0],
+                          printlist[63][0],
+                          printlist[74][0],
+                          printlist[85][0],
+                          printlist[96][0],
+                          printlist[107][0])
+
+    #Atmospheric deposition
+    atmosphdepostion=(printlist[13][0],
+                      printlist[22][0],
+                      printlist[32][0],
+                      printlist[43][0],
+                      printlist[54][0],
+                      printlist[65][0],
+                      printlist[76][0],
+                      printlist[87][0],
+                      printlist[98][0],
+                      printlist[109][0])
+
+    #Dictionnaire pruned
+    Pruned=("",
+            "",
+            printlist[31][0],
+            printlist[42][0],
+            printlist[53][0],
+            printlist[64][0],
+            printlist[75][0],
+            printlist[86][0],
+            printlist[97][0],
+            printlist[108][0])
+
+    # Dictionnaire pruned
+    Yield = ("",
+              "",
+              printlist[33][0],
+              printlist[44][0],
+              printlist[55][0],
+              printlist[66][0],
+              printlist[77][0],
+              printlist[88][0],
+              printlist[99][0],
+              printlist[110][0])
+
+    ######################### Vérification des données d'entrée
+    # Création liste float pour liste data
+    RateNferti_float = []
+    Quantityorgaferti_float=[]
+    atmosphdepostion_float=[]
+    Yield_float=[]
+
+    # Vérification pour chaque éléments chiffres entrées
+    #OrganicC
+    ##Chaque élément de cette liste est un float + conversion
+    try:
+        OrganicC_float=float(OrganicC)
+    except ValueError:
+        # Création bouton erreur type donnée incorrect
+        # Création de la fenêtre
+        errororgaCfloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errororgaCfloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errororgaCfloat.geometry("400x100")
+        # Nom de la fenêtre
+        messageorgaCfloat = (tkinter.Label(errororgaCfloat,
+                                           text="Error on Organic Carbon input data!\n"
+                                                "Please check you rate data.\n"
+                                                "Data must be float",
+                                           justify="center",
+                                           font=("Aptos", 12, "bold"), fg='red'))
+        messageorgaCfloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errororgaCfloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errororgaCfloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errororgaCfloat.mainloop()
+        return
+
+    ##OrganicC toujours <10%
+    if OrganicC_float <0 or OrganicC_float > 10:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errororgaC = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errororgaC.title("Error message")
+        # Définition de la taille de la fenêtre
+        errororgaC.geometry("400x100")
+        # Nom de la fenêtre
+        messageorgaC = (tkinter.Label(errororgaC,
+                                      text="Error on Organic Carbon input data!\n"
+                                           " Your data must be 0% ≥ Organic Carbon ≤ 10% ",
+                                      justify="center",
+                                      font=("Aptos", 12, "bold"), fg='red'))
+        messageorgaC.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errororgaC.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errororgaC, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errororgaC.mainloop()
+        return
+
+    # Slope
+    ##Chaque élément de cette liste est un float + conversion
+    try:
+        Slope_float=float(Slope)
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorslopefloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorslopefloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorslopefloat.geometry("400x100")
+        # Nom de la fenêtre
+        messageslopefloat = (tkinter.Label(errorslopefloat,
+                                      text="Error on Slope input data!\n"
+                                           " Please check you rate data.\n"
+                                           " Data must be float",
+                                           justify="center",
+                                           font=("Aptos", 12, "bold"), fg='red'))
+        messageslopefloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorslopefloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorslopefloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorslopefloat.mainloop()
+        return
+
+    ##Slope toujours >0 et <30%
+    if Slope_float <0 or Slope_float > 30:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorslope = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorslope.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorslope.geometry("400x100")
+        # Nom de la fenêtre
+        messageslope = (tkinter.Label(errorslope,
+                                      text="Error on Slope input data!\n"
+                                                " Your data must be 0% ≥ Slope ≤ 30%",
+                                      justify="center",
+                                      font=("Aptos", 12, "bold"), fg='red'))
+        messageslope.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorslope.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorslope, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorslope.mainloop()
+        return
+
+
+    #Rate N ferti
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for i in RateNferti:
+            RateNferti_float.append(float(i))
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+        ##RateNferti toujours >0 voir pour valeur max
+    for i in RateNferti_float:
+        if i <0:
+            print("Error on rate Mineral Nitrogen fertilizer input data! Your data must be ≥ 0")
+            return
+
+    # Quantityorgaferti
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for i in Quantityorgaferti:
+            Quantityorgaferti_float.append(float(i))
+    except ValueError:
+        print("Error on quantity Organic fertilizer input data!\n Please check you rate data. Data are not float")
+        return
+    ##Quantity organic ferti toujours >0 voir pour valeur max
+    for i in Quantityorgaferti_float:
+            if i < 0:
+                print(f"Error on quantity Organic fertilizer input data! Your data must be ≥ 0")
+                return
+
+    # Atmospheric deposition
+    ##Chaque élément de la liste est un float + conversion
+    count=0
+    try:
+        for i in atmosphdepostion:
+            count=count+1
+            atmosphdepostion_float.append(float(i))
+    except ValueError:
+        print(f"Error on {count}th year of quantity atmospheric deposition input data!\n Please check you rate data. Data are not float")
+        return
+    ##Quantity organic ferti toujours >0 voir pour valeur max
+    count=0
+    for i in atmosphdepostion_float:
+        count=count+1
+        if i < 0:
+            print(f"Error on {count}th year of quantity atmospheric deposition input data! Your data must be ≥ 0")
+            return
+
+    #Yield
+    ##Chaque élément de la liste est un float +conversion
+    count=2
+    try:
+        for i in Yield[2:]:
+            count=count+1
+            Yield_float.append(float(i))
+    except ValueError:
+        print(f"Error {count}th year on Yield input data!\n Please check you data. Data are not float")
+        return
+    ##Quantity Yield toujours >0 et <40 voir pour valeur max
+    count=2
+    for i in Yield_float:
+        count=count+1
+        if i < 0 or i >40:
+            print(f"Error on {count}th year on Yield input data!\n Your data must be 0 tFFB/ha/year ≥ Yield ≤ 40 tFFB/ha/year")
+            return
+    #Suppresion variable vérification données d'entrée
+    del RateNferti_float,Quantityorgaferti_float,atmosphdepostion_float,Yield_float
+    del Slope_float,OrganicC_float
+
+    #Vérification lien entre les entrées et la correspondances
+    #Général
+
+    #Texture dois être rempli
+    if Texture=="*Choice*":
+        print("Error! Please complete the field Texture")
+        return
+
+    #Terraces dois être rempli
+    if Terraces == "*Choice*":
+        print("Error! Please complete the field Terraces")
+        return
+
+    # Previous dois être rempli
+    if Previous == "*Choice*":
+        print("Error! Please complete the field Previous")
+        return
+
+    #Chaque année
+    #Mineral Nitrogen fertilizer
+    ##Lien entre Type et rate
+    for i in range(0,len(TypeNfertilist)):
+        if TypeNfertilist[i]!="*None":
+            if RateNferti[i]=="0":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations ")
+                return
+    for i in range(0,len(RateNferti)):
+        if RateNferti[i]!="0":
+            if TypeNfertilist[i] == "*None":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations ")
+                return
+    ##Lien entre placement et type/Rate
+    ###Year 1
+    for i in range(0,12):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[0]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 2
+    for i in range(12,24):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[1]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 3
+    for i in range(24,36):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[2]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 4
+    for i in range(36,48):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[3]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 5
+    for i in range(48,60):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[4]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 6
+    for i in range(60,72):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[5]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 7
+    for i in range(72,84):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[6]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 8
+    for i in range(84,96):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[7]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 9
+    for i in range(96,108):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[8]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 10
+    for i in range(108,len(TypeNfertilist)):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[9]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+
+    # Organic fertilizer
+    ##Lien entre Quantity Type et placement
+        for i in range(0, len(Typeorgaferti)):
+            if Typeorgaferti[i] != "*Choice*":
+                if Quantityorgaferti[i] == "0":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+                elif Placementorgaferti[i] =="*Choice*":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+        for i in range(0, len(Placementorgaferti)):
+            if Placementorgaferti[i] != "*Choice*":
+                if Quantityorgaferti[i] == "0":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+                elif Typeorgaferti[i] =="*Choice*":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+        for i in range(0, len(Quantityorgaferti)):
+            if Quantityorgaferti[i] != "0":
+                if Typeorgaferti[i] == "*Choice*":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+                elif Placementorgaferti[i] =="*Choice*":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+
+    ###################Création dictionnary final avec les informations parcelles
+    complete_dictionnary={'Field information':
+                              {'Soil caracteristic':
+                                   {'Organic Carbon':OrganicC,
+                                    'Texture':Texture,
+                                    'Slope':Slope},
+                               'Land preparation':
+                                   {'Terraces':Terraces,
+                                    'Previous':Previous}}}
+
+    # Création du dictionnaire temporaire
+    essai = {}
+
+    # Ajout de l'ensemble des informations dans dictionnaire year
+    #idx car pas forcément 10 de données donc suppression de tout ce qui est supérieur
+    for idx, (year, months) in enumerate(dictionnary.items()):
+        # Ajouter les données générales pour chaque année
+
+        essai[year] = {
+            'Month': months,  # Ajout des mois pour chaque année
+            'General data': {
+                'Mineral nitrogen fertilizer': PlacementNferti[idx] if idx < len(PlacementNferti) else None,
+                'Organic fertilizer': {
+                    'Quantity': Quantityorgaferti[idx] if idx < len(Quantityorgaferti) else None,
+                    'Type': Typeorgaferti[idx] if idx < len(Typeorgaferti) else None,
+                    'Placement': Placementorgaferti[idx] if idx < len(Placementorgaferti) else None
+                },
+                'Understorey': {
+                    'Biomass': Biomassunderstorey[idx] if idx < len(Biomassunderstorey) else None,
+                    'Legume fraction': Legumefunderstorey[idx] if idx < len(Legumefunderstorey) else None
+                },
+                'Atmospheric deposition': atmosphdepostion[idx] if idx < len(atmosphdepostion) else None
+            }
+        }
+
+        # Ajout des informations mineral N ferti pour chacun des mois (rate et type)
+        for idxidx, (month, data) in enumerate(months.items()):
+            essai[year]['Month'][month] = {
+                'Weather': data,  # Ajout des données météo
+                'Mineral nitrogen fertilizer': {
+                    'Type': TypeNfertilist[idxidx] if idxidx < len(TypeNfertilist) else None,
+                    'Rate': RateNferti[idxidx] if idxidx < len(RateNferti) else None
+                }
+            }
+    #Rajout spécifique des données pruned frond à partir de la troisième année
+    for idx, (year, year_data) in enumerate(essai.items()):
+        if idx > 1:  # Tu veux traiter les années à partir de l'indice 2
+            # On ajoute des données supplémentaires sous 'General data'
+            year_data['General data']['Pruned frond'] = Pruned[idx] if idx < len(Pruned) else None
+            year_data['General data']['Yield']= Yield[idx] if idx < len(Yield) else None
+
+
+    #Création du complete_dictionnary par combinaison des deux dictionnaires Year et complete_dictionnary
+    for general,typetype in complete_dictionnary.items():
+        complete_dictionnary[general]['Year']=essai
 
 #Fonction lecture fichier
 def openexample():
@@ -102,13 +666,13 @@ def Managementpracticesinterface(functioncount,file_path):
     main_frame.bind("<Configure>", on_frame_configure)
 
     # Listes de sélection
-    typeNferti = ["Ammo Sulf", "Urea", "Ammo Chlo", "Ammo Nit", "Sod Nit"]
-    Nfertiplacement = ["In the circle, buried", "In the circle, not buried", "In the circle + windrow", "Evenly distributed"]
-    Orgafertitype = ["EFB", "Compost"]
-    Orgafertiplacement = ["In the circle", "In the harvesting path", "Spread (anti erosion)"]
-    understoreybiomass = ["Very high", "High", "Medium", "Low", "No"]
-    understoreylegumefraction = ["Very high", "High", "Medium", "Low", "No"]
-    Prunedfronds = ["Exported", "In heaps", "In windows", "Spread (anti erosion)"]
+    typeNferti = ["*None","Ammo Sulf", "Urea", "Ammo Chlo", "Ammo Nit", "Sod Nit"]
+    Nfertiplacement = ["*Choice*","In the circle, buried", "In the circle, not buried", "In the circle + windrow", "Evenly distributed"]
+    Orgafertitype = ["*Choice*","EFB", "Compost"]
+    Orgafertiplacement = ["*Choice*","In the circle", "In the harvesting path", "Spread (anti erosion)"]
+    understoreybiomass = ["*Choice*","Very high", "High", "Medium", "Low", "No"]
+    understoreylegumefraction = ["*Choice*","Very high", "High", "Medium", "Low", "No"]
+    Prunedfronds = ["*Choice*","Exported", "In heaps", "In windows", "Spread (anti erosion)"]
     Soiltexture=["Clay","Clay loam","Loam","Loamy sand","Sand","Sandy clay","Sandy clay loam","Sandy loam","Silt","Silt clay","Silt clay loam","Silt loam"]
     Landterraces=["No","Yes"]
     LandPrevpalm=["Exported","No (first cycle)","Shredded left on soil"]
@@ -1137,8 +1701,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN2():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y2rateferti_str = listferti[16]
-        y2typeferti = listferti[15]
+        y2rateferti_str = listferti[15]
+        y2typeferti = listferti[14]
         # Création d'une liste vide convertissant les rate str en float
         y2rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -1327,8 +1891,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga2():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y2_typefertiorga = listferti[19]
-        y2_quantityfertiorga = listferti[18]
+        y2_typefertiorga = listferti[18]
+        y2_quantityfertiorga = listferti[17]
         print(y2_typefertiorga)
         # Création d'une liste vide permettant conversion liste en float
         y2_quantityfertiorga_float = []
@@ -1424,10 +1988,11 @@ def Managementpracticesinterface(functioncount,file_path):
     ################################################################################################################
     ###################################Year 3#######################################################################
     ################################################################################################################
-    # Intégration de Second year dans la fenêtre
+    # Intégration de troisième year dans la fenêtre
     year3 = (tkinter.Label(main_frame,
                            text="Third year", font=("Ariel", 20, 'underline')))
     year3.pack(anchor="w", pady=5)
+
 
     # Intégration du bloc data pour chaque type
     # Création encadré
@@ -1463,6 +2028,11 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y3_atmodepo.place(relx=0.55, rely=0.75)
+
+    y3_Yield=(tkinter.Label(frame3,
+                            text="Yield (in tFFB/ha/yr)", justify="center",
+                            font=("Ariel", 13, "bold", "underline")))
+    y3_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y3_January = (tkinter.Label(frame3, text="January", font=("Ariel", 9), fg="blue"))
@@ -1710,8 +2280,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN3():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y3rateferti_str = listferti[26]
-        y3typeferti = listferti[25]
+        y3rateferti_str = listferti[24]
+        y3typeferti = listferti[23]
         # Création d'une liste vide convertissant les rate str en float
         y3rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -1900,8 +2470,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga3():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y3_typefertiorga = listferti[29]
-        y3_quantityfertiorga = listferti[28]
+        y3_typefertiorga = listferti[27]
+        y3_quantityfertiorga = listferti[26]
         print (y3_typefertiorga)
         print (y3_quantityfertiorga)
         # Création d'une liste vide permettant conversion liste en float
@@ -2006,6 +2576,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y3_Natmodepo.insert(tkinter.END, "18")
     y3_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield3():
+        Yield3list = [
+            y1_Jan(y3_Yield)]
+        return Yield3list
+
+    # Création quantité Natmo
+    y3_Yield = tkinter.Entry(frame3,
+                             width=8,
+                             justify="right")
+    y3_Yield.insert(tkinter.END, "0")
+    y3_Yield.place(relx=0.90, rely=0.84)
+
 
     ################################################################################################################
     ###################################Year 4#######################################################################
@@ -2049,6 +2632,12 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y4_atmodepo.place(relx=0.55, rely=0.75)
+
+    #Intégration rendement
+    y4_Yield=(tkinter.Label(frame4,
+                            text="Yield (in tFFB/ha/yr)", justify="center",
+                            font=("Ariel", 13, "bold", "underline")))
+    y4_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y4_January = (tkinter.Label(frame4, text="January", font=("Ariel", 9), fg="blue"))
@@ -2296,8 +2885,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN4():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y4rateferti_str = listferti[36]
-        y4typeferti = listferti[35]
+        y4rateferti_str = listferti[35]
+        y4typeferti = listferti[34]
         # Création d'une liste vide convertissant les rate str en float
         y4rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -2486,8 +3075,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga4():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y4_typefertiorga = listferti[39]
-        y4_quantityfertiorga = listferti[38]
+        y4_typefertiorga = listferti[38]
+        y4_quantityfertiorga = listferti[37]
         # Création d'une liste vide permettant conversion liste en float
         y4_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -2590,6 +3179,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y4_Natmodepo.insert(tkinter.END, "18")
     y4_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield4():
+        Yield4list = [
+            y1_Jan(y4_Yield)]
+        return Yield4list
+
+    # Création quantité Natmo
+    y4_Yield = tkinter.Entry(frame4,
+                             width=8,
+                             justify="right")
+    y4_Yield.insert(tkinter.END, "0")
+    y4_Yield.place(relx=0.90, rely=0.84)
+
 
     ################################################################################################################
     ###################################Year 5#######################################################################
@@ -2633,6 +3235,12 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y5_atmodepo.place(relx=0.55, rely=0.75)
+
+    # Intégration rendement
+    y5_Yield = (tkinter.Label(frame5,
+                              text="Yield (in tFFB/ha/yr)", justify="center",
+                              font=("Ariel", 13, "bold", "underline")))
+    y5_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y5_January = (tkinter.Label(frame5, text="January", font=("Ariel", 9), fg="blue"))
@@ -3173,6 +3781,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y5_Natmodepo.insert(tkinter.END, "18")
     y5_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield5():
+        Yield5list = [
+            y1_Jan(y5_Yield)]
+        return Yield5list
+
+    # Création quantité Natmo
+    y5_Yield = tkinter.Entry(frame5,
+                             width=8,
+                             justify="right")
+    y5_Yield.insert(tkinter.END, "0")
+    y5_Yield.place(relx=0.90, rely=0.84)
+
 
     ################################################################################################################
     ###################################Year 6#######################################################################
@@ -3216,6 +3837,11 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y6_atmodepo.place(relx=0.55, rely=0.75)
+    # Intégration rendement
+    y6_Yield = (tkinter.Label(frame6,
+                              text="Yield (in tFFB/ha/yr)", justify="center",
+                              font=("Ariel", 13, "bold", "underline")))
+    y6_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y6_January = (tkinter.Label(frame6, text="January", font=("Ariel", 9), fg="blue"))
@@ -3462,8 +4088,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN6():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y6rateferti_str = listferti[56]
-        y6typeferti = listferti[55]
+        y6rateferti_str = listferti[57]
+        y6typeferti = listferti[56]
         # Création d'une liste vide convertissant les rate str en float
         y6rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -3652,8 +4278,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga6():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y6_typefertiorga = listferti[59]
-        y6_quantityfertiorga = listferti[58]
+        y6_typefertiorga = listferti[60]
+        y6_quantityfertiorga = listferti[59]
         # Création d'une liste vide permettant conversion liste en float
         y6_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -3756,6 +4382,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y6_Natmodepo.insert(tkinter.END, "18")
     y6_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield6():
+        Yield6list = [
+            y1_Jan(y6_Yield)]
+        return Yield6list
+
+    # Création quantité Natmo
+    y6_Yield = tkinter.Entry(frame6,
+                             width=8,
+                             justify="right")
+    y6_Yield.insert(tkinter.END, "0")
+    y6_Yield.place(relx=0.90, rely=0.84)
+
     ################################################################################################################
     ###################################Year 7#######################################################################
     ################################################################################################################
@@ -3798,6 +4437,11 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y7_atmodepo.place(relx=0.55, rely=0.75)
+    # Intégration rendement
+    y7_Yield = (tkinter.Label(frame7,
+                              text="Yield (in tFFB/ha/yr)", justify="center",
+                              font=("Ariel", 13, "bold", "underline")))
+    y7_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y7_January = (tkinter.Label(frame7, text="January", font=("Ariel", 9), fg="blue"))
@@ -4044,8 +4688,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN7():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y7rateferti_str = listferti[66]
-        y7typeferti = listferti[65]
+        y7rateferti_str = listferti[68]
+        y7typeferti = listferti[67]
         # Création d'une liste vide convertissant les rate str en float
         y7rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -4234,8 +4878,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga7():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y7_typefertiorga = listferti[69]
-        y7_quantityfertiorga = listferti[68]
+        y7_typefertiorga = listferti[71]
+        y7_quantityfertiorga = listferti[70]
         # Création d'une liste vide permettant conversion liste en float
         y7_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -4339,6 +4983,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y7_Natmodepo.insert(tkinter.END, "18")
     y7_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield7():
+        Yield7list = [
+            y1_Jan(y7_Yield)]
+        return Yield7list
+
+    # Création quantité Natmo
+    y7_Yield = tkinter.Entry(frame7,
+                             width=8,
+                             justify="right")
+    y7_Yield.insert(tkinter.END, "0")
+    y7_Yield.place(relx=0.90, rely=0.84)
+
 
     ################################################################################################################
     ###################################Year 8#######################################################################
@@ -4382,6 +5039,11 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y8_atmodepo.place(relx=0.55, rely=0.75)
+    # Intégration rendement
+    y8_Yield = (tkinter.Label(frame8,
+                              text="Yield (in tFFB/ha/yr)", justify="center",
+                              font=("Ariel", 13, "bold", "underline")))
+    y8_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y8_January = (tkinter.Label(frame8, text="January", font=("Ariel", 9), fg="blue"))
@@ -4628,8 +5290,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN8():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y8rateferti_str = listferti[76]
-        y8typeferti = listferti[75]
+        y8rateferti_str = listferti[79]
+        y8typeferti = listferti[78]
         # Création d'une liste vide convertissant les rate str en float
         y8rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -4818,8 +5480,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga8():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y8_typefertiorga = listferti[79]
-        y8_quantityfertiorga = listferti[78]
+        y8_typefertiorga = listferti[82]
+        y8_quantityfertiorga = listferti[81]
         # Création d'une liste vide permettant conversion liste en float
         y8_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -4923,6 +5585,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y8_Natmodepo.insert(tkinter.END, "18")
     y8_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield8():
+        Yield8list = [
+            y1_Jan(y8_Yield)]
+        return Yield8list
+
+    # Création quantité Natmo
+    y8_Yield = tkinter.Entry(frame8,
+                             width=8,
+                             justify="right")
+    y8_Yield.insert(tkinter.END, "0")
+    y8_Yield.place(relx=0.90, rely=0.84)
+
     ################################################################################################################
     ###################################Year 9#######################################################################
     ################################################################################################################
@@ -4965,6 +5640,11 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y9_atmodepo.place(relx=0.55, rely=0.75)
+    # Intégration rendement
+    y9_Yield = (tkinter.Label(frame9,
+                              text="Yield (in tFFB/ha/yr)", justify="center",
+                              font=("Ariel", 13, "bold", "underline")))
+    y9_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y9_January = (tkinter.Label(frame9, text="January", font=("Ariel", 9), fg="blue"))
@@ -5211,8 +5891,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN9():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y9rateferti_str = listferti[86]
-        y9typeferti = listferti[85]
+        y9rateferti_str = listferti[90]
+        y9typeferti = listferti[89]
         # Création d'une liste vide convertissant les rate str en float
         y9rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -5401,8 +6081,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga9():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y9_typefertiorga = listferti[89]
-        y9_quantityfertiorga = listferti[88]
+        y9_typefertiorga = listferti[93]
+        y9_quantityfertiorga = listferti[92]
         # Création d'une liste vide permettant conversion liste en float
         y9_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -5506,6 +6186,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y9_Natmodepo.insert(tkinter.END, "18")
     y9_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield9():
+        Yield9list = [
+            y1_Jan(y9_Yield)]
+        return Yield9list
+
+    # Création quantité Natmo
+    y9_Yield = tkinter.Entry(frame9,
+                             width=8,
+                             justify="right")
+    y9_Yield.insert(tkinter.END, "0")
+    y9_Yield.place(relx=0.90, rely=0.84)
+
     ################################################################################################################
     ###################################Year 10#######################################################################
     ################################################################################################################
@@ -5548,6 +6241,11 @@ def Managementpracticesinterface(functioncount,file_path):
                                  text="Atmospheric depositions", justify="center",
                                  font=("Ariel", 13, "bold", "underline")))
     y10_atmodepo.place(relx=0.55, rely=0.75)
+    # Intégration rendement
+    y10_Yield = (tkinter.Label(frame10,
+                              text="Yield (in tFFB/ha/yr)", justify="center",
+                              font=("Ariel", 13, "bold", "underline")))
+    y10_Yield.place(relx=0.85, rely=0.75)
 
     # Intégration des mois
     y10_January = (tkinter.Label(frame10, text="January", font=("Ariel", 9), fg="blue"))
@@ -5795,8 +6493,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgN10():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y10rateferti_str = listferti[96]
-        y10typeferti = listferti[95]
+        y10rateferti_str = listferti[101]
+        y10typeferti = listferti[100]
         # Création d'une liste vide convertissant les rate str en float
         y10rateferti_float = []
         # Création d'une liste pour les résultats des calcules
@@ -5985,8 +6683,8 @@ def Managementpracticesinterface(functioncount,file_path):
     def calculate_kgNorga10():
         # Mise des return list dans des listes spécifiques
         listferti = printlist()
-        y10_typefertiorga = listferti[99]
-        y10_quantityfertiorga = listferti[98]
+        y10_typefertiorga = listferti[104]
+        y10_quantityfertiorga = listferti[103]
         # Création d'une liste vide permettant conversion liste en float
         y10_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -6090,6 +6788,19 @@ def Managementpracticesinterface(functioncount,file_path):
     y10_Natmodepo.insert(tkinter.END, "18")
     y10_Natmodepo.place(relx=0.66, rely=0.84)
 
+    # Fonction pour récupérer toute la valeur du rendement
+    def get_Yield10():
+        Yield10list = [
+            y1_Jan(y10_Yield)]
+        return Yield10list
+
+    # Création quantité Natmo
+    y10_Yield = tkinter.Entry(frame10,
+                             width=8,
+                             justify="right")
+    y10_Yield.insert(tkinter.END, "0")
+    y10_Yield.place(relx=0.90, rely=0.84)
+
     def printlist():
         organic_carbon=get_orgaC()
         texture_soil=get_Texturesoil()
@@ -6124,6 +6835,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y3legumefractionunderstorey = get_legumefractiony3()
         y3prunedfronds = get_prunedy3()
         y3atmodepo = get_Natmodepoy3()
+        y3Yield = get_Yield3()
         y4Nfertitype = get_all_month_valuestypeNfertiy4()
         y4Nfertirate = get_all_month_valuesrateNfertiy4()
         y4placement = get_placement4()
@@ -6134,6 +6846,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y4legumefractionunderstorey = get_legumefractiony4()
         y4prunedfronds = get_prunedy4()
         y4atmodepo = get_Natmodepoy4()
+        y4Yield = get_Yield4()
         y5Nfertitype = get_all_month_valuestypeNfertiy5()
         y5Nfertirate = get_all_month_valuesrateNfertiy5()
         y5placement = get_placement5()
@@ -6144,6 +6857,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y5legumefractionunderstorey = get_legumefractiony5()
         y5prunedfronds = get_prunedy5()
         y5atmodepo = get_Natmodepoy5()
+        y5Yield = get_Yield5()
         y6Nfertitype = get_all_month_valuestypeNfertiy6()
         y6Nfertirate = get_all_month_valuesrateNfertiy6()
         y6placement = get_placement6()
@@ -6154,6 +6868,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y6legumefractionunderstorey = get_legumefractiony6()
         y6prunedfronds = get_prunedy6()
         y6atmodepo = get_Natmodepoy6()
+        y6Yield = get_Yield6()
         y7Nfertitype = get_all_month_valuestypeNfertiy7()
         y7Nfertirate = get_all_month_valuesrateNfertiy7()
         y7placement = get_placement7()
@@ -6164,6 +6879,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y7legumefractionunderstorey = get_legumefractiony7()
         y7prunedfronds = get_prunedy7()
         y7atmodepo = get_Natmodepoy7()
+        y7Yield = get_Yield7()
         y8Nfertitype = get_all_month_valuestypeNfertiy8()
         y8Nfertirate = get_all_month_valuesrateNfertiy8()
         y8placement = get_placement8()
@@ -6174,6 +6890,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y8legumefractionunderstorey = get_legumefractiony8()
         y8prunedfronds = get_prunedy8()
         y8atmodepo = get_Natmodepoy8()
+        y8Yield = get_Yield8()
         y9Nfertitype = get_all_month_valuestypeNfertiy9()
         y9Nfertirate = get_all_month_valuesrateNfertiy9()
         y9placement = get_placement9()
@@ -6184,6 +6901,7 @@ def Managementpracticesinterface(functioncount,file_path):
         y9legumefractionunderstorey = get_legumefractiony9()
         y9prunedfronds = get_prunedy9()
         y9atmodepo = get_Natmodepoy9()
+        y9Yield = get_Yield9()
         y10Nfertitype = get_all_month_valuestypeNfertiy10()
         y10Nfertirate = get_all_month_valuesrateNfertiy10()
         y10placement = get_placement10()
@@ -6194,19 +6912,20 @@ def Managementpracticesinterface(functioncount,file_path):
         y10legumefractionunderstorey = get_legumefractiony10()
         y10prunedfronds = get_prunedy10()
         y10atmodepo = get_Natmodepoy10()
+        y10Yield = get_Yield10()
 
 
         return organic_carbon,texture_soil, slope_info,Land_Terraces, Previous_palm\
             ,y1Nfertitype, y1Nfertirate, y1placement, y1_quantityfertiorga, y1_typefertiorga, y1_placementfertiorga, y1biomasseunderstorey, y1legumefractionunderstorey, y1atmodepo\
             , y2Nfertitype, y2Nfertirate, y2placement, y2_quantityfertiorga, y2_typefertiorga, y2_placementfertiorga, y2biomasseunderstorey, y2legumefractionunderstorey, y2atmodepo\
-            , y3Nfertitype, y3Nfertirate, y3placement, y3_quantityfertiorga, y3_typefertiorga, y3_placementfertiorga, y3biomasseunderstorey, y3legumefractionunderstorey, y3prunedfronds,y3atmodepo \
-            , y4Nfertitype, y4Nfertirate, y4placement, y4_quantityfertiorga, y4_typefertiorga, y4_placementfertiorga, y4biomasseunderstorey, y4legumefractionunderstorey, y4prunedfronds, y4atmodepo \
-            , y5Nfertitype, y5Nfertirate, y5placement, y5_quantityfertiorga, y5_typefertiorga, y5_placementfertiorga, y5biomasseunderstorey, y5legumefractionunderstorey, y5prunedfronds, y5atmodepo \
-            , y6Nfertitype, y6Nfertirate, y6placement, y6_quantityfertiorga, y6_typefertiorga, y6_placementfertiorga, y6biomasseunderstorey, y6legumefractionunderstorey, y6prunedfronds, y6atmodepo \
-            , y7Nfertitype, y7Nfertirate, y7placement, y7_quantityfertiorga, y7_typefertiorga, y7_placementfertiorga, y7biomasseunderstorey, y7legumefractionunderstorey, y7prunedfronds, y7atmodepo \
-            , y8Nfertitype, y8Nfertirate, y8placement, y8_quantityfertiorga, y8_typefertiorga, y8_placementfertiorga, y8biomasseunderstorey, y8legumefractionunderstorey, y8prunedfronds, y8atmodepo \
-            , y9Nfertitype, y9Nfertirate, y9placement, y9_quantityfertiorga, y9_typefertiorga, y9_placementfertiorga, y9biomasseunderstorey, y9legumefractionunderstorey, y9prunedfronds, y9atmodepo \
-            , y10Nfertitype, y10Nfertirate, y10placement, y10_quantityfertiorga, y10_typefertiorga, y10_placementfertiorga, y10biomasseunderstorey, y10legumefractionunderstorey, y10prunedfronds, y10atmodepo
+            , y3Nfertitype, y3Nfertirate, y3placement, y3_quantityfertiorga, y3_typefertiorga, y3_placementfertiorga, y3biomasseunderstorey, y3legumefractionunderstorey, y3prunedfronds,y3atmodepo, y3Yield \
+            , y4Nfertitype, y4Nfertirate, y4placement, y4_quantityfertiorga, y4_typefertiorga, y4_placementfertiorga, y4biomasseunderstorey, y4legumefractionunderstorey, y4prunedfronds, y4atmodepo,y4Yield \
+            , y5Nfertitype, y5Nfertirate, y5placement, y5_quantityfertiorga, y5_typefertiorga, y5_placementfertiorga, y5biomasseunderstorey, y5legumefractionunderstorey, y5prunedfronds, y5atmodepo,y5Yield \
+            , y6Nfertitype, y6Nfertirate, y6placement, y6_quantityfertiorga, y6_typefertiorga, y6_placementfertiorga, y6biomasseunderstorey, y6legumefractionunderstorey, y6prunedfronds, y6atmodepo,y6Yield \
+            , y7Nfertitype, y7Nfertirate, y7placement, y7_quantityfertiorga, y7_typefertiorga, y7_placementfertiorga, y7biomasseunderstorey, y7legumefractionunderstorey, y7prunedfronds, y7atmodepo,y7Yield \
+            , y8Nfertitype, y8Nfertirate, y8placement, y8_quantityfertiorga, y8_typefertiorga, y8_placementfertiorga, y8biomasseunderstorey, y8legumefractionunderstorey, y8prunedfronds, y8atmodepo,y8Yield \
+            , y9Nfertitype, y9Nfertirate, y9placement, y9_quantityfertiorga, y9_typefertiorga, y9_placementfertiorga, y9biomasseunderstorey, y9legumefractionunderstorey, y9prunedfronds, y9atmodepo,y9Yield \
+            , y10Nfertitype, y10Nfertirate, y10placement, y10_quantityfertiorga, y10_typefertiorga, y10_placementfertiorga, y10biomasseunderstorey, y10legumefractionunderstorey, y10prunedfronds, y10atmodepo,y10Yield
 
 
     button = tkinter.Button(main_frame, text="Continue analyse",

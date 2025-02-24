@@ -18,6 +18,7 @@ printlist= (['1.7'],
             #4 Land preparation : Previous
             ['Shredded left on soil'],
             #Year:Month data
+            ###################################Y1##########################################
             #5 Y1:Miner Nferti: Type
             ['*None', 'Ammo Sulf', '*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', 'Urea', '*None', '*None'],
             #6 Y1:Miner Nferti: Rate
@@ -36,6 +37,7 @@ printlist= (['1.7'],
             ['No'],
             #13 Y1: Atmospheric deposition
             ['18'],
+            ######################################################Y2########################################################
             #14 Y2:Miner Nferti: Type
             ['*None', 'Ammo Sulf', '*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', 'Urea', '*None', '*None'],
             #15 Y2: Miner Nferti: Rate
@@ -54,6 +56,7 @@ printlist= (['1.7'],
             ['*Choice*'],
             #22 Y2: Atmospheric deposition
             ['18'],
+            ########################################################Y3#############################################
             #23 Y3: Miner Nferti: Type
             ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
             #24 Y3: Miner Nferti: Rate
@@ -74,147 +77,170 @@ printlist= (['1.7'],
             ['*Choice*'],
             #32 Y3: Atmospheric deposition
             ['18'],
-            #33 Y4:Miner Nferti: Type
-            ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
-            #34 Y4:Miner Nferti: Rate
-            ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-            #35 Y4:Miner Nferti: Placement
-            ['*Choice*'],
-            #36 Y4:Orga ferti: Quantity
+            #33 Y3: Yield
             ['0'],
-            #37 Y4 :Orga ferti: Type
-            ['*Choice*'],
-            #38 Y4:Orga ferti: Placement
-            ['*Choice*'],
-            #39 Y4:Understorey: Biomass
-            ['*Choice*'],
-            #40 Y4:Understorey: Legume fraction
-            ['*Choice*'],
-            #41 Y4: Pruned frond
-            ['*Choice*'],
-            #42 Y4: Atmospheric deposition
-            ['18'],
-            #43 Y5 :Miner Nferti: Type
-
+            ######################################################Y4######################################################
+            #34 Y4:Miner Nferti: Type
             ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
-            #44 Y5:Miner Nferti: Rate
+            #35 Y4:Miner Nferti: Rate
             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-            #45 Y5 :Miner Nferti: Placement
+            #36 Y4:Miner Nferti: Placement
             ['*Choice*'],
-            #46 Y5:Orga ferti: Quantity
+            #37 Y4:Orga ferti: Quantity
             ['0'],
-            #47 Y5:Orga ferti: Type
+            #38 Y4 :Orga ferti: Type
             ['*Choice*'],
-            #48 Y5:Orga ferti: Placement
+            #39 Y4:Orga ferti: Placement
             ['*Choice*'],
-            #49 Y5:Understorey: Biomass
+            #40 Y4:Understorey: Biomass
             ['*Choice*'],
-            #50 Y5:Understorey: Legume fraction
+            #41 Y4:Understorey: Legume fraction
             ['*Choice*'],
-            #51 Y5: Pruned frond
+            #42 Y4: Pruned frond
             ['*Choice*'],
-            #52 Y5: Atmospheric deposition
+            #43 Y4: Atmospheric deposition
             ['18'],
-            #53 Y6:Miner Nferti: Type
+            #44 Y4: Yield
+            ['0'],
+            ########################################################Y5###################################################
+            #45 Y5 :Miner Nferti: Type
             ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
-            #54 Y6:Miner Nferti: Rate
+            #46 Y5:Miner Nferti: Rate
             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-            #55 Y6 :Miner Nferti: Placement
+            #47 Y5 :Miner Nferti: Placement
             ['*Choice*'],
-            #56 Y6:Orga ferti: Quantity
+            #48 Y5:Orga ferti: Quantity
             ['0'],
-            #57 Y6:Orga ferti: Type
+            #49 Y5:Orga ferti: Type
             ['*Choice*'],
-            #58 Y6:Orga ferti: Placement
+            #50 Y5:Orga ferti: Placement
             ['*Choice*'],
-            #59 Y6:Understorey: Biomass
+            #51 Y5:Understorey: Biomass
             ['*Choice*'],
-            #60 Y6:Understorey: Legume fraction
+            #52 Y5:Understorey: Legume fraction
             ['*Choice*'],
-            #61 Y6: Pruned frond
+            #53 Y5: Pruned frond
             ['*Choice*'],
-            #62 Y6: Atmospheric deposition
+            #54 Y5: Atmospheric deposition
             ['18'],
-            #63 Y7::Miner Nferti: Type
+            #55 Y5: Yield
+            ['18'],
+            ##############################################################Y6###############################################
+            #56 Y6:Miner Nferti: Type
+            ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
+            #57 Y6:Miner Nferti: Rate
+            ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+            #58 Y6 :Miner Nferti: Placement
+            ['*Choice*'],
+            #59 Y6:Orga ferti: Quantity
+            ['0'],
+            #60 Y6:Orga ferti: Type
+            ['*Choice*'],
+            #61 Y6:Orga ferti: Placement
+            ['*Choice*'],
+            #62 Y6:Understorey: Biomass
+            ['*Choice*'],
+            #63 Y6:Understorey: Legume fraction
+            ['*Choice*'],
+            #64 Y6: Pruned frond
+            ['*Choice*'],
+            #65 Y6: Atmospheric deposition
+            ['18'],
+            #66 Y6: Yield
+            ['0'],
+            ############################################Y7#####################################################################
+            #67 Y7::Miner Nferti: Type
             ['*None', '*None', '*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', 'Urea', '*None', '*None'],
-            #64 Y7::Miner Nferti: Rate
+            #68 Y7::Miner Nferti: Rate
             ['0', '0', '0', '0', '180', '0', '0', '0', '0', '26', '0', '0'],
-            #65 Y7: :Miner Nferti: Placement
+            #69 Y7: :Miner Nferti: Placement
             ['In the circle + windrow'],
-            #66 Y7::Orga ferti: Quantity
+            #70 Y7::Orga ferti: Quantity
             ['0'],
-            #67 Y7::Orga ferti: Type
+            #71 Y7::Orga ferti: Type
             ['*Choice*'],
-            #68 Y7::Orga ferti: Placement
+            #72 Y7::Orga ferti: Placement
             ['*Choice*'],
-            #69 Y7::Understorey: Biomass
+            #73 Y7::Understorey: Biomass
             ['Medium'],
-            #70 Y7::Understorey: Legume fraction
+            #74 Y7::Understorey: Legume fraction
             ['Low'],
-            #71 Y7:: Pruned frond
+            #75 Y7:: Pruned frond
             ['In windows'],
-            #72 Y7:: Atmospheric deposition
+            #76 Y7:: Atmospheric deposition
             ['18'],
-            #73 Y8:Miner Nferti: Type
-            ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
-            #74 Y8:Miner Nferti: Rate
-            ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-            #75 Y8 :Miner Nferti: Placement
-            ['*Choice*'],
-            #76 Y8:Orga ferti: Quantity
+            #77 Y7:: Yield
             ['0'],
-            #77 Y8:Orga ferti: Type
+            ###############################################Y8###############################################################
+            #78 Y8:Miner Nferti: Type
+            ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
+            #79 Y8:Miner Nferti: Rate
+            ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+            #80 Y8 :Miner Nferti: Placement
             ['*Choice*'],
-            #78 Y8:Orga ferti: Placement
+            #81 Y8:Orga ferti: Quantity
+            ['0'],
+            #82 Y8:Orga ferti: Type
             ['*Choice*'],
-            #79 Y8:Understorey: Biomass
+            #83 Y8:Orga ferti: Placement
+            ['*Choice*'],
+            #84 Y8:Understorey: Biomass
             ['Medium'],
-            #80 Y8:Understorey: Legume fraction
+            #85 Y8:Understorey: Legume fraction
             ['Low'],
-            #81 Y8: Pruned frond
+            #86 Y8: Pruned frond
             ['In windows'],
-            #82 Y8: Atmospheric deposition
+            #87 Y8: Atmospheric deposition
             ['18'],
-            #83 Y9:Miner Nferti: Type
-            ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
-            #84 Y9:Miner Nferti: Rate
-            ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-            #85 Y9 :Miner Nferti: Placement
-            ['*Choice*'],
-            #86 Y9:Orga ferti: Quantity
-            ['0'],
-            #87 Y9:Orga ferti: Type
-            ['*Choice*'],
-            #88 Y9:Orga ferti: Placement
-            ['*Choice*'],
-            #89 Y9:Understorey: Biomass
-            ['*Choice*'],
-            #90 Y9:Understorey: Legume fraction
-            ['*Choice*'],
-            #91 Y9: Pruned frond
-            ['*Choice*'],
-            #92 Y9: Atmospheric deposition
+            #88 Y8: Yield
             ['18'],
-            #93 Y10:Miner Nferti: Type
+            #######################################################Y9#####################################################
+            #89 Y9:Miner Nferti: Type
             ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
-            #94 Y10:Miner Nferti: Rate
+            #90 Y9:Miner Nferti: Rate
             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-            #95 Y10:Miner Nferti: Placement
+            #91 Y9 :Miner Nferti: Placement
             ['*Choice*'],
-            #96 Y10:Orga ferti: Quantity
+            #92 Y9:Orga ferti: Quantity
             ['0'],
-            #97 Y10:Orga ferti: Type
+            #93 Y9:Orga ferti: Type
             ['*Choice*'],
-            #98 Y10:Orga ferti: Placement
+            #94 Y9:Orga ferti: Placement
             ['*Choice*'],
-            #99 Y10:Understorey: Biomass
+            #95 Y9:Understorey: Biomass
             ['*Choice*'],
-            #100 Y10:Understorey: Legume fraction
+            #96 Y9:Understorey: Legume fraction
             ['*Choice*'],
-            #101 Y10: Pruned frond
+            #97 Y9: Pruned frond
             ['*Choice*'],
-            #102 Y10: Atmospheric deposition
-            ['18'])
+            #98 Y9: Atmospheric deposition
+            ['18'],
+            #99 Y9: Yield
+            ['0'],
+            ################################################################Y10#############################################################
+            #100 Y10:Miner Nferti: Type
+            ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None'],
+            #101 Y10:Miner Nferti: Rate
+            ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+            #102 Y10:Miner Nferti: Placement
+            ['*Choice*'],
+            #103 Y10:Orga ferti: Quantity
+            ['0'],
+            #104 Y10:Orga ferti: Type
+            ['*Choice*'],
+            #105 Y10:Orga ferti: Placement
+            ['*Choice*'],
+            #106 Y10:Understorey: Biomass
+            ['*Choice*'],
+            #107 Y10:Understorey: Legume fraction
+            ['*Choice*'],
+            #108 Y10: Pruned frond
+            ['*Choice*'],
+            #109 Y10: Atmospheric deposition
+            ['18'],
+            #110 Y10: Yield
+            ['0']
+            )
 
 
 #Partie à intégrer au script
@@ -222,6 +248,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Récupération des éléments
     #Données générales parcelles
+
         #Soil caracteristic
     OrganicC=printlist[0][0]
     Texture=printlist[1][0]
@@ -235,123 +262,355 @@ def dictionnary_complete(countfounction,printlist) :
     TypeNfertilist=(printlist[5]+
                     printlist[14]+
                     printlist[23]+
-                    printlist[33]+
-                    printlist[43]+
-                    printlist[53]+
-                    printlist[63]+
-                    printlist[73]+
-                    printlist[83]+
-                    printlist[93])
+                    printlist[34]+
+                    printlist[45]+
+                    printlist[56]+
+                    printlist[67]+
+                    printlist[78]+
+                    printlist[89]+
+                    printlist[100])
 
     RateNferti=(printlist[6]+
                  printlist[15]+
                  printlist[24]+
-                 printlist[34]+
-                 printlist[44]+
-                 printlist[54]+
-                 printlist[64]+
-                 printlist[74]+
-                 printlist[84]+
-                 printlist[94])
-
-
-
+                 printlist[35]+
+                 printlist[46]+
+                 printlist[57]+
+                 printlist[68]+
+                 printlist[79]+
+                 printlist[90]+
+                 printlist[101])
 
 
     PlacementNferti=(printlist[7][0],
                      printlist[16][0],
                      printlist[25][0],
-                     printlist[35][0],
-                     printlist[45][0],
-                     printlist[55][0],
-                     printlist[65][0],
-                     printlist[75][0],
-                     printlist[85][0],
-                     printlist[95][0])
+                     printlist[36][0],
+                     printlist[47][0],
+                     printlist[58][0],
+                     printlist[69][0],
+                     printlist[80][0],
+                     printlist[91][0],
+                     printlist[102][0])
 
     #Organic fertilizer
     Quantityorgaferti=(printlist[8][0],
                        printlist[17][0],
                        printlist[26][0],
-                       printlist[36][0],
-                       printlist[46][0],
-                       printlist[56][0],
-                       printlist[66][0],
-                       printlist[76][0],
-                       printlist[86][0],
-                       printlist[96][0])
+                       printlist[37][0],
+                       printlist[48][0],
+                       printlist[59][0],
+                       printlist[70][0],
+                       printlist[81][0],
+                       printlist[92][0],
+                       printlist[103][0])
 
     Typeorgaferti=(printlist[9][0],
                    printlist[18][0],
                    printlist[27][0],
-                   printlist[37][0],
-                   printlist[47][0],
-                   printlist[57][0],
-                   printlist[67][0],
-                   printlist[77][0],
-                   printlist[87][0],
-                   printlist[97][0])
+                   printlist[38][0],
+                   printlist[49][0],
+                   printlist[60][0],
+                   printlist[71][0],
+                   printlist[82][0],
+                   printlist[93][0],
+                   printlist[104][0])
 
     Placementorgaferti = (printlist[10][0],
                      printlist[19][0],
                      printlist[28][0],
-                     printlist[38][0],
-                     printlist[48][0],
-                     printlist[58][0],
-                     printlist[68][0],
-                     printlist[78][0],
-                     printlist[88][0],
-                     printlist[98][0])
+                     printlist[39][0],
+                     printlist[50][0],
+                     printlist[61][0],
+                     printlist[72][0],
+                     printlist[83][0],
+                     printlist[94][0],
+                     printlist[105][0])
 
     # Understorey
     Biomassunderstorey = (printlist[11][0],
                           printlist[20][0],
                           printlist[29][0],
-                          printlist[39][0],
-                          printlist[49][0],
-                          printlist[59][0],
-                          printlist[69][0],
-                          printlist[79][0],
-                          printlist[89][0],
-                          printlist[99][0])
+                          printlist[40][0],
+                          printlist[51][0],
+                          printlist[62][0],
+                          printlist[73][0],
+                          printlist[84][0],
+                          printlist[95][0],
+                          printlist[106][0])
 
     Legumefunderstorey = (printlist[12][0],
                           printlist[21][0],
                           printlist[30][0],
-                          printlist[40][0],
-                          printlist[50][0],
-                          printlist[60][0],
-                          printlist[70][0],
-                          printlist[80][0],
-                          printlist[90][0],
-                          printlist[100][0])
+                          printlist[41][0],
+                          printlist[52][0],
+                          printlist[63][0],
+                          printlist[74][0],
+                          printlist[85][0],
+                          printlist[96][0],
+                          printlist[107][0])
 
     #Atmospheric deposition
     atmosphdepostion=(printlist[13][0],
                       printlist[22][0],
                       printlist[32][0],
-                      printlist[42][0],
-                      printlist[52][0],
-                      printlist[62][0],
-                      printlist[72][0],
-                      printlist[82][0],
-                      printlist[92][0],
-                      printlist[102][0])
+                      printlist[43][0],
+                      printlist[54][0],
+                      printlist[65][0],
+                      printlist[76][0],
+                      printlist[87][0],
+                      printlist[98][0],
+                      printlist[109][0])
 
     #Dictionnaire pruned
     Pruned=("",
             "",
             printlist[31][0],
-            printlist[41][0],
-            printlist[51][0],
-            printlist[61][0],
-            printlist[71][0],
-            printlist[81][0],
-            printlist[91][0],
-            printlist[101][0])
+            printlist[42][0],
+            printlist[53][0],
+            printlist[64][0],
+            printlist[75][0],
+            printlist[86][0],
+            printlist[97][0],
+            printlist[108][0])
 
+    # Dictionnaire pruned
+    Yield = ("",
+              "",
+              printlist[33][0],
+              printlist[44][0],
+              printlist[55][0],
+              printlist[66][0],
+              printlist[77][0],
+              printlist[88][0],
+              printlist[99][0],
+              printlist[110][0])
 
-    #Création dictionnary final avec les information parcelles
+    ######################### Vérification des données d'entrée
+    # Création liste float pour liste data
+    RateNferti_float = []
+    Quantityorgaferti_float=[]
+    atmosphdepostion_float=[]
+    Yield_float=[]
+
+    # Vérification pour chaque éléments chiffres entrées
+    #OrganicC
+    ##Chaque élément de cette liste est un float + conversion
+    try:
+        OrganicC_float=float(OrganicC)
+    except ValueError:
+        print("Error on Organic Carbon input data! Please check you rate data. Data are not float")
+        return
+    ##OrganicC toujours <10%
+    if OrganicC_float <=0 or OrganicC_float > 10:
+        print("Error on Organic Carbon input data! Your data must be 0% ≥ Organic Carbon ≤ 10% ")
+        return
+
+    # Slope
+    ##Chaque élément de cette liste est un float + conversion
+    try:
+        Slope_float=float(Slope)
+    except ValueError:
+        print("Error on Slope input data! Please check you rate data. Data are not float")
+        return
+    ##Slope toujours >0 et <30%
+    if Slope_float <=0 or Slope_float > 30:
+        print("Error on Slope input data! Your data must be 0% ≥ Slope ≤ 30% ")
+        return
+
+    #Rate N ferti
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for i in RateNferti:
+            RateNferti_float.append(float(i))
+    except ValueError:
+        print("Error on rate Mineral Nitrogen fertilizer input data!\n Please check you rate data. Data are not float")
+        return
+        ##RateNferti toujours >0 voir pour valeur max
+    for i in RateNferti_float:
+        if i <0:
+            print("Error on rate Mineral Nitrogen fertilizer input data! Your data must be ≥ 0")
+            return
+
+    # Quantityorgaferti
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for i in Quantityorgaferti:
+            Quantityorgaferti_float.append(float(i))
+    except ValueError:
+        print("Error on quantity Organic fertilizer input data!\n Please check you rate data. Data are not float")
+        return
+    ##Quantity organic ferti toujours >0 voir pour valeur max
+    for i in Quantityorgaferti_float:
+            if i < 0:
+                print(f"Error on quantity Organic fertilizer input data! Your data must be ≥ 0")
+                return
+
+    # Atmospheric deposition
+    ##Chaque élément de la liste est un float + conversion
+    count=0
+    try:
+        for i in atmosphdepostion:
+            count=count+1
+            atmosphdepostion_float.append(float(i))
+    except ValueError:
+        print(f"Error on {count}th year of quantity atmospheric deposition input data!\n Please check you rate data. Data are not float")
+        return
+    ##Quantity organic ferti toujours >0 voir pour valeur max
+    count=0
+    for i in atmosphdepostion_float:
+        count=count+1
+        if i < 0:
+            print(f"Error on {count}th year of quantity atmospheric deposition input data! Your data must be ≥ 0")
+            return
+
+    #Yield
+    ##Chaque élément de la liste est un float +conversion
+    count=2
+    try:
+        for i in Yield[2:]:
+            count=count+1
+            Yield_float.append(float(i))
+    except ValueError:
+        print(f"Error {count}th year on Yield input data!\n Please check you data. Data are not float")
+        return
+    ##Quantity Yield toujours >0 et <40 voir pour valeur max
+    count=2
+    for i in Yield_float:
+        count=count+1
+        if i < 0 or i >40:
+            print(f"Error on {count}th year on Yield input data!\n Your data must be 0 tFFB/ha/year ≥ Yield ≤ 40 tFFB/ha/year")
+            return
+    #Suppresion variable vérification données d'entrée
+    del RateNferti_float,Quantityorgaferti_float,atmosphdepostion_float,Yield_float
+    del Slope_float,OrganicC_float
+
+    #Vérification lien entre les entrées et la correspondances
+    #Général
+
+    #Texture dois être rempli
+    if Texture=="*Choice*":
+        print("Error! Please complete the field texture")
+
+    #Terraces dois être rempli
+    if Terraces == "*Choice*":
+        print("Error! Please complete the field Terraces")
+
+    # Terraces dois être rempli
+    if Previous == "*Choice*":
+        print("Error! Please complete the field Previous")
+
+    #Chaque année
+    #Mineral Nitrogen fertilizer
+    ##Lien entre Type et rate
+    for i in range(0,len(TypeNfertilist)):
+        if TypeNfertilist[i]!="*None":
+            if RateNferti[i]=="0":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations ")
+                return
+    for i in range(0,len(RateNferti)):
+        if RateNferti[i]!="0":
+            if TypeNfertilist[i] == "*None":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations ")
+                return
+    ##Lien entre placement et type/Rate
+    ###Year 1
+    for i in range(0,12):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[0]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 2
+    for i in range(12,24):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[1]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 3
+    for i in range(24,36):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[2]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 4
+    for i in range(36,48):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[3]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 5
+    for i in range(48,60):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[4]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 6
+    for i in range(60,72):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[5]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 7
+    for i in range(72,84):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[6]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 8
+    for i in range(84,96):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[7]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 9
+    for i in range(96,108):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[8]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+    #Year 10
+    for i in range(108,len(TypeNfertilist)):
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+            if PlacementNferti[9]=="*Choice*":
+                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
+                      "Please complete all informations")
+                return
+
+    # Organic fertilizer
+    ##Lien entre Quantity Type et placement
+        for i in range(0, len(Typeorgaferti)):
+            if Typeorgaferti[i] != "*Choice*":
+                if Quantityorgaferti[i] == "0":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+                elif Placementorgaferti[i] =="*Choice*":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+        for i in range(0, len(Placementorgaferti)):
+            if Placementorgaferti[i] != "*Choice*":
+                if Quantityorgaferti[i] == "0":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+                elif Typeorgaferti[i] =="*Choice*":
+                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
+                          "Please complete all informations ")
+                    return
+
+    ###################Création dictionnary final avec les informations parcelles
     complete_dictionnary={'Field information':
                               {'Soil caracteristic':
                                    {'Organic Carbon':OrganicC,
@@ -400,39 +659,40 @@ def dictionnary_complete(countfounction,printlist) :
         if idx > 1:  # Tu veux traiter les années à partir de l'indice 2
             # On ajoute des données supplémentaires sous 'General data'
             year_data['General data']['Pruned frond'] = Pruned[idx] if idx < len(Pruned) else None
+            year_data['General data']['Yield']= Yield[idx] if idx < len(Yield) else None
 
 
     #Création du complete_dictionnary par combinaison des deux dictionnaires Year et complete_dictionnary
-    for general,type in complete_dictionnary.items():
+    for general,typetype in complete_dictionnary.items():
         complete_dictionnary[general]['Year']=essai
 
-
+    ###########################################Hors import script###################################
     # Afficher le dictionnaire Year pour vérifier la structure
     #print(complete_dictionnary['Year'])
     #Exemple recherche de l'ensemble des données de Land préparation
     #print(complete_dictionnary)
     #for month, data in complete_dictionnary['2009'].items():
     #    print(f"Rainfall for {month} 2009: {data['Rainfall']} mm")
-    print(complete_dictionnary)
-    for year, month in complete_dictionnary.items():
-        print (f"1: {year}")
-        for i,j in month.items():
-            print(f"\t2: {i}")
-            for l,k in j.items():
-                print(f"\t\t3: {l}")
-                if l=='2010':
-                    for m,n in k.items():
-                        print(f"\t\t\t4: {m}")
-                        for o,p in n.items():
-                            print (f"\t\t\t\t5: {o}")
-                            if o!="Atmospheric deposition" and o!="Pruned frond" and o!="Mineral nitrogen fertilizer" and o!="February" and o!="March" and o!="April" and o!="May" and o!="June" and o!="July" and o!="August" and o!="September" and o!="October" and o!="November" and o!="December":
-                                for q,r in p.items():
-                                    print(f"\t\t\t\t\t6: {q}")
-                                    if o!="Organic fertilizer" and o!="Understorey":
-                                        for s,t in r.items():
-                                            print(f"\t\t\t\t\t\t7: {s}")
+    #print(complete_dictionnary)
+    #for year, month in complete_dictionnary.items():
+    #    print (f"1: {year}")
+    #    for i,j in month.items():
+    #        print(f"\t2: {i}")
+    #        for l,k in j.items():
+    #            print(f"\t\t3: {l}")
+    #            if l=='2010':
+    #                for m,n in k.items():
+    #                    print(f"\t\t\t4: {m}")
+    #                    for o,p in n.items():
+    #                        print (f"\t\t\t\t5: {o}")
+    #                        if o!="Atmospheric deposition" and o!="Pruned frond" and o!="Mineral nitrogen fertilizer" and o!="February" and o!="March" and o!="April" and o!="May" and o!="June" and o!="July" and o!="August" and o!="September" and o!="October" and o!="November" and o!="December" and o!="Yield":
+    #                            for q,r in p.items():
+    #                                print(f"\t\t\t\t\t6: {q}")
+    #                                if o!="Organic fertilizer" and o!="Understorey":
+    #                                    for s,t in r.items():
+    #                                        print(f"\t\t\t\t\t\t7: {s}")
 
-    print(complete_dictionnary['Field information']['Year']['2008'])
+    #print(complete_dictionnary['Field information']['Year']['2008'])
 
 
 dictionnary_complete(1,printlist)
