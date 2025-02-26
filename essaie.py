@@ -668,7 +668,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     ###########################################Hors import script###################################
     # Afficher le dictionnaire Year pour vérifier la structure
-    #print(complete_dictionnary['Year'])
+    #print(complete_dictionnary)
     #Exemple recherche de l'ensemble des données de Land préparation
     #print(complete_dictionnary)
     #for month, data in complete_dictionnary['2009'].items():

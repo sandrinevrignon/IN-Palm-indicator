@@ -203,7 +203,7 @@ def dictionnary_complete(countfounction,printlist) :
         return
 
     ##OrganicC toujours <10%
-    if OrganicC_float <0 or OrganicC_float > 10:
+    if OrganicC_float <0 :
         # Création bouton erreur
         # Création de la fenêtre
         errororgaC = Toplevel()
@@ -214,7 +214,7 @@ def dictionnary_complete(countfounction,printlist) :
         # Nom de la fenêtre
         messageorgaC = (tkinter.Label(errororgaC,
                                       text="Error on Organic Carbon input data!\n"
-                                           " Your data must be 0% ≥ Organic Carbon ≤ 10% ",
+                                           " Your data must be ≥ 0% ",
                                       justify="center",
                                       font=("Aptos", 12, "bold"), fg='red'))
         messageorgaC.place(relx=0.5, rely=0.3, anchor="center")
@@ -267,7 +267,7 @@ def dictionnary_complete(countfounction,printlist) :
         return
 
     ##Slope toujours >0 et <30%
-    if Slope_float <0 or Slope_float > 30:
+    if Slope_float <0 :
         # Création bouton erreur
         # Création de la fenêtre
         errorslope = Toplevel()
@@ -278,7 +278,7 @@ def dictionnary_complete(countfounction,printlist) :
         # Nom de la fenêtre
         messageslope = (tkinter.Label(errorslope,
                                       text="Error on Slope input data!\n"
-                                                " Your data must be 0% ≥ Slope ≤ 30%",
+                                                " Your data must be ≥ 0%",
                                       justify="center",
                                       font=("Aptos", 12, "bold"), fg='red'))
         messageslope.place(relx=0.5, rely=0.3, anchor="center")
@@ -335,7 +335,32 @@ def dictionnary_complete(countfounction,printlist) :
         ##RateNferti toujours >0 voir pour valeur max
     for i in RateNferti_float:
         if i <0:
-            print("Error on rate Mineral Nitrogen fertilizer input data! Your data must be ≥ 0")
+            # Création bouton erreur
+            # Création de la fenêtre
+            errorrateNferti = Toplevel()
+            # Nom de l'onglet de fenêtre
+            errorrateNferti.title("Error message")
+            # Définition de la taille de la fenêtre
+            errorrateNferti.geometry("400x100")
+            # Nom de la fenêtre
+            messagerateNferti = (tkinter.Label(errorrateNferti,
+                                               text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                    " Your data must be ≥ 0",
+                                               justify="center",
+                                               font=("Aptos", 12, "bold"), fg='red'))
+            messagerateNferti.place(relx=0.5, rely=0.3, anchor="center")
+
+            # Réouverture du dialogue
+            def reopen_filedialog():
+                errorrateNferti.destroy()
+                # Evite erreurs lors coupure programme
+                return
+
+            # Bouton retour
+            return_button = tkinter.Button(errorrateNferti, text="Return",
+                                           bg="lightblue", command=reopen_filedialog)
+            return_button.place(relx=0.5, rely=0.8, anchor="center")
+            errorrateNferti.mainloop()
             return
 
     # Quantityorgaferti
@@ -344,12 +369,63 @@ def dictionnary_complete(countfounction,printlist) :
         for i in Quantityorgaferti:
             Quantityorgaferti_float.append(float(i))
     except ValueError:
-        print("Error on quantity Organic fertilizer input data!\n Please check you rate data. Data are not float")
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorquantityorgafertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorquantityorgafertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorquantityorgafertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagequantityorgafertifloat = (tkinter.Label(errorquantityorgafertifloat,
+                                                       text="Error on quantity Organic fertilizer input data!\n "
+                                                            "Please check you rate data. Data are not float",
+                                                       justify="center",
+                                                       font=("Aptos", 12, "bold"), fg='red'))
+        messagequantityorgafertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorquantityorgafertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorquantityorgafertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorquantityorgafertifloat.mainloop()
         return
+
     ##Quantity organic ferti toujours >0 voir pour valeur max
     for i in Quantityorgaferti_float:
             if i < 0:
-                print(f"Error on quantity Organic fertilizer input data! Your data must be ≥ 0")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorquantityorgaferti = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorquantityorgaferti.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorquantityorgaferti.geometry("400x100")
+                # Nom de la fenêtre
+                messagequantityorgaferti = (tkinter.Label(errorquantityorgaferti,
+                                                          text="Error on quantity Organic fertilizer input data!\n"
+                                                               "Your data must be ≥ 0",
+                                                          justify="center",
+                                                          font=("Aptos", 12, "bold"), fg='red'))
+                messagequantityorgaferti.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorquantityorgaferti.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorquantityorgaferti, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorquantityorgaferti.mainloop()
                 return
 
     # Atmospheric deposition
@@ -360,14 +436,66 @@ def dictionnary_complete(countfounction,printlist) :
             count=count+1
             atmosphdepostion_float.append(float(i))
     except ValueError:
-        print(f"Error on {count}th year of quantity atmospheric deposition input data!\n Please check you rate data. Data are not float")
+        # Création bouton erreur
+        # Création de la fenêtre
+        erroratmodepofloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        erroratmodepofloat .title("Error message")
+        # Définition de la taille de la fenêtre
+        erroratmodepofloat .geometry("400x100")
+        # Nom de la fenêtre
+        messageatmodepofloat  = (tkinter.Label(erroratmodepofloat ,
+                                               text=f"Error on {count}th year of quantity atmospheric deposition input data!\n "
+                                                    f"Please check you rate data.\n"
+                                                    f" Data must be float",
+                                               justify="center",
+                                               font=("Aptos", 12, "bold"), fg='red'))
+        messageatmodepofloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            erroratmodepofloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(erroratmodepofloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        erroratmodepofloat.mainloop()
         return
+
     ##Quantity organic ferti toujours >0 voir pour valeur max
     count=0
     for i in atmosphdepostion_float:
         count=count+1
         if i < 0:
-            print(f"Error on {count}th year of quantity atmospheric deposition input data! Your data must be ≥ 0")
+            # Création bouton erreur
+            # Création de la fenêtre
+            erroratmodepo = Toplevel()
+            # Nom de l'onglet de fenêtre
+            erroratmodepo.title("Error message")
+            # Définition de la taille de la fenêtre
+            erroratmodepo.geometry("400x100")
+            # Nom de la fenêtre
+            messageatmodepo = (tkinter.Label(erroratmodepo,
+                                             text=f"Error on {count}th year of quantity atmospheric deposition input data!\n"
+                                                       f" Your data must be ≥ 0",
+                                             justify="center",
+                                             font=("Aptos", 12, "bold"), fg='red'))
+            messageatmodepo.place(relx=0.5, rely=0.3, anchor="center")
+
+            # Réouverture du dialogue
+            def reopen_filedialog():
+                erroratmodepo.destroy()
+                # Evite erreurs lors coupure programme
+                return
+
+            # Bouton retour
+            return_button = tkinter.Button(erroratmodepo, text="Return",
+                                           bg="lightblue", command=reopen_filedialog)
+            return_button.place(relx=0.5, rely=0.8, anchor="center")
+            erroratmodepo.mainloop()
             return
 
     #Yield
@@ -378,15 +506,68 @@ def dictionnary_complete(countfounction,printlist) :
             count=count+1
             Yield_float.append(float(i))
     except ValueError:
-        print(f"Error {count}th year on Yield input data!\n Please check you data. Data are not float")
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorYieldfloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorYieldfloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorYieldfloat.geometry("400x100")
+        # Nom de la fenêtre
+        messageYieldfloat = (tkinter.Label(errorYieldfloat,
+                                           text=f"Error {count}th year on Yield input data!\n "
+                                              f"Please check you data. \n"
+                                              f"Data must be float",
+                                           justify="center",
+                                           font=("Aptos", 12, "bold"), fg='red'))
+        messageYieldfloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorYieldfloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorYieldfloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorYieldfloat.mainloop()
         return
+
     ##Quantity Yield toujours >0 et <40 voir pour valeur max
     count=2
     for i in Yield_float:
         count=count+1
         if i < 0 or i >40:
-            print(f"Error on {count}th year on Yield input data!\n Your data must be 0 tFFB/ha/year ≥ Yield ≤ 40 tFFB/ha/year")
+            # Création bouton erreur
+            # Création de la fenêtre
+            errorYield = Toplevel()
+            # Nom de l'onglet de fenêtre
+            errorYield.title("Error message")
+            # Définition de la taille de la fenêtre
+            errorYield.geometry("700x100")
+            # Nom de la fenêtre
+            messageYield = (tkinter.Label(errorYield,
+                                          text=f"Error on {count}th year on Yield input data!\n"
+                                               f" Your data must be 0 tFFB/ha/year ≥ Yield ≤ 40 tFFB/ha/year",
+                                          justify="center",
+                                          font=("Aptos", 12, "bold"), fg='red'))
+            messageYield.place(relx=0.5, rely=0.3, anchor="center")
+
+            # Réouverture du dialogue
+            def reopen_filedialog():
+                errorYield.destroy()
+                # Evite erreurs lors coupure programme
+                return
+
+            # Bouton retour
+            return_button = tkinter.Button(errorYield, text="Return",
+                                           bg="lightblue", command=reopen_filedialog)
+            return_button.place(relx=0.5, rely=0.8, anchor="center")
+            errorYield.mainloop()
             return
+
     #Suppresion variable vérification données d'entrée
     del RateNferti_float,Quantityorgaferti_float,atmosphdepostion_float,Yield_float
     del Slope_float,OrganicC_float
@@ -396,17 +577,90 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Texture dois être rempli
     if Texture=="*Choice*":
-        print("Error! Please complete the field Texture")
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorTexture = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorTexture.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorTexture.geometry("400x100")
+        # Nom de la fenêtre
+        messageTexture = (tkinter.Label(errorTexture,
+                                        text="Error! Please complete the field Texture",
+                                        justify="center",
+                                        font=("Aptos", 12, "bold"), fg='red'))
+        messageTexture.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorTexture.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorTexture, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorTexture.mainloop()
         return
+
 
     #Terraces dois être rempli
     if Terraces == "*Choice*":
-        print("Error! Please complete the field Terraces")
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorTerraces = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorTerraces.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorTerraces.geometry("400x100")
+        # Nom de la fenêtre
+        messageTerraces = (tkinter.Label(errorTerraces,
+                                         text="Error! Please complete the field Terraces",
+                                         justify="center",
+                                         font=("Aptos", 12, "bold"), fg='red'))
+        messageTerraces.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorTerraces.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorTerraces, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorTerraces.mainloop()
         return
 
     # Previous dois être rempli
     if Previous == "*Choice*":
-        print("Error! Please complete the field Previous")
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorPrevious = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorPrevious.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorPrevious.geometry("400x100")
+        # Nom de la fenêtre
+        messagePrevious = (tkinter.Label(errorPrevious,
+                                         text="Error! Please complete the field Previous",
+                                         justify="center",
+                                         font=("Aptos", 12, "bold"), fg='red'))
+        messagePrevious.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorPrevious.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorPrevious, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorPrevious.mainloop()
         return
 
     #Chaque année
@@ -415,85 +669,408 @@ def dictionnary_complete(countfounction,printlist) :
     for i in range(0,len(TypeNfertilist)):
         if TypeNfertilist[i]!="*None":
             if RateNferti[i]=="0":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations ")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
                 return
+
     for i in range(0,len(RateNferti)):
         if RateNferti[i]!="0":
             if TypeNfertilist[i] == "*None":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations ")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
                 return
+
     ##Lien entre placement et type/Rate
     ###Year 1
     for i in range(0,12):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[0]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY1 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY1.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY1.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY1 = (tkinter.Label(errorNfertityperateLinkY1,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY1.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY1.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY1, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY1.mainloop()
                 return
+
     #Year 2
     for i in range(12,24):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[1]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY2 = (tkinter.Label(errorNfertityperateLinkY2,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY2.mainloop()
                 return
+
     #Year 3
     for i in range(24,36):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[2]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY3 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY3.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY3.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY3 = (tkinter.Label(errorNfertityperateLinkY3,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY3.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY3.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY3, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY3.mainloop()
                 return
+
     #Year 4
     for i in range(36,48):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[3]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY4 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY4.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY4.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY4 = (tkinter.Label(errorNfertityperateLinkY4,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY4.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY4.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY4, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY4.mainloop()
                 return
+
     #Year 5
     for i in range(48,60):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[4]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY5 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY5.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY5.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY5 = (tkinter.Label(errorNfertityperateLinkY5,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY5.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY5.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY5, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY5.mainloop()
                 return
+
     #Year 6
     for i in range(60,72):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[5]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY6 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY6.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY6.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY6 = (tkinter.Label(errorNfertityperateLinkY6,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY6.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY6.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY6, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY6.mainloop()
                 return
+
     #Year 7
     for i in range(72,84):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[6]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY7 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY7.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY7.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY7 = (tkinter.Label(errorNfertityperateLinkY7,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY7.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY7.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY7, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY7.mainloop()
                 return
+
     #Year 8
     for i in range(84,96):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[7]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY8 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY8.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY8.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY8 = (tkinter.Label(errorNfertityperateLinkY8,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY8.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY8.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY8, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY8.mainloop()
                 return
+
     #Year 9
     for i in range(96,108):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[8]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY9 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY9.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY9.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY9 = (tkinter.Label(errorNfertityperateLinkY9,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY9.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY9.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY9, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY9.mainloop()
                 return
+
     #Year 10
     for i in range(108,len(TypeNfertilist)):
         if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
             if PlacementNferti[9]=="*Choice*":
-                print("Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
-                      "Please complete all informations")
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY10 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY10.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY10.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY10 = (tkinter.Label(errorNfertityperateLinkY10,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY10.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY10.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY10, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY10.mainloop()
                 return
 
     # Organic fertilizer
@@ -501,32 +1078,187 @@ def dictionnary_complete(countfounction,printlist) :
         for i in range(0, len(Typeorgaferti)):
             if Typeorgaferti[i] != "*Choice*":
                 if Quantityorgaferti[i] == "0":
-                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
-                          "Please complete all informations ")
+                    # Création bouton erreur
+                    # Création de la fenêtre
+                    errororgfertityperateLink1 = Toplevel()
+                    # Nom de l'onglet de fenêtre
+                    errororgfertityperateLink1.title("Error message")
+                    # Définition de la taille de la fenêtre
+                    errororgfertityperateLink1.geometry("700x100")
+                    # Nom de la fenêtre
+                    messageorgfertityperateLink1 = (tkinter.Label(errororgfertityperateLink1,
+                                                                  text="Error! \n"
+                                                                       "Data input between Type, Quantity and Placement on Organic fertilizer must be consistent\n"
+                                                                       "Please complete all informations",
+                                                                  justify="center",
+                                                                  font=("Aptos", 12, "bold"), fg='red'))
+                    messageorgfertityperateLink1.place(relx=0.5, rely=0.3, anchor="center")
+
+                    # Réouverture du dialogue
+                    def reopen_filedialog():
+                        errororgfertityperateLink1.destroy()
+                        # Evite erreurs lors coupure programme
+                        return
+
+                    # Bouton retour
+                    return_button = tkinter.Button(errororgfertityperateLink1, text="Return",
+                                                   bg="lightblue", command=reopen_filedialog)
+                    return_button.place(relx=0.5, rely=0.8, anchor="center")
+                    errororgfertityperateLink1.mainloop()
                     return
+
                 elif Placementorgaferti[i] =="*Choice*":
-                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
-                          "Please complete all informations ")
+                    # Création bouton erreur
+                    # Création de la fenêtre
+                    errororgfertityperateLink2 = Toplevel()
+                    # Nom de l'onglet de fenêtre
+                    errororgfertityperateLink2.title("Error message")
+                    # Définition de la taille de la fenêtre
+                    errororgfertityperateLink2.geometry("700x100")
+                    # Nom de la fenêtre
+                    messageorgfertityperateLink2 = (tkinter.Label(errororgfertityperateLink2,
+                                                                  text="Error! \n"
+                                                                       "Data input between Type, Quantity and Placement on Organic fertilizer must be consistent\n"
+                                                                       "Please complete all informations",
+                                                                  justify="center",
+                                                                  font=("Aptos", 12, "bold"), fg='red'))
+                    messageorgfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                    # Réouverture du dialogue
+                    def reopen_filedialog():
+                        errororgfertityperateLink2.destroy()
+                        # Evite erreurs lors coupure programme
+                        return
+
+                    # Bouton retour
+                    return_button = tkinter.Button(errororgfertityperateLink2, text="Return",
+                                                   bg="lightblue", command=reopen_filedialog)
+                    return_button.place(relx=0.5, rely=0.8, anchor="center")
+                    errororgfertityperateLink2.mainloop()
                     return
+
         for i in range(0, len(Placementorgaferti)):
             if Placementorgaferti[i] != "*Choice*":
                 if Quantityorgaferti[i] == "0":
-                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
-                          "Please complete all informations ")
+                    # Création bouton erreur
+                    # Création de la fenêtre
+                    errororgfertityperateLink3 = Toplevel()
+                    # Nom de l'onglet de fenêtre
+                    errororgfertityperateLink3.title("Error message")
+                    # Définition de la taille de la fenêtre
+                    errororgfertityperateLink3.geometry("700x100")
+                    # Nom de la fenêtre
+                    messageorgfertityperateLink3 = (tkinter.Label(errororgfertityperateLink3,
+                                                                  text="Error! \n"
+                                                                       "Data input between Type, Quantity and Placement on Organic fertilizer must be consistent\n"
+                                                                       "Please complete all informations",
+                                                                  justify="center",
+                                                                  font=("Aptos", 12, "bold"), fg='red'))
+                    messageorgfertityperateLink3.place(relx=0.5, rely=0.3, anchor="center")
+
+                    # Réouverture du dialogue
+                    def reopen_filedialog():
+                        errororgfertityperateLink3.destroy()
+                        # Evite erreurs lors coupure programme
+                        return
+
+                    # Bouton retour
+                    return_button = tkinter.Button(errororgfertityperateLink3, text="Return",
+                                                   bg="lightblue", command=reopen_filedialog)
+                    return_button.place(relx=0.5, rely=0.8, anchor="center")
+                    errororgfertityperateLink3.mainloop()
                     return
+
                 elif Typeorgaferti[i] =="*Choice*":
-                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
-                          "Please complete all informations ")
+                    # Création bouton erreur
+                    # Création de la fenêtre
+                    errororgfertityperateLink4 = Toplevel()
+                    # Nom de l'onglet de fenêtre
+                    errororgfertityperateLink4.title("Error message")
+                    # Définition de la taille de la fenêtre
+                    errororgfertityperateLink4.geometry("700x100")
+                    # Nom de la fenêtre
+                    messageorgfertityperateLink4 = (tkinter.Label(errororgfertityperateLink4,
+                                                                  text="Error! \n"
+                                                                       "Data input between Type, Quantity and Placement on Organic fertilizer must be consistent\n"
+                                                                       "Please complete all informations",
+                                                                  justify="center",
+                                                                  font=("Aptos", 12, "bold"), fg='red'))
+                    messageorgfertityperateLink4.place(relx=0.5, rely=0.3, anchor="center")
+
+                    # Réouverture du dialogue
+                    def reopen_filedialog():
+                        errororgfertityperateLink4.destroy()
+                        # Evite erreurs lors coupure programme
+                        return
+
+                    # Bouton retour
+                    return_button = tkinter.Button(errororgfertityperateLink4, text="Return",
+                                                   bg="lightblue", command=reopen_filedialog)
+                    return_button.place(relx=0.5, rely=0.8, anchor="center")
+                    errororgfertityperateLink4.mainloop()
                     return
+
         for i in range(0, len(Quantityorgaferti)):
             if Quantityorgaferti[i] != "0":
                 if Typeorgaferti[i] == "*Choice*":
-                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
-                          "Please complete all informations ")
+                    # Création bouton erreur
+                    # Création de la fenêtre
+                    errororgfertityperateLink5 = Toplevel()
+                    # Nom de l'onglet de fenêtre
+                    errororgfertityperateLink5.title("Error message")
+                    # Définition de la taille de la fenêtre
+                    errororgfertityperateLink5.geometry("700x100")
+                    # Nom de la fenêtre
+                    messageorgfertityperateLink5 = (tkinter.Label(errororgfertityperateLink5,
+                                                                  text="Error! \n"
+                                                                       "Data input between Type, Quantity and Placement on Organic fertilizer must be consistent\n"
+                                                                       "Please complete all informations",
+                                                                  justify="center",
+                                                                  font=("Aptos", 12, "bold"), fg='red'))
+                    messageorgfertityperateLink5.place(relx=0.5, rely=0.3, anchor="center")
+
+                    # Réouverture du dialogue
+                    def reopen_filedialog():
+                        errororgfertityperateLink5.destroy()
+                        # Evite erreurs lors coupure programme
+                        return
+
+                    # Bouton retour
+                    return_button = tkinter.Button(errororgfertityperateLink5, text="Return",
+                                                   bg="lightblue", command=reopen_filedialog)
+                    return_button.place(relx=0.5, rely=0.8, anchor="center")
+                    errororgfertityperateLink5.mainloop()
                     return
+
                 elif Placementorgaferti[i] =="*Choice*":
-                    print("Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
-                          "Please complete all informations ")
+                    # Création bouton erreur
+                    # Création de la fenêtre
+                    errororgfertityperateLink6 = Toplevel()
+                    # Nom de l'onglet de fenêtre
+                    errororgfertityperateLink6.title("Error message")
+                    # Définition de la taille de la fenêtre
+                    errororgfertityperateLink6.geometry("700x100")
+                    # Nom de la fenêtre
+                    messageorgfertityperateLink6 = (tkinter.Label(errororgfertityperateLink6,
+                                                                  text="Error! \n"
+                                                                       "Data input between Type, Quantity and Placement on Organic fertilizer must be consistent\n"
+                                                                       "Please complete all informations",
+                                                                  justify="center",
+                                                                  font=("Aptos", 12, "bold"), fg='red'))
+                    messageorgfertityperateLink6.place(relx=0.5, rely=0.3, anchor="center")
+
+                    # Réouverture du dialogue
+                    def reopen_filedialog():
+                        errororgfertityperateLink6.destroy()
+                        # Evite erreurs lors coupure programme
+                        return
+
+                    # Bouton retour
+                    return_button = tkinter.Button(errororgfertityperateLink6, text="Return",
+                                                   bg="lightblue", command=reopen_filedialog)
+                    return_button.place(relx=0.5, rely=0.8, anchor="center")
+                    errororgfertityperateLink6.mainloop()
                     return
 
     ###################Création dictionnary final avec les informations parcelles
