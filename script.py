@@ -25,7 +25,15 @@ def dictionnary_complete(countfounction,printlist) :
 
         #Soil caracteristic
     OrganicC=printlist[0][0]
-    Texture=printlist[1][0]
+    ##Modification information données Textures pour utilisation logique flou Coarse, Medium et Fine
+    Texture = printlist[1][0]
+    if Texture in ["Sand", "Loamy sand", "Sandy loam", "Loam", "Silt loam", "Silt"]:
+        Texture = "Coarse"
+    elif Texture in ["Clay loam", "Sandy clay loam", "Silty clay loam", "Silty clay"]:
+        Texture = "Medium"
+    elif Texture in ["Clay", "Sandy clay"]:
+        Texture = "Fine"
+
     Slope=printlist[2][0]
         #Land preparation
     Terraces=printlist[3][0]
@@ -1405,7 +1413,7 @@ def Managementpracticesinterface(functioncount,file_path):
     understoreybiomass = ["*Choice*","Very high", "High", "Medium", "Low", "No"]
     understoreylegumefraction = ["*Choice*","Very high", "High", "Medium", "Low", "No"]
     Prunedfronds = ["*Choice*","Exported", "In heaps", "In windows", "Spread (anti erosion)"]
-    Soiltexture=["Clay","Clay loam","Loam","Loamy sand","Sand","Sandy clay","Sandy clay loam","Sandy loam","Silt","Silt clay","Silt clay loam","Silt loam"]
+    Soiltexture=["Clay","Clay loam","Loam","Loamy sand","Sand","Sandy clay","Sandy clay loam","Sandy loam","Silt","Silty clay","Silty clay loam","Silt loam"]
     Landterraces=["No","Yes"]
     LandPrevpalm=["Exported","No (first cycle)","Shredded left on soil"]
 
