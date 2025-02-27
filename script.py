@@ -13,7 +13,7 @@ import os
 
 #Lecture csv
 import csv
-from traceback import print_list
+
 
 
 #Récupération de l'ensemble des informations dans dictionnary
@@ -24,7 +24,41 @@ def dictionnary_complete(countfounction,printlist) :
     #Données générales parcelles
 
         #Soil caracteristic
-    OrganicC=printlist[0][0]
+    ##Conversion en float et vérification
+    #OrganicC
+    try:
+        OrganicC = float(printlist[0][0])
+    except ValueError:
+        # Création bouton erreur type donnée incorrect
+        # Création de la fenêtre
+        errororgaCfloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errororgaCfloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errororgaCfloat.geometry("400x100")
+        # Nom de la fenêtre
+        messageorgaCfloat = (tkinter.Label(errororgaCfloat,
+                                           text="Error on Organic Carbon input data!\n"
+                                                "Please check you rate data.\n"
+                                                "Data must be float",
+                                           justify="center",
+                                           font=("Aptos", 12, "bold"), fg='red'))
+        messageorgaCfloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errororgaCfloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errororgaCfloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errororgaCfloat.mainloop()
+        return
+
+    #Texture
     ##Modification information données Textures pour utilisation logique flou Coarse, Medium et Fine
     Texture = printlist[1][0]
     if Texture in ["Sand", "Loamy sand", "Sandy loam", "Loam", "Silt loam", "Silt"]:
@@ -34,13 +68,46 @@ def dictionnary_complete(countfounction,printlist) :
     elif Texture in ["Clay", "Sandy clay"]:
         Texture = "Fine"
 
-    Slope=printlist[2][0]
-        #Land preparation
+    #Slope
+    ##Vérification et conversion en float
+    try:
+        Slope = float(printlist[2][0])
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorslopefloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorslopefloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorslopefloat.geometry("400x100")
+        # Nom de la fenêtre
+        messageslopefloat = (tkinter.Label(errorslopefloat,
+                                      text="Error on Slope input data!\n"
+                                           " Please check you rate data.\n"
+                                           " Data must be float",
+                                           justify="center",
+                                           font=("Aptos", 12, "bold"), fg='red'))
+        messageslopefloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorslopefloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorslopefloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorslopefloat.mainloop()
+        return
+
+    #Land preparation
     Terraces=printlist[3][0]
     Previous=printlist[4][0]
 
     #Données annuelles
-        #Mineral N ferti
+    #Mineral N ferti
     TypeNfertilist=(printlist[5]+
                     printlist[14]+
                     printlist[23]+
@@ -51,17 +118,72 @@ def dictionnary_complete(countfounction,printlist) :
                     printlist[78]+
                     printlist[89]+
                     printlist[100])
+    print(TypeNfertilist)
 
-    RateNferti=(printlist[6]+
-                 printlist[15]+
-                 printlist[24]+
-                 printlist[35]+
-                 printlist[46]+
-                 printlist[57]+
-                 printlist[68]+
-                 printlist[79]+
-                 printlist[90]+
-                 printlist[101])
+    Ratequantityferti = (printlist[6] +
+                         printlist[15] +
+                         printlist[24] +
+                         printlist[35] +
+                         printlist[46] +
+                         printlist[57] +
+                         printlist[68] +
+                         printlist[79] +
+                         printlist[90] +
+                         printlist[101])
+    # Conversion des quantités fertilisant en quantité ferti
+    RateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(Ratequantityferti, TypeNfertilist):
+            if typ == "*None":
+                RateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                RateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                RateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                RateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                RateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                RateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
 
 
     PlacementNferti=(printlist[7][0],
@@ -75,28 +197,71 @@ def dictionnary_complete(countfounction,printlist) :
                      printlist[91][0],
                      printlist[102][0])
 
-    #Organic fertilizer
-    Quantityorgaferti=(printlist[8][0],
-                       printlist[17][0],
-                       printlist[26][0],
-                       printlist[37][0],
-                       printlist[48][0],
-                       printlist[59][0],
-                       printlist[70][0],
-                       printlist[81][0],
-                       printlist[92][0],
-                       printlist[103][0])
+    # Organic fertilizer
 
-    Typeorgaferti=(printlist[9][0],
-                   printlist[18][0],
-                   printlist[27][0],
-                   printlist[38][0],
-                   printlist[49][0],
-                   printlist[60][0],
-                   printlist[71][0],
-                   printlist[82][0],
-                   printlist[93][0],
-                   printlist[104][0])
+    Typeorgaferti = (printlist[9][0],
+                     printlist[18][0],
+                     printlist[27][0],
+                     printlist[38][0],
+                     printlist[49][0],
+                     printlist[60][0],
+                     printlist[71][0],
+                     printlist[82][0],
+                     printlist[93][0],
+                     printlist[104][0])
+
+    Quantityorgafertistr = (printlist[8][0],
+                            printlist[17][0],
+                            printlist[26][0],
+                            printlist[37][0],
+                            printlist[48][0],
+                            printlist[59][0],
+                            printlist[70][0],
+                            printlist[81][0],
+                            printlist[92][0],
+                            printlist[103][0])
+    # Conversions en float
+    ##Chaque élément de la liste est un float + conversion
+    Quantityorgaferti = []
+    conversion=0
+    try:
+        for quantity,typ in zip(Quantityorgafertistr, Typeorgaferti):
+            if typ == "*None":
+                Quantityorgaferti.append(float(quantity))
+            if typ =="EFB":
+                conversion=float(Quantityorgafertistr)
+                Quantityorgaferti.append(round((3.24*conversion),2))
+            if typ=="Compost":
+                Quantityorgaferti.append(round((8.405 * conversion), 2))
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorquantityorgafertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorquantityorgafertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorquantityorgafertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagequantityorgafertifloat = (tkinter.Label(errorquantityorgafertifloat,
+                                                       text="Error on quantity Organic fertilizer input data!\n "
+                                                            "Please check you rate data. Data are not float",
+                                                       justify="center",
+                                                       font=("Aptos", 12, "bold"), fg='red'))
+        messagequantityorgafertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorquantityorgafertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorquantityorgafertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorquantityorgafertifloat.mainloop()
+        return
+
 
     Placementorgaferti = (printlist[10][0],
                      printlist[19][0],
@@ -132,17 +297,54 @@ def dictionnary_complete(countfounction,printlist) :
                           printlist[96][0],
                           printlist[107][0])
 
-    #Atmospheric deposition
-    atmosphdepostion=(printlist[13][0],
-                      printlist[22][0],
-                      printlist[32][0],
-                      printlist[43][0],
-                      printlist[54][0],
-                      printlist[65][0],
-                      printlist[76][0],
-                      printlist[87][0],
-                      printlist[98][0],
-                      printlist[109][0])
+    # Atmospheric deposition
+    atmosphdepostionstr = (printlist[13][0],
+                           printlist[22][0],
+                           printlist[32][0],
+                           printlist[43][0],
+                           printlist[54][0],
+                           printlist[65][0],
+                           printlist[76][0],
+                           printlist[87][0],
+                           printlist[98][0],
+                           printlist[109][0])
+    # Conversions en float
+    ##Chaque élément de la liste est un float + conversion
+    count = 0
+    atmosphdepostion = []
+    try:
+        for i in atmosphdepostionstr:
+            count=count+1
+            atmosphdepostion.append(float(i))
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        erroratmodepofloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        erroratmodepofloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        erroratmodepofloat.geometry("800x100")
+        # Nom de la fenêtre
+        messageatmodepofloat = (tkinter.Label(erroratmodepofloat,
+                                              text=f"Error on {count}th year of quantity atmospheric deposition input data!\n "
+                                                   f"Please check you rate data.\n"
+                                                   f" Data must be float",
+                                              justify="center",
+                                              font=("Aptos", 12, "bold"), fg='red'))
+        messageatmodepofloat.place(relx=0.5, rely=0.3, anchor="center")
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            erroratmodepofloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(erroratmodepofloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        erroratmodepofloat.mainloop()
+        return
 
     #Dictionnaire pruned
     Pruned=("",
@@ -156,62 +358,62 @@ def dictionnary_complete(countfounction,printlist) :
             printlist[97][0],
             printlist[108][0])
 
-    # Dictionnaire pruned
-    Yield = ("",
-              "",
-              printlist[33][0],
-              printlist[44][0],
-              printlist[55][0],
-              printlist[66][0],
-              printlist[77][0],
-              printlist[88][0],
-              printlist[99][0],
-              printlist[110][0])
-
-    ######################### Vérification des données d'entrée
-    # Création liste float pour liste data
-    RateNferti_float = []
-    Quantityorgaferti_float=[]
-    atmosphdepostion_float=[]
-    Yield_float=[]
-
-    # Vérification pour chaque éléments chiffres entrées
-    #OrganicC
-    ##Chaque élément de cette liste est un float + conversion
+    # Dictionnaire Yield
+    Yieldstr = ("",
+                "",
+                printlist[33][0],
+                printlist[44][0],
+                printlist[55][0],
+                printlist[66][0],
+                printlist[77][0],
+                printlist[88][0],
+                printlist[99][0],
+                printlist[110][0])
+    # Conversions en float
+    ##Chaque élément de la liste est un float +conversion
+    count = 2
+    Yield = []
     try:
-        OrganicC_float=float(OrganicC)
+
+        for i in Yieldstr[2:]:
+            Yield.append(float(0))
+            count = count + 1
     except ValueError:
-        # Création bouton erreur type donnée incorrect
+        # Création bouton erreur
         # Création de la fenêtre
-        errororgaCfloat = Toplevel()
+        errorYieldfloat = Toplevel()
         # Nom de l'onglet de fenêtre
-        errororgaCfloat.title("Error message")
+        errorYieldfloat.title("Error message")
         # Définition de la taille de la fenêtre
-        errororgaCfloat.geometry("400x100")
+        errorYieldfloat.geometry("400x100")
         # Nom de la fenêtre
-        messageorgaCfloat = (tkinter.Label(errororgaCfloat,
-                                           text="Error on Organic Carbon input data!\n"
-                                                "Please check you rate data.\n"
-                                                "Data must be float",
+        messageYieldfloat = (tkinter.Label(errorYieldfloat,
+                                           text=f"Error {count}th year on Yield input data!\n "
+                                                f"Please check you data. \n"
+                                                f"Data must be float",
                                            justify="center",
                                            font=("Aptos", 12, "bold"), fg='red'))
-        messageorgaCfloat.place(relx=0.5, rely=0.3, anchor="center")
+        messageYieldfloat.place(relx=0.5, rely=0.3, anchor="center")
 
         # Réouverture du dialogue
         def reopen_filedialog():
-            errororgaCfloat.destroy()
+            errorYieldfloat.destroy()
             # Evite erreurs lors coupure programme
             return
 
         # Bouton retour
-        return_button = tkinter.Button(errororgaCfloat, text="Return",
+        return_button = tkinter.Button(errorYieldfloat, text="Return",
                                        bg="lightblue", command=reopen_filedialog)
         return_button.place(relx=0.5, rely=0.8, anchor="center")
-        errororgaCfloat.mainloop()
+        errorYieldfloat.mainloop()
         return
 
+    ######################### Vérification des données d'entrée
+
+    # Vérification pour chaque éléments chiffres entrées
+    #OrganicC
     ##OrganicC toujours <10%
-    if OrganicC_float <0 :
+    if OrganicC <0 :
         # Création bouton erreur
         # Création de la fenêtre
         errororgaC = Toplevel()
@@ -241,41 +443,8 @@ def dictionnary_complete(countfounction,printlist) :
         return
 
     # Slope
-    ##Chaque élément de cette liste est un float + conversion
-    try:
-        Slope_float=float(Slope)
-    except ValueError:
-        # Création bouton erreur
-        # Création de la fenêtre
-        errorslopefloat = Toplevel()
-        # Nom de l'onglet de fenêtre
-        errorslopefloat.title("Error message")
-        # Définition de la taille de la fenêtre
-        errorslopefloat.geometry("400x100")
-        # Nom de la fenêtre
-        messageslopefloat = (tkinter.Label(errorslopefloat,
-                                      text="Error on Slope input data!\n"
-                                           " Please check you rate data.\n"
-                                           " Data must be float",
-                                           justify="center",
-                                           font=("Aptos", 12, "bold"), fg='red'))
-        messageslopefloat.place(relx=0.5, rely=0.3, anchor="center")
-
-        # Réouverture du dialogue
-        def reopen_filedialog():
-            errorslopefloat.destroy()
-            # Evite erreurs lors coupure programme
-            return
-
-        # Bouton retour
-        return_button = tkinter.Button(errorslopefloat, text="Return",
-                                       bg="lightblue", command=reopen_filedialog)
-        return_button.place(relx=0.5, rely=0.8, anchor="center")
-        errorslopefloat.mainloop()
-        return
-
     ##Slope toujours >0 et <30%
-    if Slope_float <0 :
+    if Slope <0 :
         # Création bouton erreur
         # Création de la fenêtre
         errorslope = Toplevel()
@@ -304,44 +473,8 @@ def dictionnary_complete(countfounction,printlist) :
         errorslope.mainloop()
         return
 
-
-    #Rate N ferti
-    ##Chaque élément de la liste est un float + conversion
-    try:
-        for i in RateNferti:
-            RateNferti_float.append(float(i))
-    except ValueError:
-        # Création bouton erreur
-        # Création de la fenêtre
-        errorrateNfertifloat = Toplevel()
-        # Nom de l'onglet de fenêtre
-        errorrateNfertifloat.title("Error message")
-        # Définition de la taille de la fenêtre
-        errorrateNfertifloat.geometry("400x100")
-        # Nom de la fenêtre
-        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
-                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
-                                                     " Please check you rate data.\n"
-                                                     " Data must be float",
-                                                justify="center",
-                                                font=("Aptos", 12, "bold"), fg='red'))
-        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
-
-        # Réouverture du dialogue
-        def reopen_filedialog():
-            errorrateNfertifloat.destroy()
-            # Evite erreurs lors coupure programme
-            return
-
-        # Bouton retour
-        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
-                                       bg="lightblue", command=reopen_filedialog)
-        return_button.place(relx=0.5, rely=0.8, anchor="center")
-        errorrateNfertifloat.mainloop()
-        return
-
         ##RateNferti toujours >0 voir pour valeur max
-    for i in RateNferti_float:
+    for i in RateNferti:
         if i <0:
             # Création bouton erreur
             # Création de la fenêtre
@@ -372,41 +505,8 @@ def dictionnary_complete(countfounction,printlist) :
             return
 
     # Quantityorgaferti
-    ##Chaque élément de la liste est un float + conversion
-    try:
-        for i in Quantityorgaferti:
-            Quantityorgaferti_float.append(float(i))
-    except ValueError:
-        # Création bouton erreur
-        # Création de la fenêtre
-        errorquantityorgafertifloat = Toplevel()
-        # Nom de l'onglet de fenêtre
-        errorquantityorgafertifloat.title("Error message")
-        # Définition de la taille de la fenêtre
-        errorquantityorgafertifloat.geometry("400x100")
-        # Nom de la fenêtre
-        messagequantityorgafertifloat = (tkinter.Label(errorquantityorgafertifloat,
-                                                       text="Error on quantity Organic fertilizer input data!\n "
-                                                            "Please check you rate data. Data are not float",
-                                                       justify="center",
-                                                       font=("Aptos", 12, "bold"), fg='red'))
-        messagequantityorgafertifloat.place(relx=0.5, rely=0.3, anchor="center")
-
-        # Réouverture du dialogue
-        def reopen_filedialog():
-            errorquantityorgafertifloat.destroy()
-            # Evite erreurs lors coupure programme
-            return
-
-        # Bouton retour
-        return_button = tkinter.Button(errorquantityorgafertifloat, text="Return",
-                                       bg="lightblue", command=reopen_filedialog)
-        return_button.place(relx=0.5, rely=0.8, anchor="center")
-        errorquantityorgafertifloat.mainloop()
-        return
-
     ##Quantity organic ferti toujours >0 voir pour valeur max
-    for i in Quantityorgaferti_float:
+    for i in Quantityorgaferti:
             if i < 0:
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -437,45 +537,9 @@ def dictionnary_complete(countfounction,printlist) :
                 return
 
     # Atmospheric deposition
-    ##Chaque élément de la liste est un float + conversion
+    ##Quantity atmospheric deposition toujours >0 voir pour valeur max
     count=0
-    try:
-        for i in atmosphdepostion:
-            count=count+1
-            atmosphdepostion_float.append(float(i))
-    except ValueError:
-        # Création bouton erreur
-        # Création de la fenêtre
-        erroratmodepofloat = Toplevel()
-        # Nom de l'onglet de fenêtre
-        erroratmodepofloat .title("Error message")
-        # Définition de la taille de la fenêtre
-        erroratmodepofloat .geometry("400x100")
-        # Nom de la fenêtre
-        messageatmodepofloat  = (tkinter.Label(erroratmodepofloat ,
-                                               text=f"Error on {count}th year of quantity atmospheric deposition input data!\n "
-                                                    f"Please check you rate data.\n"
-                                                    f" Data must be float",
-                                               justify="center",
-                                               font=("Aptos", 12, "bold"), fg='red'))
-        messageatmodepofloat.place(relx=0.5, rely=0.3, anchor="center")
-
-        # Réouverture du dialogue
-        def reopen_filedialog():
-            erroratmodepofloat.destroy()
-            # Evite erreurs lors coupure programme
-            return
-
-        # Bouton retour
-        return_button = tkinter.Button(erroratmodepofloat, text="Return",
-                                       bg="lightblue", command=reopen_filedialog)
-        return_button.place(relx=0.5, rely=0.8, anchor="center")
-        erroratmodepofloat.mainloop()
-        return
-
-    ##Quantity organic ferti toujours >0 voir pour valeur max
-    count=0
-    for i in atmosphdepostion_float:
+    for i in atmosphdepostion:
         count=count+1
         if i < 0:
             # Création bouton erreur
@@ -484,13 +548,13 @@ def dictionnary_complete(countfounction,printlist) :
             # Nom de l'onglet de fenêtre
             erroratmodepo.title("Error message")
             # Définition de la taille de la fenêtre
-            erroratmodepo.geometry("400x100")
+            erroratmodepo.geometry("800x100")
             # Nom de la fenêtre
             messageatmodepo = (tkinter.Label(erroratmodepo,
                                              text=f"Error on {count}th year of quantity atmospheric deposition input data!\n"
                                                        f" Your data must be ≥ 0",
                                              justify="center",
-                                             font=("Aptos", 12, "bold"), fg='red'))
+                                             font=("Aptos", 11, "bold"), fg='red'))
             messageatmodepo.place(relx=0.5, rely=0.3, anchor="center")
 
             # Réouverture du dialogue
@@ -507,45 +571,9 @@ def dictionnary_complete(countfounction,printlist) :
             return
 
     #Yield
-    ##Chaque élément de la liste est un float +conversion
-    count=2
-    try:
-        for i in Yield[2:]:
-            count=count+1
-            Yield_float.append(float(i))
-    except ValueError:
-        # Création bouton erreur
-        # Création de la fenêtre
-        errorYieldfloat = Toplevel()
-        # Nom de l'onglet de fenêtre
-        errorYieldfloat.title("Error message")
-        # Définition de la taille de la fenêtre
-        errorYieldfloat.geometry("400x100")
-        # Nom de la fenêtre
-        messageYieldfloat = (tkinter.Label(errorYieldfloat,
-                                           text=f"Error {count}th year on Yield input data!\n "
-                                              f"Please check you data. \n"
-                                              f"Data must be float",
-                                           justify="center",
-                                           font=("Aptos", 12, "bold"), fg='red'))
-        messageYieldfloat.place(relx=0.5, rely=0.3, anchor="center")
-
-        # Réouverture du dialogue
-        def reopen_filedialog():
-            errorYieldfloat.destroy()
-            # Evite erreurs lors coupure programme
-            return
-
-        # Bouton retour
-        return_button = tkinter.Button(errorYieldfloat, text="Return",
-                                       bg="lightblue", command=reopen_filedialog)
-        return_button.place(relx=0.5, rely=0.8, anchor="center")
-        errorYieldfloat.mainloop()
-        return
-
     ##Quantity Yield toujours >0 et <40 voir pour valeur max
     count=2
-    for i in Yield_float:
+    for i in Yield:
         count=count+1
         if i < 0 or i >40:
             # Création bouton erreur
@@ -576,9 +604,6 @@ def dictionnary_complete(countfounction,printlist) :
             errorYield.mainloop()
             return
 
-    #Suppresion variable vérification données d'entrée
-    del RateNferti_float,Quantityorgaferti_float,atmosphdepostion_float,Yield_float
-    del Slope_float,OrganicC_float
 
     #Vérification lien entre les entrées et la correspondances
     #Général
@@ -676,7 +701,7 @@ def dictionnary_complete(countfounction,printlist) :
     ##Lien entre Type et rate
     for i in range(0,len(TypeNfertilist)):
         if TypeNfertilist[i]!="*None":
-            if RateNferti[i]=="0":
+            if RateNferti[i]==0:
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLink = Toplevel()
@@ -708,7 +733,7 @@ def dictionnary_complete(countfounction,printlist) :
                 return
 
     for i in range(0,len(RateNferti)):
-        if RateNferti[i]!="0":
+        if RateNferti[i]!=0:
             if TypeNfertilist[i] == "*None":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -743,7 +768,7 @@ def dictionnary_complete(countfounction,printlist) :
     ##Lien entre placement et type/Rate
     ###Year 1
     for i in range(0,12):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[0]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -777,7 +802,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 2
     for i in range(12,24):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[1]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -811,7 +836,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 3
     for i in range(24,36):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[2]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -845,7 +870,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 4
     for i in range(36,48):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[3]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -879,7 +904,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 5
     for i in range(48,60):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[4]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -913,7 +938,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 6
     for i in range(60,72):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[5]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -947,7 +972,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 7
     for i in range(72,84):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[6]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -981,7 +1006,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 8
     for i in range(84,96):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[7]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -1015,7 +1040,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 9
     for i in range(96,108):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[8]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -1049,7 +1074,7 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Year 10
     for i in range(108,len(TypeNfertilist)):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!='0':
+        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
             if PlacementNferti[9]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
@@ -1085,7 +1110,7 @@ def dictionnary_complete(countfounction,printlist) :
     ##Lien entre Quantity Type et placement
         for i in range(0, len(Typeorgaferti)):
             if Typeorgaferti[i] != "*Choice*":
-                if Quantityorgaferti[i] == "0":
+                if Quantityorgaferti[i] == 0:
                     # Création bouton erreur
                     # Création de la fenêtre
                     errororgfertityperateLink1 = Toplevel()
@@ -1147,7 +1172,7 @@ def dictionnary_complete(countfounction,printlist) :
 
         for i in range(0, len(Placementorgaferti)):
             if Placementorgaferti[i] != "*Choice*":
-                if Quantityorgaferti[i] == "0":
+                if Quantityorgaferti[i] == 0:
                     # Création bouton erreur
                     # Création de la fenêtre
                     errororgfertityperateLink3 = Toplevel()
@@ -1208,7 +1233,7 @@ def dictionnary_complete(countfounction,printlist) :
                     return
 
         for i in range(0, len(Quantityorgaferti)):
-            if Quantityorgaferti[i] != "0":
+            if Quantityorgaferti[i] != 0:
                 if Typeorgaferti[i] == "*Choice*":
                     # Création bouton erreur
                     # Création de la fenêtre
@@ -1268,9 +1293,13 @@ def dictionnary_complete(countfounction,printlist) :
                     return_button.place(relx=0.5, rely=0.8, anchor="center")
                     errororgfertityperateLink6.mainloop()
                     return
+        print(RateNferti)
 
     ###################Création dictionnary final avec les informations parcelles
-    complete_dictionnary={'Field information':
+    if dictionnary_complete in globals():
+        del complete_dictionnary
+    else:
+        complete_dictionnary={'Field information':
                               {'Soil caracteristic':
                                    {'Organic Carbon':OrganicC,
                                     'Texture':Texture,
@@ -1280,14 +1309,14 @@ def dictionnary_complete(countfounction,printlist) :
                                     'Previous':Previous}}}
 
     # Création du dictionnaire temporaire
-    essai = {}
+    temporarydict= {}
 
     # Ajout de l'ensemble des informations dans dictionnaire year
     #idx car pas forcément 10 de données donc suppression de tout ce qui est supérieur
     for idx, (year, months) in enumerate(dictionnary.items()):
         # Ajouter les données générales pour chaque année
 
-        essai[year] = {
+        temporarydict[year] = {
             'Month': months,  # Ajout des mois pour chaque année
             'General data': {
                 'Mineral nitrogen fertilizer': PlacementNferti[idx] if idx < len(PlacementNferti) else None,
@@ -1306,7 +1335,7 @@ def dictionnary_complete(countfounction,printlist) :
 
         # Ajout des informations mineral N ferti pour chacun des mois (rate et type)
         for idxidx, (month, data) in enumerate(months.items()):
-            essai[year]['Month'][month] = {
+            temporarydict[year]['Month'][month] = {
                 'Weather': data,  # Ajout des données météo
                 'Mineral nitrogen fertilizer': {
                     'Type': TypeNfertilist[idxidx] if idxidx < len(TypeNfertilist) else None,
@@ -1314,7 +1343,7 @@ def dictionnary_complete(countfounction,printlist) :
                 }
             }
     #Rajout spécifique des données pruned frond à partir de la troisième année
-    for idx, (year, year_data) in enumerate(essai.items()):
+    for idx, (year, year_data) in enumerate(temporarydict.items()):
         if idx > 1:  # Tu veux traiter les années à partir de l'indice 2
             # On ajoute des données supplémentaires sous 'General data'
             year_data['General data']['Pruned frond'] = Pruned[idx] if idx < len(Pruned) else None
@@ -1323,7 +1352,10 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Création du complete_dictionnary par combinaison des deux dictionnaires Year et complete_dictionnary
     for general,typetype in complete_dictionnary.items():
-        complete_dictionnary[general]['Year']=essai
+        complete_dictionnary[general]['Year']=temporarydict
+    del temporarydict
+    print(complete_dictionnary)
+
 
 #Fonction lecture fichier
 def openexample():
@@ -1901,7 +1933,7 @@ def Managementpracticesinterface(functioncount,file_path):
             print("Error! Please check you rate data. Some data are not float")
 
         #Calcule taux N en fonction type ferti
-        for i in range(12):  # Pour janvier (0) et février (1)
+        for i in range(12):
             if y1typeferti[i] == "*None" and y1rateferti_float[i]==0:
                 resultlist.append(0)
             elif y1typeferti[i] == "Ammo Chlo" and y1rateferti_float[i]>0:
@@ -3212,8 +3244,6 @@ def Managementpracticesinterface(functioncount,file_path):
         listferti = printlist()
         y3_typefertiorga = listferti[27]
         y3_quantityfertiorga = listferti[26]
-        print (y3_typefertiorga)
-        print (y3_quantityfertiorga)
         # Création d'une liste vide permettant conversion liste en float
         y3_quantityfertiorga_float = []
         # Création liste pour valeurs
@@ -7676,8 +7706,6 @@ def Managementpracticesinterface(functioncount,file_path):
     button.pack(pady=10,padx=50)
     return printlist()
 
-
-    infopracticeroot.mainloop()
 
 
 #Fonction pour sauvegarde des données

@@ -98,7 +98,7 @@ dictionnary = {'2008': {'January': {'Rainfall': 12.17, 'Rain frequency': 9},
 # 0 Soil caracteristic: orga C
 printlist = (['1.7'],
              # 1 Soil caracteristic: Texture
-             ['Silt loam'],
+             ['Sandy clay loam'],
              # 2 Soil caracteristic: Slope
              ['2'],
              # 3 Land preparation : Terraces
@@ -108,10 +108,10 @@ printlist = (['1.7'],
              # Year:Month data
              ###################################Y1##########################################
              # 5 Y1:Miner Nferti: Type
-             ['*None', 'Ammo Sulf', '*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', 'Urea',
-              '*None', '*None'],
+             ['Urea', 'Urea', 'Urea', 'Urea', 'Urea', 'Urea', 'Urea', 'Urea', 'Urea', 'Urea',
+              'Urea', 'Urea'],
              # 6 Y1:Miner Nferti: Rate
-             ['0', '44', '0', '0', '44', '0', '0', '0', '0', '14', '0', '0'],
+             ['10', '20', '30', '40', '50', '60', '70', '80', '90', '1000', '2000', '100'],
              # 7 Y1: :Miner Nferti: Placement
              ['In the circle, not buried'],
              # 8 Y1:Orga ferti: Quantity
@@ -129,9 +129,9 @@ printlist = (['1.7'],
              ######################################################Y2########################################################
              # 14 Y2:Miner Nferti: Type
              ['*None', 'Ammo Sulf', '*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', 'Urea',
-              '*None', '*None'],
+              '*None', 'Urea'],
              # 15 Y2: Miner Nferti: Rate
-             ['0', '18', '0', '0', '200', '0', '0', '0', '0', '10', '0', '0'],
+             ['0', '18', '0', '0', '200', '0', '0', '0', '0', '10', '0', '200'],
              # 16 Y2: :Miner Nferti: Placement
              ['In the circle, not buried'],
              # 17 Y2:Orga ferti: Quantity
@@ -149,11 +149,11 @@ printlist = (['1.7'],
              ########################################################Y3#############################################
              # 23 Y3: Miner Nferti: Type
              ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+              'Urea'],
              # 24 Y3: Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '300'],
              # 25 Y3: Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, not buried'],
              # 26 Y3:Orga ferti: Quantity
              ['0'],
              # 27 Y3:Orga ferti: Type
@@ -173,11 +173,11 @@ printlist = (['1.7'],
              ######################################################Y4######################################################
              # 34 Y4:Miner Nferti: Type
              ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+              'Urea'],
              # 35 Y4:Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '400'],
              # 36 Y4:Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, not buried'],
              # 37 Y4:Orga ferti: Quantity
              ['0'],
              # 38 Y4 :Orga ferti: Type
@@ -197,11 +197,11 @@ printlist = (['1.7'],
              ########################################################Y5###################################################
              # 45 Y5 :Miner Nferti: Type
              ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+              'Urea'],
              # 46 Y5:Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '500'],
              # 47 Y5 :Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, not buried'],
              # 48 Y5:Orga ferti: Quantity
              ['0'],
              # 49 Y5:Orga ferti: Type
@@ -221,11 +221,11 @@ printlist = (['1.7'],
              ##############################################################Y6###############################################
              # 56 Y6:Miner Nferti: Type
              ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+              'Urea'],
              # 57 Y6:Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '600'],
              # 58 Y6 :Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, not buried'],
              # 59 Y6:Orga ferti: Quantity
              ['0'],
              # 60 Y6:Orga ferti: Type
@@ -245,9 +245,9 @@ printlist = (['1.7'],
              ############################################Y7#####################################################################
              # 67 Y7::Miner Nferti: Type
              ['*None', '*None', '*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', 'Urea', '*None',
-              '*None'],
+              'Urea'],
              # 68 Y7::Miner Nferti: Rate
-             ['0', '0', '0', '0', '180', '0', '0', '0', '0', '26', '0', '0'],
+             ['0', '0', '0', '0', '180', '0', '0', '0', '0', '26', '0', '700'],
              # 69 Y7: :Miner Nferti: Placement
              ['In the circle + windrow'],
              # 70 Y7::Orga ferti: Quantity
@@ -269,11 +269,11 @@ printlist = (['1.7'],
              ###############################################Y8###############################################################
              # 78 Y8:Miner Nferti: Type
              ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+              'Urea'],
              # 79 Y8:Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '800'],
              # 80 Y8 :Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, buried'],
              # 81 Y8:Orga ferti: Quantity
              ['0'],
              # 82 Y8:Orga ferti: Type
@@ -293,11 +293,11 @@ printlist = (['1.7'],
              #######################################################Y9#####################################################
              # 89 Y9:Miner Nferti: Type
              ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+              'Urea'],
              # 90 Y9:Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '900'],
              # 91 Y9 :Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, not buried'],
              # 92 Y9:Orga ferti: Quantity
              ['0'],
              # 93 Y9:Orga ferti: Type
@@ -316,12 +316,12 @@ printlist = (['1.7'],
              ['0'],
              ################################################################Y10#############################################################
              # 100 Y10:Miner Nferti: Type
-             ['*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None', '*None',
-              '*None'],
+             ['*None', '*None', 'Ammo Sulf', '*None', '*None', '*None', '*None', '*None', '*None', '*None', 'Ammo Sulf',
+              'Urea'],
              # 101 Y10:Miner Nferti: Rate
-             ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+             ['0', '0', '53', '0', '0', '0', '0', '0', '0', '0', '53', '1000'],
              # 102 Y10:Miner Nferti: Placement
-             ['*Choice*'],
+             ['In the circle, not buried'],
              # 103 Y10:Orga ferti: Quantity
              ['0'],
              # 104 Y10:Orga ferti: Type
@@ -337,7 +337,7 @@ printlist = (['1.7'],
              # 109 Y10: Atmospheric deposition
              ['18'],
              # 110 Y10: Yield
-             ['0']
+             ['42']
              )
 
 
@@ -347,19 +347,17 @@ def dictionnary_complete(countfounction, printlist):
     # Données générales parcelles
 
     # Soil caracteristic
-    OrganicC = printlist[0][0]
-
+    OrganicC = float(printlist[0][0])
+    Texture = printlist[1][0]
     ##Modification information données Textures pour utilisation logique flou Coarse, Medium et Fine
     Texture = printlist[1][0]
-    print(Texture)
-    if Texture in ["Sand", "Loamy sand","Sandy loam","Loam","Silt loam","Silt"]:
-        Texture="Coarse"
-    elif Texture in["Clay loam","Sandy clay loam","Silty clay loam","Silty clay"]:
-        Texture="Medium"
-    elif Texture in ["Clay","Sandy clay"]:
-        Texture="Fine"
-
-    Slope = printlist[2][0]
+    if Texture in ["Sand", "Loamy sand", "Sandy loam", "Loam", "Silt loam", "Silt"]:
+        Texture = "Coarse"
+    elif Texture in ["Clay loam", "Sandy clay loam", "Silty clay loam", "Silty clay"]:
+        Texture = "Medium"
+    elif Texture in ["Clay", "Sandy clay"]:
+        Texture = "Fine"
+    Slope = float(printlist[2][0])
     # Land preparation
     Terraces = printlist[3][0]
     Previous = printlist[4][0]
@@ -377,16 +375,38 @@ def dictionnary_complete(countfounction, printlist):
                       printlist[89] +
                       printlist[100])
 
-    RateNferti = (printlist[6] +
-                  printlist[15] +
-                  printlist[24] +
-                  printlist[35] +
-                  printlist[46] +
-                  printlist[57] +
-                  printlist[68] +
-                  printlist[79] +
-                  printlist[90] +
-                  printlist[101])
+    Ratequantityferti = (printlist[6] +
+                         printlist[15] +
+                         printlist[24] +
+                         printlist[35] +
+                         printlist[46] +
+                         printlist[57] +
+                         printlist[68] +
+                         printlist[79] +
+                         printlist[90] +
+                         printlist[101])
+
+    #Conversion des quantités fertilisant en quantité ferti
+    RateNferti=[]
+    for rate, type in zip(Ratequantityferti, TypeNfertilist):
+        if type=="*None":
+            RateNferti.append(float(rate))
+        if type=="Ammo Sulf":
+            conversion= float(rate)
+            RateNferti.append(round((conversion*0.21),2))
+        if type == "Urea":
+            conversion = float(rate)
+            RateNferti.append(round((conversion * 0.46), 2))
+        if type == "Ammo Chlo":
+            conversion = float(rate)
+            RateNferti.append(round((conversion * 0.25), 2))
+        if type == "Ammo Nit":
+            conversion = float(rate)
+            RateNferti.append(round((conversion * 0.34), 2))
+        if type == "Sod Nit":
+            conversion = float(rate)
+            RateNferti.append(round((conversion * 0.16), 2))
+    print(RateNferti)
 
     PlacementNferti = (printlist[7][0],
                        printlist[16][0],
@@ -400,7 +420,7 @@ def dictionnary_complete(countfounction, printlist):
                        printlist[102][0])
 
     # Organic fertilizer
-    Quantityorgaferti = (printlist[8][0],
+    Quantityorgafertistr = (printlist[8][0],
                          printlist[17][0],
                          printlist[26][0],
                          printlist[37][0],
@@ -410,6 +430,10 @@ def dictionnary_complete(countfounction, printlist):
                          printlist[81][0],
                          printlist[92][0],
                          printlist[103][0])
+    #Conversions en float
+    Quantityorgaferti=[]
+    for i in Quantityorgafertistr:
+        Quantityorgaferti.append(float(i))
 
     Typeorgaferti = (printlist[9][0],
                      printlist[18][0],
@@ -457,7 +481,7 @@ def dictionnary_complete(countfounction, printlist):
                           printlist[107][0])
 
     # Atmospheric deposition
-    atmosphdepostion = (printlist[13][0],
+    atmosphdepostionstr = (printlist[13][0],
                         printlist[22][0],
                         printlist[32][0],
                         printlist[43][0],
@@ -467,6 +491,10 @@ def dictionnary_complete(countfounction, printlist):
                         printlist[87][0],
                         printlist[98][0],
                         printlist[109][0])
+    # Conversions en float
+    atmosphdepostion = []
+    for i in atmosphdepostionstr:
+        atmosphdepostion.append(float(i))
 
     # Dictionnaire pruned
     Pruned = ("",
@@ -481,7 +509,7 @@ def dictionnary_complete(countfounction, printlist):
               printlist[108][0])
 
     # Dictionnaire pruned
-    Yield = ("",
+    Yieldstr = ("",
              "",
              printlist[33][0],
              printlist[44][0],
@@ -491,6 +519,13 @@ def dictionnary_complete(countfounction, printlist):
              printlist[88][0],
              printlist[99][0],
              printlist[110][0])
+    # Conversions en float
+    Yield = []
+    for i in Yieldstr:
+        if i=="":
+            Yield.append(0.0)
+        else:
+            Yield.append(float(0))
 
     ######################### Vérification des données d'entrée
     # Création liste float pour liste data
@@ -614,13 +649,13 @@ def dictionnary_complete(countfounction, printlist):
     ##Lien entre Type et rate
     for i in range(0, len(TypeNfertilist)):
         if TypeNfertilist[i] != "*None":
-            if RateNferti[i] == "0":
+            if RateNferti[i] == 0:
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
                     "Please complete all informations ")
                 return
     for i in range(0, len(RateNferti)):
-        if RateNferti[i] != "0":
+        if RateNferti[i] != 0:
             if TypeNfertilist[i] == "*None":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -629,7 +664,7 @@ def dictionnary_complete(countfounction, printlist):
     ##Lien entre placement et type/Rate
     ###Year 1
     for i in range(0, 12):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[0] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -637,7 +672,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 2
     for i in range(12, 24):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[1] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -645,7 +680,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 3
     for i in range(24, 36):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[2] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -653,7 +688,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 4
     for i in range(36, 48):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[3] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -661,7 +696,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 5
     for i in range(48, 60):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[4] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -669,7 +704,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 6
     for i in range(60, 72):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[5] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -677,7 +712,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 7
     for i in range(72, 84):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[6] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -685,7 +720,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 8
     for i in range(84, 96):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[7] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -693,7 +728,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 9
     for i in range(96, 108):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[8] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -701,7 +736,7 @@ def dictionnary_complete(countfounction, printlist):
                 return
     # Year 10
     for i in range(108, len(TypeNfertilist)):
-        if TypeNfertilist[i] != "*None" or RateNferti[i] != '0':
+        if TypeNfertilist[i] != "*None" or RateNferti[i] != 0:
             if PlacementNferti[9] == "*Choice*":
                 print(
                     "Error! Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer must be consistent.\n"
@@ -712,7 +747,7 @@ def dictionnary_complete(countfounction, printlist):
         ##Lien entre Quantity Type et placement
         for i in range(0, len(Typeorgaferti)):
             if Typeorgaferti[i] != "*Choice*":
-                if Quantityorgaferti[i] == "0":
+                if Quantityorgaferti[i] == 0:
                     print(
                         "Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
                         "Please complete all informations ")
@@ -724,7 +759,7 @@ def dictionnary_complete(countfounction, printlist):
                     return
         for i in range(0, len(Placementorgaferti)):
             if Placementorgaferti[i] != "*Choice*":
-                if Quantityorgaferti[i] == "0":
+                if Quantityorgaferti[i] == 0:
                     print(
                         "Error! Data input between Type, Quantity and Placement on Organic fertilizer must be consistent.\n"
                         "Please complete all informations ")
@@ -745,15 +780,25 @@ def dictionnary_complete(countfounction, printlist):
                                      {'Terraces': Terraces,
                                       'Previous': Previous}}}
 
+
+    print(RateNferti[95])
+    #Rajout élément Mineral nitrogen dans dictionnary
+    for idx,(year, month) in enumerate(dictionnary.items()):
+        for j,k in month.items():
+            dictionnary[year][j]={"Weather":k,
+                                  "essai":RateNferti[idx] if idx < len(RateNferti) else None}
+    print (dictionnary['2009']['January'])
+
+
     # Création du dictionnaire temporaire
-    essai = {}
+    temporarydictionnary = {}
 
     # Ajout de l'ensemble des informations dans dictionnaire year
     # idx car pas forcément 10 de données donc suppression de tout ce qui est supérieur
     for idx, (year, months) in enumerate(dictionnary.items()):
         # Ajouter les données générales pour chaque année
 
-        essai[year] = {
+        temporarydictionnary[year] = {
             'Month': months,  # Ajout des mois pour chaque année
             'General data': {
                 'Mineral nitrogen fertilizer': PlacementNferti[idx] if idx < len(PlacementNferti) else None,
@@ -772,15 +817,18 @@ def dictionnary_complete(countfounction, printlist):
 
         # Ajout des informations mineral N ferti pour chacun des mois (rate et type)
         for idxidx, (month, data) in enumerate(months.items()):
-            essai[year]['Month'][month] = {
+            temporarydictionnary[year]['Month'][month] = {
                 'Weather': data,  # Ajout des données météo
                 'Mineral nitrogen fertilizer': {
                     'Type': TypeNfertilist[idxidx] if idxidx < len(TypeNfertilist) else None,
                     'Rate': RateNferti[idxidx] if idxidx < len(RateNferti) else None
                 }
             }
+    print(temporarydictionnary)
+    print(temporarydictionnary['2015']['Month']['December']['Mineral nitrogen fertilizer'])
+    print(temporarydictionnary['2015']['General data']['Mineral nitrogen fertilizer'])
     # Rajout spécifique des données pruned frond à partir de la troisième année
-    for idx, (year, year_data) in enumerate(essai.items()):
+    for idx, (year, year_data) in enumerate(temporarydictionnary.items()):
         if idx > 1:  # Tu veux traiter les années à partir de l'indice 2
             # On ajoute des données supplémentaires sous 'General data'
             year_data['General data']['Pruned frond'] = Pruned[idx] if idx < len(Pruned) else None
@@ -788,11 +836,12 @@ def dictionnary_complete(countfounction, printlist):
 
     # Création du complete_dictionnary par combinaison des deux dictionnaires Year et complete_dictionnary
     for general, typetype in complete_dictionnary.items():
-        complete_dictionnary[general]['Year'] = essai
+        complete_dictionnary[general]['Year'] = temporarydictionnary
 
     ###########################################Hors import script###################################
     # Afficher le dictionnaire Year pour vérifier la structure
-    print(complete_dictionnary)
+    #print(complete_dictionnary)
+
     # Exemple recherche de l'ensemble des données de Land préparation
     # print(complete_dictionnary)
     # for month, data in complete_dictionnary['2009'].items():
