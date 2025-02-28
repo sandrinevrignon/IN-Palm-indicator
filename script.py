@@ -19,7 +19,7 @@ import csv
 #Récupération de l'ensemble des informations dans dictionnary
 #Création countfonction=0 si pas besoin vérification des data et 1 si rentre dans def verifprintlist
 def dictionnary_complete(countfounction,printlist) :
-
+    global complete_dictionnary
     #Récupération des éléments
     #Données générales parcelles
 
@@ -1074,11 +1074,10 @@ def dictionnary_complete(countfounction,printlist) :
     # Conversions en float
     ##Chaque élément de la liste est un float + conversion
     Quantityorgaferti = []
-    conversion=0
     try:
         for quantity,typ in zip(Quantityorgafertistr, Typeorgaferti):
             if typ == "*None":
-                Quantityorgaferti.append(float(quantity))
+                Quantityorgaferti.append(float(0.0))
             if typ =="EFB":
                 conversion=float(quantity)
                 Quantityorgaferti.append(round((3.24*conversion),2))
@@ -3059,6 +3058,10 @@ def dictionnary_complete(countfounction,printlist) :
         complete_dictionnary[general]['Year']=temporarydict
     del temporarydict
 
+    R_NH3_Mineral1_1()
+
+def R_NH3_Mineral1_1():
+    print(complete_dictionnary)
 
 #Fonction lecture fichier
 def openexample():
@@ -3069,7 +3072,7 @@ def openexample():
 def update(*args):
     # Récupère l'élément sélectionné
     selectedtypeNfertivar= typeNfertivar.get()
-    print(selectedtypeNfertivar)
+
 
 
 # Fonctions qui sera appelée chaque fois qu'une sélection change pour chacun des mois
@@ -9462,7 +9465,6 @@ def infodicosave(dictionnary, town, country) :
     table.heading("Rainfall",text="Rainfall(in mm)")
     table.heading("Frequency",text="Rain frequency (number of rainy days)")
     #Insertion des valeurs
-    print(dictionnary)
     for (years, months) in dictionnary.items():
         for monthdata, weather in months.items():
             for info,resultweather in weather.items():
