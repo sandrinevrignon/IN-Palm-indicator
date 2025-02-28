@@ -108,50 +108,900 @@ def dictionnary_complete(countfounction,printlist) :
 
     #Données annuelles
     #Mineral N ferti
-    TypeNfertilist=(printlist[5]+
-                    printlist[14]+
-                    printlist[23]+
-                    printlist[34]+
-                    printlist[45]+
-                    printlist[56]+
-                    printlist[67]+
-                    printlist[78]+
-                    printlist[89]+
-                    printlist[100])
-    print(TypeNfertilist)
+    #####TypeNfertilist
+    #Janvier
+    JanTypeNfertilist=[printlist[5][0],
+                       printlist[14][0],
+                       printlist[23][0],
+                       printlist[34][0],
+                       printlist[45][0],
+                       printlist[56][0],
+                       printlist[67][0],
+                       printlist[78][0],
+                       printlist[89][0],
+                       printlist[100][0]]
 
-    Ratequantityferti = (printlist[6] +
-                         printlist[15] +
-                         printlist[24] +
-                         printlist[35] +
-                         printlist[46] +
-                         printlist[57] +
-                         printlist[68] +
-                         printlist[79] +
-                         printlist[90] +
-                         printlist[101])
+    #Février
+    FebTypeNfertilist = [printlist[5][1],
+                         printlist[14][1],
+                         printlist[23][1],
+                         printlist[34][1],
+                         printlist[45][1],
+                         printlist[56][1],
+                         printlist[67][1],
+                         printlist[78][1],
+                         printlist[89][1],
+                         printlist[100][1]]
+
+    #Mars
+    MarTypeNfertilist = [printlist[5][2],
+                         printlist[14][2],
+                         printlist[23][2],
+                         printlist[34][2],
+                         printlist[45][2],
+                         printlist[56][2],
+                         printlist[67][2],
+                         printlist[78][2],
+                         printlist[89][2],
+                         printlist[100][2]]
+
+    # Avril
+    AprTypeNfertilist = [printlist[5][3],
+                         printlist[14][3],
+                         printlist[23][3],
+                         printlist[34][3],
+                         printlist[45][3],
+                         printlist[56][3],
+                         printlist[67][3],
+                         printlist[78][3],
+                         printlist[89][3],
+                         printlist[100][3]]
+
+    # Mai
+    MayTypeNfertilist = [printlist[5][4],
+                         printlist[14][4],
+                         printlist[23][4],
+                         printlist[34][4],
+                         printlist[45][4],
+                         printlist[56][4],
+                         printlist[67][4],
+                         printlist[78][4],
+                         printlist[89][4],
+                         printlist[100][4]]
+
+    # Juin
+    JunTypeNfertilist = [printlist[5][5],
+                         printlist[14][5],
+                         printlist[23][5],
+                         printlist[34][5],
+                         printlist[45][5],
+                         printlist[56][5],
+                         printlist[67][5],
+                         printlist[78][5],
+                         printlist[89][5],
+                         printlist[100][5]]
+
+    # Juillet
+    JulTypeNfertilist = [printlist[5][6],
+                         printlist[14][6],
+                         printlist[23][6],
+                         printlist[34][6],
+                         printlist[45][6],
+                         printlist[56][6],
+                         printlist[67][6],
+                         printlist[78][6],
+                         printlist[89][6],
+                         printlist[100][6]]
+
+    # Aout
+    AugTypeNfertilist = [printlist[5][7],
+                         printlist[14][7],
+                         printlist[23][7],
+                         printlist[34][7],
+                         printlist[45][7],
+                         printlist[56][7],
+                         printlist[67][7],
+                         printlist[78][7],
+                         printlist[89][7],
+                         printlist[100][7]]
+
+    # September
+    SeptTypeNfertilist = [printlist[5][8],
+                         printlist[14][8],
+                         printlist[23][8],
+                         printlist[34][8],
+                         printlist[45][8],
+                         printlist[56][8],
+                         printlist[67][8],
+                         printlist[78][8],
+                         printlist[89][8],
+                         printlist[100][8]]
+
+    # October
+    OctTypeNfertilist = [printlist[5][9],
+                          printlist[14][9],
+                          printlist[23][9],
+                          printlist[34][9],
+                          printlist[45][9],
+                          printlist[56][9],
+                          printlist[67][9],
+                          printlist[78][9],
+                          printlist[89][9],
+                          printlist[100][9]]
+
+    # Novembre
+    NovTypeNfertilist = [printlist[5][10],
+                         printlist[14][10],
+                         printlist[23][10],
+                         printlist[34][10],
+                         printlist[45][10],
+                         printlist[56][10],
+                         printlist[67][10],
+                         printlist[78][10],
+                         printlist[89][10],
+                         printlist[100][10]]
+
+    # December
+    DecTypeNfertilist = [printlist[5][11],
+                         printlist[14][11],
+                         printlist[23][11],
+                         printlist[34][11],
+                         printlist[45][11],
+                         printlist[56][11],
+                         printlist[67][11],
+                         printlist[78][11],
+                         printlist[89][11],
+                         printlist[100][11]]
+
+    #####Rate
+    #Janvier
+    JanRatequantityferti = [printlist[6][0],
+                       printlist[15][0],
+                       printlist[24][0],
+                       printlist[35][0],
+                       printlist[46][0],
+                       printlist[57][0],
+                       printlist[68][0],
+                       printlist[79][0],
+                       printlist[90][0],
+                       printlist[101][0]]
     # Conversion des quantités fertilisant en quantité ferti
-    RateNferti = []
+    JanRateNferti = []
     ##Chaque élément de la liste est un float + conversion
     try:
-        for rate, typ in zip(Ratequantityferti, TypeNfertilist):
+        for rate, typ in zip(JanRatequantityferti, JanTypeNfertilist):
             if typ == "*None":
-                RateNferti.append(float(rate))
+                JanRateNferti.append(float(rate))
             if typ == "Ammo Sulf":
                 conversion = float(rate)
-                RateNferti.append(round((conversion * 0.21), 2))
+                JanRateNferti.append(round((conversion * 0.21), 2))
             if typ == "Urea":
                 conversion = float(rate)
-                RateNferti.append(round((conversion * 0.46), 2))
+                JanRateNferti.append(round((conversion * 0.46), 2))
             if typ == "Ammo Chlo":
                 conversion = float(rate)
-                RateNferti.append(round((conversion * 0.25), 2))
+                JanRateNferti.append(round((conversion * 0.25), 2))
             if typ == "Ammo Nit":
                 conversion = float(rate)
-                RateNferti.append(round((conversion * 0.34), 2))
+                JanRateNferti.append(round((conversion * 0.34), 2))
             if typ == "Sod Nit":
                 conversion = float(rate)
-                RateNferti.append(round((conversion * 0.16), 2))
+                JanRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Fevrier
+    FebRatequantityferti = [printlist[6][1],
+                       printlist[15][1],
+                       printlist[24][1],
+                       printlist[35][1],
+                       printlist[46][1],
+                       printlist[57][1],
+                       printlist[68][1],
+                       printlist[79][1],
+                       printlist[90][1],
+                       printlist[101][1]]
+    # Conversion des quantités fertilisant en quantité ferti
+    FebRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(FebRatequantityferti, FebTypeNfertilist):
+            if typ == "*None":
+                FebRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                FebRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                FebRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                FebRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                FebRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                FebRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Mars
+    MarRatequantityferti = [printlist[6][2],
+                       printlist[15][2],
+                       printlist[24][2],
+                       printlist[35][2],
+                       printlist[46][2],
+                       printlist[57][2],
+                       printlist[68][2],
+                       printlist[79][2],
+                       printlist[90][2],
+                       printlist[101][2]]
+    # Conversion des quantités fertilisant en quantité ferti
+    MarRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(MarRatequantityferti, MarTypeNfertilist):
+            if typ == "*None":
+                MarRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                MarRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                MarRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                MarRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                MarRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                MarRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Avril
+    AprRatequantityferti = [printlist[6][3],
+                       printlist[15][3],
+                       printlist[24][3],
+                       printlist[35][3],
+                       printlist[46][3],
+                       printlist[57][3],
+                       printlist[68][3],
+                       printlist[79][3],
+                       printlist[90][3],
+                       printlist[101][3]]
+    # Conversion des quantités fertilisant en quantité ferti
+    AprRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(AprRatequantityferti, AprTypeNfertilist):
+            if typ == "*None":
+                AprRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                AprRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                AprRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                AprRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                AprRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                AprRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #May
+    MayRatequantityferti = [printlist[6][4],
+                       printlist[15][4],
+                       printlist[24][4],
+                       printlist[35][4],
+                       printlist[46][4],
+                       printlist[57][4],
+                       printlist[68][4],
+                       printlist[79][4],
+                       printlist[90][4],
+                       printlist[101][4]]
+    # Conversion des quantités fertilisant en quantité ferti
+    MayRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(MayRatequantityferti, MayTypeNfertilist):
+            if typ == "*None":
+                MayRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                MayRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                MayRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                MayRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                MayRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                MayRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Juin
+    JunRatequantityferti = [printlist[6][5],
+                       printlist[15][5],
+                       printlist[24][5],
+                       printlist[35][5],
+                       printlist[46][5],
+                       printlist[57][5],
+                       printlist[68][5],
+                       printlist[79][5],
+                       printlist[90][5],
+                       printlist[101][5]]
+    # Conversion des quantités fertilisant en quantité ferti
+    JunRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(JunRatequantityferti, JunTypeNfertilist):
+            if typ == "*None":
+                JunRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                JunRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                JunRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                JunRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                JunRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                JunRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Juillet
+    JulRatequantityferti = [printlist[6][6],
+                       printlist[15][6],
+                       printlist[24][6],
+                       printlist[35][6],
+                       printlist[46][6],
+                       printlist[57][6],
+                       printlist[68][6],
+                       printlist[79][6],
+                       printlist[90][6],
+                       printlist[101][6]]
+    # Conversion des quantités fertilisant en quantité ferti
+    JulRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(JulRatequantityferti, JulTypeNfertilist):
+            if typ == "*None":
+                JulRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                JulRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                JulRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                JulRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                JulRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                JulRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Aout
+    AugRatequantityferti = [printlist[6][7],
+                       printlist[15][7],
+                       printlist[24][7],
+                       printlist[35][7],
+                       printlist[46][7],
+                       printlist[57][7],
+                       printlist[68][7],
+                       printlist[79][7],
+                       printlist[90][7],
+                       printlist[101][7]]
+    # Conversion des quantités fertilisant en quantité ferti
+    AugRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(AugRatequantityferti, AugTypeNfertilist):
+            if typ == "*None":
+                AugRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                AugRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                AugRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                AugRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                AugRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                AugRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #September
+    SeptRatequantityferti = [printlist[6][8],
+                       printlist[15][8],
+                       printlist[24][8],
+                       printlist[35][8],
+                       printlist[46][8],
+                       printlist[57][8],
+                       printlist[68][8],
+                       printlist[79][8],
+                       printlist[90][8],
+                       printlist[101][8]]
+    # Conversion des quantités fertilisant en quantité ferti
+    SeptRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(SeptRatequantityferti, SeptTypeNfertilist):
+            if typ == "*None":
+                SeptRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                SeptRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                SeptRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                SeptRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                SeptRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                SeptRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #October
+    OctRatequantityferti = [printlist[6][9],
+                       printlist[15][9],
+                       printlist[24][9],
+                       printlist[35][9],
+                       printlist[46][9],
+                       printlist[57][9],
+                       printlist[68][9],
+                       printlist[79][9],
+                       printlist[90][9],
+                       printlist[101][9]]
+    # Conversion des quantités fertilisant en quantité ferti
+    OctRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(OctRatequantityferti, OctTypeNfertilist):
+            if typ == "*None":
+                OctRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                OctRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                OctRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                OctRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                OctRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                OctRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #Novembre
+    NovRatequantityferti = [printlist[6][10],
+                       printlist[15][10],
+                       printlist[24][10],
+                       printlist[35][10],
+                       printlist[46][10],
+                       printlist[57][10],
+                       printlist[68][10],
+                       printlist[79][10],
+                       printlist[90][10],
+                       printlist[101][10]]
+    # Conversion des quantités fertilisant en quantité ferti
+    NovRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(NovRatequantityferti, NovTypeNfertilist):
+            if typ == "*None":
+                NovRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                NovRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                NovRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                NovRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                NovRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                NovRateNferti.append(round((conversion * 0.16), 2))
+
+    except ValueError:
+        # Création bouton erreur
+        # Création de la fenêtre
+        errorrateNfertifloat = Toplevel()
+        # Nom de l'onglet de fenêtre
+        errorrateNfertifloat.title("Error message")
+        # Définition de la taille de la fenêtre
+        errorrateNfertifloat.geometry("400x100")
+        # Nom de la fenêtre
+        messagerateNfertifloat = (tkinter.Label(errorrateNfertifloat,
+                                                text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                     " Please check you rate data.\n"
+                                                     " Data must be float",
+                                                justify="center",
+                                                font=("Aptos", 12, "bold"), fg='red'))
+        messagerateNfertifloat.place(relx=0.5, rely=0.3, anchor="center")
+
+
+        # Réouverture du dialogue
+        def reopen_filedialog():
+            errorrateNfertifloat.destroy()
+            # Evite erreurs lors coupure programme
+            return
+
+        # Bouton retour
+        return_button = tkinter.Button(errorrateNfertifloat, text="Return",
+                                       bg="lightblue", command=reopen_filedialog)
+        return_button.place(relx=0.5, rely=0.8, anchor="center")
+        errorrateNfertifloat.mainloop()
+        return
+
+    #December
+    DecRatequantityferti = [printlist[6][11],
+                       printlist[15][11],
+                       printlist[24][11],
+                       printlist[35][11],
+                       printlist[46][11],
+                       printlist[57][11],
+                       printlist[68][11],
+                       printlist[79][11],
+                       printlist[90][11],
+                       printlist[101][11]]
+    # Conversion des quantités fertilisant en quantité ferti
+    DecRateNferti = []
+    ##Chaque élément de la liste est un float + conversion
+    try:
+        for rate, typ in zip(DecRatequantityferti, DecTypeNfertilist):
+            if typ == "*None":
+                DecRateNferti.append(float(rate))
+            if typ == "Ammo Sulf":
+                conversion = float(rate)
+                DecRateNferti.append(round((conversion * 0.21), 2))
+            if typ == "Urea":
+                conversion = float(rate)
+                DecRateNferti.append(round((conversion * 0.46), 2))
+            if typ == "Ammo Chlo":
+                conversion = float(rate)
+                DecRateNferti.append(round((conversion * 0.25), 2))
+            if typ == "Ammo Nit":
+                conversion = float(rate)
+                DecRateNferti.append(round((conversion * 0.34), 2))
+            if typ == "Sod Nit":
+                conversion = float(rate)
+                DecRateNferti.append(round((conversion * 0.16), 2))
 
     except ValueError:
         # Création bouton erreur
@@ -220,6 +1070,7 @@ def dictionnary_complete(countfounction,printlist) :
                             printlist[81][0],
                             printlist[92][0],
                             printlist[103][0])
+
     # Conversions en float
     ##Chaque élément de la liste est un float + conversion
     Quantityorgaferti = []
@@ -229,9 +1080,10 @@ def dictionnary_complete(countfounction,printlist) :
             if typ == "*None":
                 Quantityorgaferti.append(float(quantity))
             if typ =="EFB":
-                conversion=float(Quantityorgafertistr)
+                conversion=float(quantity)
                 Quantityorgaferti.append(round((3.24*conversion),2))
             if typ=="Compost":
+                conversion = float(quantity)
                 Quantityorgaferti.append(round((8.405 * conversion), 2))
     except ValueError:
         # Création bouton erreur
@@ -261,7 +1113,6 @@ def dictionnary_complete(countfounction,printlist) :
         return_button.place(relx=0.5, rely=0.8, anchor="center")
         errorquantityorgafertifloat.mainloop()
         return
-
 
     Placementorgaferti = (printlist[10][0],
                      printlist[19][0],
@@ -474,35 +1325,36 @@ def dictionnary_complete(countfounction,printlist) :
         return
 
         ##RateNferti toujours >0 voir pour valeur max
-    for i in RateNferti:
-        if i <0:
-            # Création bouton erreur
-            # Création de la fenêtre
-            errorrateNferti = Toplevel()
-            # Nom de l'onglet de fenêtre
-            errorrateNferti.title("Error message")
-            # Définition de la taille de la fenêtre
-            errorrateNferti.geometry("400x100")
-            # Nom de la fenêtre
-            messagerateNferti = (tkinter.Label(errorrateNferti,
-                                               text="Error on rate Mineral Nitrogen fertilizer input data!\n"
-                                                    " Your data must be ≥ 0",
-                                               justify="center",
-                                               font=("Aptos", 12, "bold"), fg='red'))
-            messagerateNferti.place(relx=0.5, rely=0.3, anchor="center")
+    for i in zip(JanRateNferti,FebRateNferti,MarRateNferti,AprRateNferti,MayRateNferti,JunRateNferti,JulRateNferti,AugRateNferti,SeptRateNferti,OctRateNferti,NovRateNferti,DecRateNferti):
+        for rate in i:
+            if rate <0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorrateNferti = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorrateNferti.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorrateNferti.geometry("400x100")
+                # Nom de la fenêtre
+                messagerateNferti = (tkinter.Label(errorrateNferti,
+                                                   text="Error on rate Mineral Nitrogen fertilizer input data!\n"
+                                                        " Your data must be ≥ 0",
+                                                   justify="center",
+                                                   font=("Aptos", 12, "bold"), fg='red'))
+                messagerateNferti.place(relx=0.5, rely=0.3, anchor="center")
 
-            # Réouverture du dialogue
-            def reopen_filedialog():
-                errorrateNferti.destroy()
-                # Evite erreurs lors coupure programme
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorrateNferti.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorrateNferti, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorrateNferti.mainloop()
                 return
-
-            # Bouton retour
-            return_button = tkinter.Button(errorrateNferti, text="Return",
-                                           bg="lightblue", command=reopen_filedialog)
-            return_button.place(relx=0.5, rely=0.8, anchor="center")
-            errorrateNferti.mainloop()
-            return
 
     # Quantityorgaferti
     ##Quantity organic ferti toujours >0 voir pour valeur max
@@ -638,7 +1490,7 @@ def dictionnary_complete(countfounction,printlist) :
         return
 
 
-    #Terraces dois être rempli
+    #Terraces doit être rempli
     if Terraces == "*Choice*":
         # Création bouton erreur
         # Création de la fenêtre
@@ -667,7 +1519,7 @@ def dictionnary_complete(countfounction,printlist) :
         errorTerraces.mainloop()
         return
 
-    # Previous dois être rempli
+    # Previous doit être rempli
     if Previous == "*Choice*":
         # Création bouton erreur
         # Création de la fenêtre
@@ -699,9 +1551,10 @@ def dictionnary_complete(countfounction,printlist) :
     #Chaque année
     #Mineral Nitrogen fertilizer
     ##Lien entre Type et rate
-    for i in range(0,len(TypeNfertilist)):
-        if TypeNfertilist[i]!="*None":
-            if RateNferti[i]==0:
+    #Janvier
+    for i in range(0,len(JanTypeNfertilist)):
+        if JanTypeNfertilist[i]!="*None":
+            if JanRateNferti[i]==0:
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLink = Toplevel()
@@ -732,9 +1585,737 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLink.mainloop()
                 return
 
-    for i in range(0,len(RateNferti)):
-        if RateNferti[i]!=0:
-            if TypeNfertilist[i] == "*None":
+    for i in range(0,len(JanRateNferti)):
+        if JanRateNferti[i]!=0:
+            if JanTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #Fevrier
+    for i in range(0,len(FebTypeNfertilist)):
+        if FebTypeNfertilist[i]!="*None":
+            if FebRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(FebRateNferti)):
+        if FebRateNferti[i]!=0:
+            if FebTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #Mars
+    for i in range(0,len(MarTypeNfertilist)):
+        if MarTypeNfertilist[i]!="*None":
+            if MarRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(MarRateNferti)):
+        if MarRateNferti[i]!=0:
+            if MarTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #April
+    for i in range(0,len(AprTypeNfertilist)):
+        if AprTypeNfertilist[i]!="*None":
+            if AprRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(AprRateNferti)):
+        if AprRateNferti[i]!=0:
+            if AprTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #May
+    for i in range(0,len(MayTypeNfertilist)):
+        if MayTypeNfertilist[i]!="*None":
+            if MayRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(MayRateNferti)):
+        if MayRateNferti[i]!=0:
+            if MayTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #Juin
+    for i in range(0,len(JunTypeNfertilist)):
+        if JunTypeNfertilist[i]!="*None":
+            if JunRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(JunRateNferti)):
+        if JunRateNferti[i]!=0:
+            if JunTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #Juillet
+    for i in range(0,len(JulTypeNfertilist)):
+        if JulTypeNfertilist[i]!="*None":
+            if JulRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(JulRateNferti)):
+        if JulRateNferti[i]!=0:
+            if JulTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #Aout
+    for i in range(0,len(AugTypeNfertilist)):
+        if AugTypeNfertilist[i]!="*None":
+            if AugRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(AugRateNferti)):
+        if AugRateNferti[i]!=0:
+            if AugTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #September
+    for i in range(0,len(SeptTypeNfertilist)):
+        if SeptTypeNfertilist[i]!="*None":
+            if SeptRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(SeptRateNferti)):
+        if SeptRateNferti[i]!=0:
+            if SeptTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+    #October
+    for i in range(0,len(OctTypeNfertilist)):
+        if OctTypeNfertilist[i]!="*None":
+            if OctRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(OctRateNferti)):
+        if OctRateNferti[i]!=0:
+            if OctTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+
+    #November
+    for i in range(0,len(NovTypeNfertilist)):
+        if NovTypeNfertilist[i]!="*None":
+            if NovRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(NovRateNferti)):
+        if NovRateNferti[i]!=0:
+            if NovTypeNfertilist[i] == "*None":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink2 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink2.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink2.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink2 = (tkinter.Label(errorNfertityperateLink2,
+                                                            text="Error! \n"
+                                                                 "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                 "must be consistent.\n"
+                                                                 "Please complete all informations",
+                                                            justify="center",
+                                                            font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink2.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink2.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink2, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink2.mainloop()
+                return
+
+    #December
+    for i in range(0,len(DecTypeNfertilist)):
+        if DecTypeNfertilist[i]!="*None":
+            if DecRateNferti[i]==0:
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLink = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLink.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLink.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLink = (tkinter.Label(errorNfertityperateLink,
+                                                           text="Error! \n"
+                                                                "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer\n"
+                                                                " must be consistent.\n"
+                                                                "Please complete all informations",
+                                                           justify="center",
+                                                           font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLink.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLink.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLink, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLink.mainloop()
+                return
+
+    for i in range(0,len(DecRateNferti)):
+        if DecRateNferti[i]!=0:
+            if DecTypeNfertilist[i] == "*None":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLink2 = Toplevel()
@@ -766,10 +2347,10 @@ def dictionnary_complete(countfounction,printlist) :
                 return
 
     ##Lien entre placement et type/Rate
-    ###Year 1
-    for i in range(0,12):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[0]=="*Choice*":
+    ###Janvier pour les 10 années
+    for i in range(0,10):
+        if JanTypeNfertilist[i]!="*None" or JanRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY1 = Toplevel()
@@ -800,10 +2381,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY1.mainloop()
                 return
 
-    #Year 2
-    for i in range(12,24):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[1]=="*Choice*":
+    ###Fevrier pour les 10 années
+    for i in range(0,10):
+        if FebTypeNfertilist[i]!="*None" or FebRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY2 = Toplevel()
@@ -834,10 +2415,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY2.mainloop()
                 return
 
-    #Year 3
-    for i in range(24,36):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[2]=="*Choice*":
+    ####Mars pour les 10 années
+    for i in range(0,10):
+        if MarTypeNfertilist[i]!="*None" or MarRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY3 = Toplevel()
@@ -868,10 +2449,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY3.mainloop()
                 return
 
-    #Year 4
-    for i in range(36,48):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[3]=="*Choice*":
+    ####Avril pour les 10 années
+    for i in range(0,10):
+        if AprTypeNfertilist[i]!="*None" or AprRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY4 = Toplevel()
@@ -902,10 +2483,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY4.mainloop()
                 return
 
-    #Year 5
-    for i in range(48,60):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[4]=="*Choice*":
+    ####May pour les 10 années
+    for i in range(0, 10):
+        if MayTypeNfertilist[i]!="*None" or MayRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY5 = Toplevel()
@@ -936,10 +2517,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY5.mainloop()
                 return
 
-    #Year 6
-    for i in range(60,72):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[5]=="*Choice*":
+    ####Juin pour les 10 années
+    for i in range(0, 10):
+        if JunTypeNfertilist[i]!="*None" or JunRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY6 = Toplevel()
@@ -970,10 +2551,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY6.mainloop()
                 return
 
-    #Year 7
-    for i in range(72,84):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[6]=="*Choice*":
+    ####Juillet pour les 10 années
+    for i in range(0, 10):
+        if JulTypeNfertilist[i]!="*None" or JulRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY7 = Toplevel()
@@ -1004,10 +2585,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY7.mainloop()
                 return
 
-    #Year 8
-    for i in range(84,96):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[7]=="*Choice*":
+    ####Aout pour les 10 années
+    for i in range(0, 10):
+        if AugTypeNfertilist[i]!="*None" or AugRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY8 = Toplevel()
@@ -1038,10 +2619,10 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY8.mainloop()
                 return
 
-    #Year 9
-    for i in range(96,108):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[8]=="*Choice*":
+    ####September pour les 10 années
+    for i in range(0, 10):
+        if SeptTypeNfertilist[i]!="*None" or SeptRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY9 = Toplevel()
@@ -1072,10 +2653,77 @@ def dictionnary_complete(countfounction,printlist) :
                 errorNfertityperateLinkY9.mainloop()
                 return
 
-    #Year 10
-    for i in range(108,len(TypeNfertilist)):
-        if TypeNfertilist[i]!="*None" or RateNferti[i]!=0:
-            if PlacementNferti[9]=="*Choice*":
+    ####October pour les 10 années
+    for i in range(0, 10):
+        if OctTypeNfertilist[i]!="*None" or OctRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY10 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY10.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY10.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY10 = (tkinter.Label(errorNfertityperateLinkY10,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY10.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY10.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY10, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY10.mainloop()
+                return
+    ####November pour les 10 années
+    for i in range(0, 10):
+        if NovTypeNfertilist[i]!="*None" or NovRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
+                # Création bouton erreur
+                # Création de la fenêtre
+                errorNfertityperateLinkY10 = Toplevel()
+                # Nom de l'onglet de fenêtre
+                errorNfertityperateLinkY10.title("Error message")
+                # Définition de la taille de la fenêtre
+                errorNfertityperateLinkY10.geometry("700x200")
+                # Nom de la fenêtre
+                messageNfertityperateLinkY10 = (tkinter.Label(errorNfertityperateLinkY10,
+                                                             text="Error! \n"
+                                                                  "Data input between Type, Rate and Placement on Mineral Nitrogen fertilizer \n"
+                                                                  "must be consistent.\n"
+                                                                  "Please complete all informations",
+                                                             justify="center",
+                                                             font=("Aptos", 12, "bold"), fg='red'))
+                messageNfertityperateLinkY10.place(relx=0.5, rely=0.3, anchor="center")
+
+                # Réouverture du dialogue
+                def reopen_filedialog():
+                    errorNfertityperateLinkY10.destroy()
+                    # Evite erreurs lors coupure programme
+                    return
+
+                # Bouton retour
+                return_button = tkinter.Button(errorNfertityperateLinkY10, text="Return",
+                                               bg="lightblue", command=reopen_filedialog)
+                return_button.place(relx=0.5, rely=0.8, anchor="center")
+                errorNfertityperateLinkY10.mainloop()
+                return
+
+    ####December pour les 10 années
+    for i in range(0, 10):
+        if DecTypeNfertilist[i]!="*None" or DecRateNferti[i]!=0:
+            if PlacementNferti[i]=="*Choice*":
                 # Création bouton erreur
                 # Création de la fenêtre
                 errorNfertityperateLinkY10 = Toplevel()
@@ -1293,7 +2941,7 @@ def dictionnary_complete(countfounction,printlist) :
                     return_button.place(relx=0.5, rely=0.8, anchor="center")
                     errororgfertityperateLink6.mainloop()
                     return
-        print(RateNferti)
+
 
     ###################Création dictionnary final avec les informations parcelles
     if dictionnary_complete in globals():
@@ -1308,6 +2956,71 @@ def dictionnary_complete(countfounction,printlist) :
                                    {'Terraces':Terraces,
                                     'Previous':Previous}}}
 
+    #Rajout des éléments mensuelles Mineral nitrogen dans dictionnary
+    for idx,(year, month) in enumerate(dictionnary.items()):
+        for j,k in month.items():
+            if 'January' in dictionnary[year]:
+                dictionnary[year]["January"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                   JanRateNferti[idx] if idx < len(JanRateNferti) else None,
+                                                                               "Type":
+                                                                                   JanTypeNfertilist[idx] if idx < len(JanTypeNfertilist) else None}
+            if 'February' in dictionnary[year]:
+                dictionnary[year]["February"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                   FebRateNferti[idx] if idx < len(FebRateNferti) else None,
+                                                                               "Type":
+                                                                                   FebTypeNfertilist[idx] if idx < len(FebTypeNfertilist) else None}
+            if 'March' in dictionnary[year]:
+                dictionnary[year]["March"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                    MarRateNferti[idx] if idx < len(MarRateNferti) else None,
+                                                                             "Type":
+                                                                                 MarTypeNfertilist[idx] if idx < len(MarTypeNfertilist) else None}
+            if 'April' in dictionnary[year]:
+                dictionnary[year]["April"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                 AprRateNferti[idx] if idx < len(AprRateNferti) else None,
+                                                                             "Type":
+                                                                                 AprTypeNfertilist[idx] if idx < len(AprTypeNfertilist) else None}
+            if 'May' in dictionnary[year]:
+                dictionnary[year]["May"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                    MayRateNferti[idx] if idx < len(MayRateNferti) else None,
+                                                                             "Type":
+                                                                                 MayTypeNfertilist[idx] if idx < len(MayTypeNfertilist) else None}
+            if 'June' in dictionnary[year]:
+                dictionnary[year]["June"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                JunRateNferti[idx] if idx < len(JunRateNferti) else None,
+                                                                             "Type":
+                                                                                 JunTypeNfertilist[idx] if idx < len(JunTypeNfertilist) else None}
+            if 'July' in dictionnary[year]:
+                dictionnary[year]["July"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                JulRateNferti[idx] if idx < len(JulRateNferti) else None,
+                                                                             "Type":
+                                                                                 JulTypeNfertilist[idx] if idx < len(JulTypeNfertilist) else None}
+            if 'August' in dictionnary[year]:
+                dictionnary[year]["August"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                  AugRateNferti[idx] if idx < len(AugRateNferti) else None,
+                                                                             "Type":
+                                                                                 AugTypeNfertilist[idx] if idx < len(AugTypeNfertilist) else None}
+            if 'September' in dictionnary[year]:
+                dictionnary[year]["September"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                     SeptRateNferti[idx] if idx < len(SeptRateNferti) else None,
+                                                                                 "Type":
+                                                                                     SeptTypeNfertilist[idx] if idx < len(SeptTypeNfertilist) else None}
+            if 'October' in dictionnary[year]:
+                dictionnary[year]["October"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                   OctRateNferti[idx] if idx < len(OctRateNferti) else None,
+                                                                               "Type":
+                                                                                   OctTypeNfertilist[idx] if idx < len(OctTypeNfertilist) else None}
+            if 'November' in dictionnary[year]:
+                dictionnary[year]["November"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                    NovRateNferti[idx] if idx < len(NovRateNferti) else None,
+                                                                                "Type":
+                                                                                    NovTypeNfertilist[idx] if idx < len(NovTypeNfertilist) else None}
+            if 'December' in dictionnary[year]:
+                dictionnary[year]["December"]["Mineral nitrogen fertilizer"] = {"Rate":
+                                                                                    DecRateNferti[idx] if idx < len(DecRateNferti) else None,
+                                                                                "Type":
+                                                                                    DecTypeNfertilist[idx] if idx < len(DecTypeNfertilist) else None}
+
+
     # Création du dictionnaire temporaire
     temporarydict= {}
 
@@ -1315,7 +3028,6 @@ def dictionnary_complete(countfounction,printlist) :
     #idx car pas forcément 10 de données donc suppression de tout ce qui est supérieur
     for idx, (year, months) in enumerate(dictionnary.items()):
         # Ajouter les données générales pour chaque année
-
         temporarydict[year] = {
             'Month': months,  # Ajout des mois pour chaque année
             'General data': {
@@ -1333,15 +3045,7 @@ def dictionnary_complete(countfounction,printlist) :
             }
         }
 
-        # Ajout des informations mineral N ferti pour chacun des mois (rate et type)
-        for idxidx, (month, data) in enumerate(months.items()):
-            temporarydict[year]['Month'][month] = {
-                'Weather': data,  # Ajout des données météo
-                'Mineral nitrogen fertilizer': {
-                    'Type': TypeNfertilist[idxidx] if idxidx < len(TypeNfertilist) else None,
-                    'Rate': RateNferti[idxidx] if idxidx < len(RateNferti) else None
-                }
-            }
+
     #Rajout spécifique des données pruned frond à partir de la troisième année
     for idx, (year, year_data) in enumerate(temporarydict.items()):
         if idx > 1:  # Tu veux traiter les années à partir de l'indice 2
@@ -1354,7 +3058,6 @@ def dictionnary_complete(countfounction,printlist) :
     for general,typetype in complete_dictionnary.items():
         complete_dictionnary[general]['Year']=temporarydict
     del temporarydict
-    print(complete_dictionnary)
 
 
 #Fonction lecture fichier
@@ -7759,9 +9462,11 @@ def infodicosave(dictionnary, town, country) :
     table.heading("Rainfall",text="Rainfall(in mm)")
     table.heading("Frequency",text="Rain frequency (number of rainy days)")
     #Insertion des valeurs
+    print(dictionnary)
     for (years, months) in dictionnary.items():
-        for monthdata, data in months.items():
-            table.insert("","end",values=(years,monthdata,data['Rainfall'], data['Rain frequency']))
+        for monthdata, weather in months.items():
+            for info,resultweather in weather.items():
+                table.insert("","end",values=(years,monthdata,resultweather['Rainfall'], resultweather['Rain frequency']))
 
 
     #Barre de défilement
@@ -8192,7 +9897,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à january
         for (years, months), valuecumul,valuecount in zip(dictionnary.items(), listcumul,listcount):
-            months['January'] = {'Rainfall':valuecumul,'Rain frequency':valuecount}
+            months['January'] = {"Weather":{'Rainfall':valuecumul,'Rain frequency':valuecount}}
         #Destruction dictionnaire Jandict
         del Jandict
         #Réinitialisation des listes
@@ -8208,7 +9913,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à février
         for (years, months), valuecumul,valuecount in zip(dictionnary.items(), listcumul,listcount):
-            months['February'] = {'Rainfall':valuecumul,'Rain frequency':valuecount}
+            months['February'] = {"Weather":{'Rainfall':valuecumul,'Rain frequency':valuecount}}
         #Destruction dictionnaire Febdict
         del Febdict
         #Réinitialisation des listes
@@ -8224,7 +9929,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à march
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['March'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['March'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Mardict
         del Mardict
         # Réinitialisation des listes
@@ -8240,7 +9945,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à april
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['April'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['April'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Aprdict
         del Aprdict
         # Réinitialisation des listes
@@ -8256,7 +9961,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à may
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['May'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['May'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Maydict
         del Maydict
         # Réinitialisation des listes
@@ -8272,7 +9977,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à june
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['June'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['June'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire June
         del Jundict
         # Réinitialisation des listes
@@ -8288,7 +9993,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à july
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['July'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['July'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire June
         del Juldict
         # Réinitialisation des listes
@@ -8304,7 +10009,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à august
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['August'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['August'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Augdict
         del Augdict
         # Réinitialisation des listes
@@ -8320,7 +10025,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à september
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['September'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['September'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Septdict
         del Sepdict
         # Réinitialisation des listes
@@ -8336,7 +10041,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à october
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['October'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['October'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Octdict
         del Octdict
         # Réinitialisation des listes
@@ -8352,7 +10057,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à november
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['November'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['November'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Novdict
         del Novdict
         # Réinitialisation des listes
@@ -8368,7 +10073,7 @@ def weatherdata():
             listcount.append(count)
         # Attribution des cumuls pluie à december
         for (years, months), valuecumul, valuecount in zip(dictionnary.items(), listcumul, listcount):
-            months['December'] = {'Rainfall': valuecumul, 'Rain frequency': valuecount}
+            months['December'] = {"Weather":{'Rainfall': valuecumul, 'Rain frequency': valuecount}}
         # Destruction dictionnaire Decdict
         del Decdict
 
