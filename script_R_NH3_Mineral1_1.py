@@ -3,6 +3,7 @@ import numpy
 import skfuzzy as fuzz
 import matplotlib.pyplot as matplot
 
+##############################Dictionnaire exemple pour test fonction
 complete_dictionnary={'Field information':
                           {'Soil caracteristic':
                                {'Organic Carbon': 9,
