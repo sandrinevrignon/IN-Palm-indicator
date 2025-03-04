@@ -521,3 +521,12 @@ complete_dictionnary={'Field information':
 ###############################################################
 #########################################FUzzy models
 ####Attention retirer le dictionnaire en entrée de la fonction
+def Fraction_of_soil_covered_2_1 (complete_dictionnary) :
+    print("ok")
+
+
+
+
+Fraction_of_soil_covered_2_1 (complete_dictionnary)
+
+
